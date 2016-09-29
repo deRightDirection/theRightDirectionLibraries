@@ -1,0 +1,16 @@
+<common:BootStrapper x:Class="XamlTestApplication.App"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:common="using:Template10.Common"
+                     RequestedTheme="Light">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\Custom.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BitmapImage x:Key="XamlTestApplication.TestEnum_StoreLogo" UriSource="Assets/storelogo.png" />
+        </ResourceDictionary>
+    </Application.Resources>
+
+</common:BootStrapper>
