@@ -16,18 +16,26 @@
     </Page.DataContext>
     <Page.Resources>
         <Converters:EnumToBitmapImageConverter x:Name="ImageConverter" />
+        <Converters:StringFormatConverter x:Name="StringFormatConverter" />
     </Page.Resources>
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <controls:PageHeader x:Name="pageHeader"
-                             Content="Main Page"
+                             Content="Examples"
                              RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" />
-        <Image Source="{Binding ImageName, Mode=OneWay, Converter={StaticResource ImageConverter}, ConverterParameter='XamlTestApplication.TestEnum,XamlTestApplication'}" Stretch="UniformToFill" />
+        <StackPanel RelativePanel.Below="pageHeader">
 
-
+            <Image Width="50"
+                   Height="50"
+                   Source="{Binding ImageName,
+                                    Mode=OneWay,
+                                    Converter={StaticResource ImageConverter},
+                                    ConverterParameter='XamlTestApplication.TestEnum,XamlTestApplication'}" />
+            <TextBlock Text="{Binding Amount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:C\}}" />
+        </StackPanel>
     </RelativePanel>
 
 </Page>
