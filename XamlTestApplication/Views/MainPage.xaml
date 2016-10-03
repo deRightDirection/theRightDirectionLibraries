@@ -23,6 +23,11 @@
                 <rules:EmailValidationRule />
             </validation:ValidationRules.Rules>
         </validation:ValidationRules>
+        <validation:ValidationRules x:Key="ListValidation">
+            <validation:ValidationRules.Rules>
+                <rules:ListHasAtLeastOneSelectedItem />
+            </validation:ValidationRules.Rules>
+        </validation:ValidationRules>
         <Converters:EnumToBitmapImageConverter x:Name="ImageConverter" />
         <Converters:StringFormatConverter x:Name="StringFormatConverter" />
     </Page.Resources>
@@ -54,9 +59,17 @@
             <!--  demo validating combobox  -->
             <uwpcontrols:ValidatingComboBox Header="Combobox"
                                             IsMandatory="True"
-                                            MandatoryValidationMessage="Boeh!" />
+                                            ItemsSource="{Binding EmailAddresses,
+                                                                  Mode=TwoWay}"
+                                            MandatoryValidationMessage="No item selected!" />
             <TextBlock x:Name="validatingcomboboxmessage" />
-
+            <!--  demo validating listview  -->
+            <uwpcontrols:ValidatingListView Header="Listview"
+                                            ItemsSource="{Binding EmailAddresses,
+                                                                  Mode=TwoWay}"
+                                            SelectedItems="{Binding SelectedAddresses,
+                                                                    Mode=TwoWay}"
+                                            ValidationRules="{StaticResource ListValidation}" />
 
         </StackPanel>
     </RelativePanel>
