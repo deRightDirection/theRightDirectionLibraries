@@ -8,6 +8,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:XamlTestApplication.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:rules="using:WinUX.Data.Validation.Rules"
+      xmlns:uwpcontrols="using:WinUX.Xaml.Controls"
+      xmlns:validation="using:WinUX.Data.Validation"
       xmlns:vm="using:XamlTestApplication.ViewModels"
       mc:Ignorable="d">
 
@@ -15,6 +18,11 @@
         <vm:MainPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
     <Page.Resources>
+        <validation:ValidationRules x:Key="EmailValidation">
+            <validation:ValidationRules.Rules>
+                <rules:EmailValidationRule />
+            </validation:ValidationRules.Rules>
+        </validation:ValidationRules>
         <Converters:EnumToBitmapImageConverter x:Name="ImageConverter" />
         <Converters:StringFormatConverter x:Name="StringFormatConverter" />
     </Page.Resources>
@@ -28,6 +36,7 @@
                              RelativePanel.AlignTopWithPanel="True" />
         <StackPanel RelativePanel.Below="pageHeader">
 
+            <!--  demo imageconverter  -->
             <Image Width="50"
                    Height="50"
                    Source="{Binding ImageName,
@@ -35,6 +44,20 @@
                                     Converter={StaticResource ImageConverter},
                                     ConverterParameter='XamlTestApplication.TestEnum,XamlTestApplication'}" />
             <TextBlock Text="{Binding Amount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:C\}}" />
+
+            <!--  demo validating textbox  -->
+            <uwpcontrols:ValidatingTextBox Header="Textbox"
+                                           IsMandatory="True"
+                                           MaxLength="50"
+                                           Text="info@test.nl"
+                                           ValidationRules="{StaticResource EmailValidation}" />
+            <!--  demo validating combobox  -->
+            <uwpcontrols:ValidatingComboBox Header="Combobox"
+                                            IsMandatory="True"
+                                            MandatoryValidationMessage="Boeh!" />
+            <TextBlock x:Name="validatingcomboboxmessage" />
+
+
         </StackPanel>
     </RelativePanel>
 
