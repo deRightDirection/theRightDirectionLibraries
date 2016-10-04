@@ -39,38 +39,75 @@
                              RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" />
-        <StackPanel RelativePanel.Below="pageHeader">
+
+        <StackPanel RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    RelativePanel.Below="pageHeader">
 
             <!--  demo imageconverter  -->
-            <Image Width="50"
-                   Height="50"
-                   Source="{Binding ImageName,
-                                    Mode=OneWay,
-                                    Converter={StaticResource ImageConverter},
-                                    ConverterParameter='XamlTestApplication.TestEnum,XamlTestApplication'}" />
-            <TextBlock Text="{Binding Amount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:C\}}" />
+            <Border Margin="10"
+                    BorderBrush="DarkGreen"
+                    BorderThickness="1"
+                    Padding="10">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="image converter" />
+                    <Image Width="50"
+                           Height="50"
+                           Source="{Binding ImageName,
+                                            Mode=OneWay,
+                                            Converter={StaticResource ImageConverter},
+                                            ConverterParameter='XamlTestApplication.TestEnum,XamlTestApplication'}" />
+                </StackPanel>
+            </Border>
+            <Border Margin="10"
+                    BorderBrush="DarkGreen"
+                    BorderThickness="1"
+                    Padding="10">
+                <StackPanel Orientation="Vertical">
 
-            <!--  demo validating textbox  -->
-            <uwpcontrols:ValidatingTextBox Header="Textbox"
-                                           IsMandatory="True"
-                                           MaxLength="50"
-                                           Text="info@test.nl"
-                                           ValidationRules="{StaticResource EmailValidation}" />
-            <!--  demo validating combobox  -->
-            <uwpcontrols:ValidatingComboBox Header="Combobox"
-                                            IsMandatory="True"
-                                            ItemsSource="{Binding EmailAddresses,
-                                                                  Mode=TwoWay}"
-                                            MandatoryValidationMessage="No item selected!" />
-            <TextBlock x:Name="validatingcomboboxmessage" />
-            <!--  demo validating listview  -->
-            <uwpcontrols:ValidatingListView Header="Listview"
-                                            ItemsSource="{Binding EmailAddresses,
-                                                                  Mode=TwoWay}"
-                                            SelectedItems="{Binding SelectedAddresses,
-                                                                    Mode=TwoWay}"
-                                            ValidationRules="{StaticResource ListValidation}" />
+                    <TextBlock Text="string format converter" />
+                    <TextBlock Text="{Binding Amount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:C\}}" />
+                </StackPanel>
+            </Border>
+            <Border Margin="10"
+                    BorderBrush="DarkGreen"
+                    BorderThickness="1"
+                    Padding="10">
+                <StackPanel Orientation="Vertical">
 
+                    <!--  demo validating textbox  -->
+                    <uwpcontrols:ValidatingTextBox Header="Textbox"
+                                                   IsMandatory="True"
+                                                   MaxLength="50"
+                                                   Text="info@test.nl"
+                                                   ValidationRules="{StaticResource EmailValidation}" />
+                </StackPanel>
+            </Border>
+            <Border Margin="10"
+                    BorderBrush="DarkGreen"
+                    BorderThickness="1"
+                    Padding="10">
+                <StackPanel Orientation="Vertical">
+                    <!--  demo validating combobox  -->
+                    <uwpcontrols:ValidatingComboBox Header="Combobox"
+                                                    IsMandatory="True"
+                                                    ItemsSource="{Binding EmailAddresses,
+                                                                          Mode=TwoWay}"
+                                                    MandatoryValidationMessage="No item selected!" />
+                </StackPanel>
+            </Border>
+            <Border Margin="10"
+                    BorderBrush="DarkGreen"
+                    BorderThickness="1"
+                    Padding="10">
+                <StackPanel Orientation="Vertical">
+                    <!--  demo validating listview  -->
+                    <uwpcontrols:ValidatingListView Header="Listview"
+                                                    ItemsSource="{Binding EmailAddresses,
+                                                                          Mode=TwoWay}"
+                                                    ValidationRules="{StaticResource ListValidation}" />
+                </StackPanel>
+            </Border>
         </StackPanel>
     </RelativePanel>
 
