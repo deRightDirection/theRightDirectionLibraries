@@ -25,9 +25,7 @@
             </validation:ValidationRules.Rules>
         </validation:ValidationRules>
         <validation:ValidationRules x:Key="ListValidation">
-            <validation:ValidationRules.Rules>
-                <rules:ListHasAtLeastOneSelectedItem />
-            </validation:ValidationRules.Rules>
+            <validation:ValidationRules.Rules />
         </validation:ValidationRules>
         <Converters:EnumToBitmapImageConverter x:Name="ImageConverter" />
         <Converters:StringFormatConverter x:Name="StringFormatConverter" />
