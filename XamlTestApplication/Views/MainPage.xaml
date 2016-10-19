@@ -18,6 +18,7 @@
         <vm:MainPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
     <Page.Resources>
+        <Converters:SelectionChangedConverter x:Name="SelectionChangedConverter" />
         <validation:ValidationRules x:Key="EmailValidation">
             <validation:ValidationRules.Rules>
                 <rules:EmailValidationRule />
@@ -102,14 +103,12 @@
                     Padding="10">
                 <StackPanel Orientation="Vertical">
                     <!--  demo validating listview  -->
-                    <uwpcontrols:ValidatingListView Header="Listview"
+                    <uwpcontrols:ValidatingListView IsMandatory="True"
                                                     ItemsSource="{Binding EmailAddresses,
                                                                           Mode=TwoWay}"
-                                                    ValidationRules="{StaticResource ListValidation}" />
+                                                    MandatoryValidationMessage="No item selected!" />
                 </StackPanel>
             </Border>
         </StackPanel>
     </RelativePanel>
-
 </Page>
-
