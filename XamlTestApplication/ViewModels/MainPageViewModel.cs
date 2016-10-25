@@ -12,6 +12,7 @@ namespace XamlTestApplication.ViewModels
     {
         private TestEnum _imageName;
         private double _amount;
+        private string _textBoxText;
         private List<string> _emailadresses;
         private DelegateCommand<IList<object>> _selectionChangedCommand;
 
@@ -20,11 +21,15 @@ namespace XamlTestApplication.ViewModels
             ImageName = TestEnum.StoreLogo;
             Amount = 12.345;
             EmailAddresses = new List<string>() { "info@test.nl", "test@test.nl" };
+            TextBoxText = "BasketBalNieuws";
         }
         public TestEnum ImageName { get { return _imageName; }set { Set(ref _imageName, value); } }
         public double Amount { get { return _amount; } set { Set(ref _amount, value); } }  
         public IEnumerable<string> EmailAddresses { get { return _emailadresses; } set { Set<List<string>>(ref _emailadresses, value.ToList()); } }
-        
+        public string TextBoxText
+        {
+            get { return _textBoxText; }
+            set { Set(ref _textBoxText, value); }
+        }
     }
 }
-

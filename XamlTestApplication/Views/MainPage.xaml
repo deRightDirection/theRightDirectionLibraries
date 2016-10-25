@@ -107,6 +107,15 @@
                                                     MandatoryValidationMessage="No item selected!" />
                 </StackPanel>
             </Border>
+            <Border Margin="10"
+                    BorderBrush="DarkGreen"
+                    BorderThickness="1"
+                    Padding="10">
+                <StackPanel Orientation="Vertical">
+                    <!--  demo editable textbox  -->
+                    <uwpcontrols:EditableTextBox Text="{Binding TextBoxText, Mode=TwoWay}" />
+                </StackPanel>
+            </Border>
         </StackPanel>
     </RelativePanel>
 </Page>
