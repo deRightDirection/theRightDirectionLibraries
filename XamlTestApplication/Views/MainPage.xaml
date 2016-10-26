@@ -78,8 +78,7 @@
                     <uwpcontrols:ValidatingTextBox Header="Textbox"
                                                    IsMandatory="True"
                                                    MaxLength="50"
-                                                   Text="info@test.nl"
-                                                   ValidationRules="{StaticResource EmailValidation}" />
+                                                   Text="info@test.nl" />
                 </StackPanel>
             </Border>
             <Border Margin="10"
@@ -113,7 +112,12 @@
                     Padding="10">
                 <StackPanel Orientation="Vertical">
                     <!--  demo editable textbox  -->
-                    <uwpcontrols:EditableTextBox Text="{Binding TextBoxText, Mode=TwoWay}" />
+                    <uwpcontrols:EditableTextBox EditStateBorderBrush="Blue"
+                                                 EditStateBorderThickness="1"
+                                                 PointerStateBorderBrush="Purple"
+                                                 PointerStateBorderThickness="5"
+                                                 Text="{Binding TextBoxText,
+                                                                Mode=TwoWay}" />
                 </StackPanel>
             </Border>
         </StackPanel>
