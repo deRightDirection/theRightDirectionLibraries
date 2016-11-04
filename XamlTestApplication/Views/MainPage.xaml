@@ -117,7 +117,8 @@
                                                  PointerStateBorderBrush="Purple"
                                                  PointerStateBorderThickness="5"
                                                  Text="{Binding TextBoxText,
-                                                                Mode=TwoWay}" />
+                                                                Mode=TwoWay,
+                                                                UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </Border>
         </StackPanel>
