@@ -79,6 +79,10 @@
                                                    IsMandatory="True"
                                                    MaxLength="50"
                                                    Text="info@test.nl" />
+                    <!--  demo validating textbox  -->
+                    <uwpcontrols:ValidatingTextBox IsMandatory="True">
+                        <uwpcontrols:ValidatingTextBox.HeaderTemplate />
+                    </uwpcontrols:ValidatingTextBox>
                 </StackPanel>
             </Border>
             <Border Margin="10"
