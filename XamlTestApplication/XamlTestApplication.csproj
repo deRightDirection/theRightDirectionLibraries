@@ -135,9 +135,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WinUX-UWP-Toolkit\WinUX\WinUX.Common\WinUX.Common.csproj">
+    <ProjectReference Include="..\..\WinUX-UWP-Toolkit\WinUX\WinUX.Common\theRightDirection.Library %28.Net Portable%29.csproj">
       <Project>{55c7fa03-c3b0-4aa0-be48-3fa435ee37c1}</Project>
-      <Name>WinUX.Common</Name>
+      <Name>theRightDirection.Library %28.Net Portable%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\WinUX-UWP-Toolkit\WinUX\WinUX.UWP.Xaml.Controls\WinUX.UWP.Xaml.Controls.csproj">
       <Project>{fde2eb93-c994-4c49-8b72-808911a38194}</Project>

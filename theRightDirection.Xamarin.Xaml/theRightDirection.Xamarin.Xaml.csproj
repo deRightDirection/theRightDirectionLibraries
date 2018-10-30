@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.Xamarin.Common\theRightDirection.Library.csproj" />
+    <ProjectReference Include="..\theRightDirection.Xamarin.Common\theRightDirection.Library (.Net Standard).csproj" />
   </ItemGroup>
 
 </Project>
