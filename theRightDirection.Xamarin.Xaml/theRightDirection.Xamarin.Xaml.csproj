@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.Xamarin.Common\theRightDirection.Library (.Net Standard).csproj" />
+    <ProjectReference Include="..\theRightDirection.Xamarin.Common\theRightDirection.Library.csproj" />
   </ItemGroup>
 
 </Project>

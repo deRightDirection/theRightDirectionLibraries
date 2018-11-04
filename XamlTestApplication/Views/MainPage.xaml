@@ -1,18 +1,19 @@
-<Page x:Class="XamlTestApplication.Views.MainPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:Converters="using:WinUX.Xaml.Converters"
-      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
-      xmlns:controls="using:Template10.Controls"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="using:XamlTestApplication.Views"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:rules="using:WinUX.Data.Validation.Rules"
-      xmlns:uwpcontrols="using:WinUX.Xaml.Controls"
-      xmlns:validation="using:WinUX.Data.Validation"
-      xmlns:vm="using:XamlTestApplication.ViewModels"
-      mc:Ignorable="d">
+<Page
+    x:Class="XamlTestApplication.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Converters="using:WinUX.Xaml.Converters"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:XamlTestApplication.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rules="using:WinUX.Data.Validation.Rules"
+    xmlns:uwpcontrols="using:WinUX.Xaml.Controls"
+    xmlns:validation="using:WinUX.Data.Validation"
+    xmlns:vm="using:XamlTestApplication.ViewModels"
+    mc:Ignorable="d">
 
     <Page.DataContext>
         <vm:MainPageViewModel x:Name="ViewModel" />
@@ -33,96 +34,112 @@
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <controls:PageHeader x:Name="pageHeader"
-                             Content="Examples"
-                             RelativePanel.AlignLeftWithPanel="True"
-                             RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" />
+        <controls:PageHeader
+            x:Name="pageHeader"
+            Content="Examples"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True" />
 
-        <StackPanel RelativePanel.AlignHorizontalCenterWithPanel="True"
-                    RelativePanel.AlignVerticalCenterWithPanel="True"
-                    RelativePanel.Below="pageHeader">
+        <StackPanel
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.AlignVerticalCenterWithPanel="True"
+            RelativePanel.Below="pageHeader">
 
             <!--  demo imageconverter  -->
-            <Border Margin="10"
-                    BorderBrush="DarkGreen"
-                    BorderThickness="1"
-                    Padding="10">
+            <Border
+                Margin="10"
+                Padding="10"
+                BorderBrush="DarkGreen"
+                BorderThickness="1">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="image converter" />
-                    <Image Width="50"
-                           Height="50"
-                           Source="{Binding ImageName,
-                                            Mode=OneWay,
-                                            Converter={StaticResource ImageConverter},
-                                            ConverterParameter='XamlTestApplication.TestEnum,XamlTestApplication'}" />
+                    <Image
+                        Width="50"
+                        Height="50"
+                        Source="{Binding ImageName, Mode=OneWay, Converter={StaticResource ImageConverter}, ConverterParameter='XamlTestApplication.TestEnum,XamlTestApplication'}" />
                 </StackPanel>
             </Border>
-            <Border Margin="10"
-                    BorderBrush="DarkGreen"
-                    BorderThickness="1"
-                    Padding="10">
+            <Border
+                Margin="10"
+                Padding="10"
+                BorderBrush="DarkGreen"
+                BorderThickness="1">
                 <StackPanel Orientation="Vertical">
 
                     <TextBlock Text="string format converter" />
                     <TextBlock Text="{Binding Amount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:C\}}" />
                 </StackPanel>
             </Border>
-            <Border Margin="10"
-                    BorderBrush="DarkGreen"
-                    BorderThickness="1"
-                    Padding="10">
+            <Border
+                Margin="10"
+                Padding="10"
+                BorderBrush="DarkGreen"
+                BorderThickness="1">
                 <StackPanel Orientation="Vertical">
 
                     <!--  demo validating textbox  -->
-                    <uwpcontrols:ValidatingTextBox Header="Textbox"
-                                                   IsMandatory="True"
-                                                   MaxLength="50"
-                                                   Text="info@test.nl" />
+                    <uwpcontrols:ValidatingTextBox
+                        Header="Textbox"
+                        IsMandatory="True"
+                        MaxLength="50"
+                        Text="info@test.nl" />
                     <!--  demo validating textbox  -->
                     <uwpcontrols:ValidatingTextBox IsMandatory="True">
                         <uwpcontrols:ValidatingTextBox.HeaderTemplate />
                     </uwpcontrols:ValidatingTextBox>
                 </StackPanel>
             </Border>
-            <Border Margin="10"
-                    BorderBrush="DarkGreen"
-                    BorderThickness="1"
-                    Padding="10">
+            <Border
+                Margin="10"
+                Padding="10"
+                BorderBrush="DarkGreen"
+                BorderThickness="1">
                 <StackPanel Orientation="Vertical">
                     <!--  demo validating combobox  -->
-                    <uwpcontrols:ValidatingComboBox Header="Combobox"
-                                                    IsMandatory="True"
-                                                    ItemsSource="{Binding EmailAddresses,
-                                                                          Mode=TwoWay}"
-                                                    MandatoryValidationMessage="No item selected!" />
+                    <uwpcontrols:ValidatingComboBox
+                        Header="Combobox"
+                        IsMandatory="True"
+                        ItemsSource="{Binding EmailAddresses, Mode=TwoWay}"
+                        MandatoryValidationMessage="No item selected!" />
                 </StackPanel>
             </Border>
-            <Border Margin="10"
-                    BorderBrush="DarkGreen"
-                    BorderThickness="1"
-                    Padding="10">
+            <Border
+                Margin="10"
+                Padding="10"
+                BorderBrush="DarkGreen"
+                BorderThickness="1">
                 <StackPanel Orientation="Vertical">
                     <!--  demo validating listview  -->
-                    <uwpcontrols:ValidatingListView IsMandatory="True"
-                                                    ItemsSource="{Binding EmailAddresses,
-                                                                          Mode=TwoWay}"
-                                                    MandatoryValidationMessage="No item selected!" />
+                    <uwpcontrols:ValidatingListView
+                        IsMandatory="True"
+                        ItemsSource="{Binding EmailAddresses, Mode=TwoWay}"
+                        MandatoryValidationMessage="No item selected!" />
                 </StackPanel>
             </Border>
-            <Border Margin="10"
-                    BorderBrush="DarkGreen"
-                    BorderThickness="1"
-                    Padding="10">
+            <Border
+                Margin="10"
+                Padding="10"
+                BorderBrush="DarkGreen"
+                BorderThickness="1">
                 <StackPanel Orientation="Vertical">
                     <!--  demo editable textbox  -->
-                    <uwpcontrols:EditableTextBox EditStateBorderBrush="Blue"
-                                                 EditStateBorderThickness="1"
-                                                 PointerStateBorderBrush="Purple"
-                                                 PointerStateBorderThickness="5"
-                                                 Text="{Binding TextBoxText,
-                                                                Mode=TwoWay,
-                                                                UpdateSourceTrigger=PropertyChanged}" />
+                    <uwpcontrols:EditableTextBox
+                        EditStateBorderBrush="Blue"
+                        EditStateBorderThickness="1"
+                        PointerStateBorderBrush="Purple"
+                        PointerStateBorderThickness="5"
+                        Text="{Binding TextBoxText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </Border>
+            <Border
+                Margin="10"
+                Padding="10"
+                BorderBrush="DarkGreen"
+                BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{Binding StartStravaCommand}" Content="connect to Strava" />
+                    <TextBox Text="{Binding StravaAccessToken}" />
                 </StackPanel>
             </Border>
         </StackPanel>

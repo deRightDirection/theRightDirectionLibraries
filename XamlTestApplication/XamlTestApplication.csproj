@@ -135,9 +135,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WinUX-UWP-Toolkit\WinUX\WinUX.Common\theRightDirection.Library %28.Net Portable%29.csproj">
+    <ProjectReference Include="..\..\WinUX-UWP-Toolkit\WinUX\WinUX.Common\theRightDirection.Library.csproj">
       <Project>{55c7fa03-c3b0-4aa0-be48-3fa435ee37c1}</Project>
-      <Name>theRightDirection.Library %28.Net Portable%29</Name>
+      <Name>theRightDirection.Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\WinUX-UWP-Toolkit\WinUX\WinUX.UWP.Xaml.Controls\WinUX.UWP.Xaml.Controls.csproj">
       <Project>{fde2eb93-c994-4c49-8b72-808911a38194}</Project>
@@ -147,9 +147,9 @@
       <Project>{0d958504-42c8-4b04-b9a7-2c6cb6e8009c}</Project>
       <Name>WinUX.UWP.Xaml</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\WinUX-UWP-Toolkit\WinUX\WinUX.UWP\WinUX.UWP.csproj">
+    <ProjectReference Include="..\..\WinUX-UWP-Toolkit\WinUX\WinUX.UWP\theRightDirection.UWP.Library.csproj">
       <Project>{b7d2bd46-3485-459d-ad88-ecabf497d508}</Project>
-      <Name>WinUX.UWP</Name>
+      <Name>theRightDirection.UWP.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
