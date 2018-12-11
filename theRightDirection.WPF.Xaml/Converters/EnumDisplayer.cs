@@ -7,7 +7,6 @@ using System.Windows.Data;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Markup;
-using theRightDirection.Common;
 using theRightDirection.Common.Attributes;
 
 namespace theRightDirection.WPF.Xaml.Converters
@@ -94,7 +93,7 @@ namespace theRightDirection.WPF.Xaml.Converters
         {
             if (overriddenDisplayEntries != null && overriddenDisplayEntries.Count > 0)
             {
-                EnumDisplayEntry foundEntry = overriddenDisplayEntries.Find(delegate(EnumDisplayEntry entry)
+                EnumDisplayEntry foundEntry = overriddenDisplayEntries.Find(delegate (EnumDisplayEntry entry)
                 {
                     object e = Enum.Parse(type, entry.EnumValue);
                     return enumValue.Equals(e);

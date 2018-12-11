@@ -60,14 +60,16 @@
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\InverseNullToBooleanConverter.cs" />
     <Compile Include="Converters\InverseNullToVisibilityConverter.cs" />
+    <Compile Include="Converters\NullToBooleanConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityToWidthConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.Common\theRightDirection.Library.csproj">
-      <Project>{3d0493ec-d6bf-47ba-8b62-fb9a31c66af6}</Project>
+    <ProjectReference Include="..\theRightDirection.Library\theRightDirection.Library.csproj">
+      <Project>{3D0493EC-D6BF-47BA-8B62-FB9A31C66AF6}</Project>
       <Name>theRightDirection.Library</Name>
     </ProjectReference>
   </ItemGroup>
