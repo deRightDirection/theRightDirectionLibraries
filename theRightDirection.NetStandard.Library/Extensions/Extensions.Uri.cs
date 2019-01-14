@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace theRightDirection.Library.Extensions
+namespace theRightDirection
 {
     public static partial class Extensions
     {
