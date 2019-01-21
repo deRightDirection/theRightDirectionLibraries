@@ -67,11 +67,5 @@
     <Compile Include="Converters\VisibilityToWidthConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.Library\theRightDirection.Library.csproj">
-      <Project>{3D0493EC-D6BF-47BA-8B62-FB9A31C66AF6}</Project>
-      <Name>theRightDirection.Library</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

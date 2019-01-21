@@ -160,12 +160,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.WPF.Xaml\theRightDirection.WPF.Xaml.csproj">
-      <Project>{637d2ba7-f38b-49b3-be33-66c875f9b9b8}</Project>
-      <Name>theRightDirection.WPF.Xaml</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
