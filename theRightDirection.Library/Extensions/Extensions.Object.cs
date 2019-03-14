@@ -4,29 +4,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using theRightDirection.Library.Comparers;
 
-namespace theRightDirection.Extensions
+namespace theRightDirection.Library
 {
-    [AttributeUsage(AttributeTargets.Property)]
-    public class ExcludeFromCopyPropertyAttribute : Attribute
-    {
-    }
-    public class PropertyInfoComparer : IEqualityComparer<PropertyInfo>
-    {
-        public bool Equals(PropertyInfo x, PropertyInfo y)
-        {
-            return x.Name.ToLowerInvariant().Equals(y.Name.ToLowerInvariant());
-        }
-
-        public int GetHashCode(PropertyInfo obj)
-        {
-            return obj.Name.GetHashCode();
-        }
-    }
-
-    /// <summary>
-    /// extension method voor een object om een deep copy te maken van een object
-    /// </summary>
     public static partial class Extensions
     {
         public static void CopyProperties(this object from, object to, bool includePropertiesFromBaseType = false, string[] excludedProperties = null)
@@ -60,13 +41,6 @@ namespace theRightDirection.Extensions
             return inspect.GetType().GetTypeInfo().DeclaredProperties.Select(o => o.GetValue(inspect)).GetListHashCode();
         }
 
-        public static int GetListHashCode(this IEnumerable<object> sequence)
-        {
-            return sequence.Where(x => x != null)
-                .Select(item => item.GetHashCode())
-                .Aggregate((total, nextCode) => total ^ nextCode);
-        }
-
         private static bool FindAttribute(PropertyInfo commonProperty)
         {
             var attribute = commonProperty.GetCustomAttribute<ExcludeFromCopyPropertyAttribute>();
@@ -79,7 +53,7 @@ namespace theRightDirection.Extensions
             {
                 Dictionary<string, PropertyInfo> properties = new Dictionary<string, PropertyInfo>();
                 var retrievedProperties = GetProperties(type);
-                foreach(var retrievedProperty in retrievedProperties)
+                foreach (var retrievedProperty in retrievedProperties)
                 {
                     properties.Add(retrievedProperty.Key, retrievedProperty.Value);
                 }

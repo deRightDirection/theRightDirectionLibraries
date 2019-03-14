@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,11 +47,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\DisplayStringAttribute.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Attributes\ExcludeFromCopyPropertyAttribute.cs" />
+    <Compile Include="Comparers\PropertyInfoComparer.cs" />
+    <Compile Include="Extensions\Extensions.Assembly.cs" />
+    <Compile Include="Extensions\Extensions.IEnumerableObject.cs" />
+    <Compile Include="Extensions\Extensions.Object.cs" />
+    <Compile Include="Extensions\Extensions.String.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\LibraryBaseObject.cs" />
+    <Compile Include="Logging\LibraryException.cs" />
+    <Compile Include="Logging\LogFileDatePartCreator.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\LoggingLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Comparers\" />
+    <Content Include="Logging\Log4NetConfiguration.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="log4net">
+      <Version>2.0.8</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,7 +7,7 @@ using System.Windows.Data;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Markup;
-using theRightDirection.Attributes;
+using theRightDirection.Library;
 
 namespace theRightDirection.WPF.Xaml.Converters
 {

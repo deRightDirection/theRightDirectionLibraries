@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace theRightDirection.Common.Attributes
+namespace theRightDirection.Library
 {
     // TODO: overzetten en samenvoegen met WinUX.Common
     /// <summary>
