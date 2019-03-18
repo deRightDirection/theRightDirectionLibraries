@@ -48,13 +48,13 @@
         /// Returns true if the contained string is null or equals to the given value
         /// </returns>
         public static bool IsNullOrEqualsTo(this string text, string equalsTo)
+        {
+            if (string.IsNullOrEmpty(text))
             {
-                if (string.IsNullOrEmpty(text))
-                {
-                    return false;
-                }
-                return text.Equals(equalsTo);
+                return false;
             }
+            return text.Equals(equalsTo);
+        }
 
         /// <summary>
         /// Checks whether the specified text contains another phrase.
@@ -148,6 +148,31 @@
         public static byte[] ToByteArray(this string str)
         {
             return Encoding.UTF8.GetBytes(str);
+        }
+
+        public static bool IsAlphaNumeric(this string str, char[] extraAllowedCharacters = null)
+        {
+            return TestStringPattern(str, "^[a-zA-Z0-9XXX]+$", extraAllowedCharacters);
+        }
+
+        public static bool IsAlpha(this string str, char[] extraAllowedCharacters = null)
+        {
+            return TestStringPattern(str, "^[a-zA-ZXXX]+$", extraAllowedCharacters);
+        }
+
+        private static bool TestStringPattern(string test, string regex, char[] extraAllowedCharacters)
+        {
+            var testPattern = regex;
+            if (extraAllowedCharacters == null)
+            {
+                testPattern = testPattern.Replace("XXX", string.Empty);
+            }
+            else
+            {
+                var extraPattern = new string(extraAllowedCharacters);
+                testPattern = testPattern.Replace("XXX", extraPattern);
+            }
+            return Regex.Match(test, testPattern).Success;
         }
     }
 }

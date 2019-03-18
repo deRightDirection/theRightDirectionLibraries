@@ -41,5 +41,17 @@ namespace theRightDirection.Library
             }
             return path;
         }
+
+        /// <summary>
+        /// Finds the directory of the assembly
+        /// </summary>
+        /// <param name="assembly">The assembly.</param>
+        /// <returns>directory which the assembly contains</returns>
+        public static string DirectoryOfAssembly(this Assembly assembly)
+        {
+            string uriString = assembly.CodeBase;
+            Uri uri = new Uri(uriString);
+            return uri.LocalPath;
+        }
     }
 }
