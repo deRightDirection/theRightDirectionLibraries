@@ -1,5 +1,4 @@
 using System;
-using theRightDirection.Library.Logging;
 
 namespace theRightDirection.Library
 {
@@ -8,7 +7,7 @@ namespace theRightDirection.Library
     /// </summary>
     public class LibraryException : Exception
     {
-		#region Constructors (1) 
+        #region Constructors (1) 
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LibraryException"/> class. Creating an new instance
@@ -18,9 +17,9 @@ namespace theRightDirection.Library
         public LibraryException(string message) : base(message)
         {
             Console.WriteLine(String.Format("error occured: {0}", message));
-            Logger.GetLogger().LogException(this);
+            //            Logger.GetLogger().LogException(this);
         }
 
-		#endregion Constructors 
+        #endregion Constructors 
     }
 }

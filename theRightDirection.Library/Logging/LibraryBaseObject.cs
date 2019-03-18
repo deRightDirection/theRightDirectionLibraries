@@ -1,32 +1,31 @@
 using System;
-using theRightDirection.Library.Logging;
 namespace theRightDirection.Library
 {
-	/// <summary>
-	/// Base object for the framework which initiliaze a logger. Adds a method which can log all the values
-	/// of all properties and has an overriden ToString(). This method shows all values of all properties.
-	/// </summary>
-	public abstract class LibraryBaseObject
-	{
-		#region Fields (1) 
+    /// <summary>
+    /// Base object for the framework which initiliaze a logger. Adds a method which can log all the values
+    /// of all properties and has an overriden ToString(). This method shows all values of all properties.
+    /// </summary>
+    public abstract class LibraryBaseObject
+    {
+        #region Fields (1) 
 
-		/// <summary>
-		/// the logger object
-		/// </summary>
-		protected ILogger _logger = null;
+        /// <summary>
+        /// the logger object
+        /// </summary>
+//        protected ILogger _logger = null;
 
-		#endregion Fields 
+        #endregion Fields 
 
-		public LibraryBaseObject()
-		{
-			_logger = Logger.GetLogger();
-		}
+        public LibraryBaseObject()
+        {
+            //			_logger = Logger.GetLogger();
+        }
 
-		#region Methods (5) 
+        #region Methods (5) 
 
-		// Public Methods (5) 
+        // Public Methods (5) 
 
-		/*
+        /*
 		/// <summary>
 		/// Logs the object information in a standard text-format. Suitable for the default logger.
 		/// </summary>
@@ -88,6 +87,6 @@ namespace theRightDirection.Library
 		}
 		 */
 
-		#endregion Methods
-	}
+        #endregion Methods
+    }
 }

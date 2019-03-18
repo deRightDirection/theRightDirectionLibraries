@@ -10,8 +10,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Log4NetConfiguration.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Log4NetConfiguration.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Configuration">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Configuration.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
