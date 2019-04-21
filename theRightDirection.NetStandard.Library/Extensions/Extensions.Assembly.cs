@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace theRightDirection.Library
+namespace theRightDirection
 {
     public static partial class Extensions
     {

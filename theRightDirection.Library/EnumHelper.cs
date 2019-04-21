@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace theRightDirection
+namespace theRightDirection.Library
 {
     public static class EnumHelper
     {
@@ -17,7 +17,7 @@ namespace theRightDirection
         /// <returns>an enum value which belongs to T</returns>
         public static T ParseTextToEnumValue<T>(string value)
         {
-            object enumValue = Enum.Parse(typeof(T), value);
+            Object enumValue = Enum.Parse(typeof(T), value);
             T result = (T)enumValue;
             return result;
         }
