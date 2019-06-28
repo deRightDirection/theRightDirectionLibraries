@@ -31,5 +31,27 @@ namespace theRightDirection
             uriBuilder.Query = query.ToString();
             return uriBuilder.Uri;
         }
+
+        /// <summary>
+        /// rewrite a http-uri to https
+        /// </summary>
+        /// <param name="uri">uri to rewrite</param>
+        /// <returns></returns>
+        public static Uri RewriteUriToSecureHttps(this Uri uri)
+        {
+            if (uri == null)
+            {
+                return null;
+            }
+            if (!uri.IsAbsoluteUri)
+            {
+                return uri;
+            }
+            return new UriBuilder(uri)
+            {
+                Scheme = Uri.UriSchemeHttps,
+                Port = uri.IsDefaultPort ? -1 : uri.Port
+            }.Uri;
+        }
     }
 }
