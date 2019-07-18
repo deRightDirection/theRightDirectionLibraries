@@ -24,7 +24,25 @@
 
         public static string RemoveInvisibleCharacters(this string s)
         {
-            return Regex.Replace(s, @"[^\u0009^\u000A^\u000D^\u0020-\u007E]", string.Empty);
+            var result = s;
+            foreach (char x in s)
+            {
+                if (char.IsControl(x))
+                {
+                    result = result.RemoveCharFromString(x);
+                }
+            }
+            return Regex.Replace(result, @"[^\u0009^\u000A^\u000D^\u0020-\u007E]", string.Empty);
+        }
+
+        public static string RemoveCharFromString(this string input, char charItem)
+        {
+            int indexOfChar = input.IndexOf(charItem);
+            if (indexOfChar < 0)
+            {
+                return input;
+            }
+            return RemoveCharFromString(input.Remove(indexOfChar, 1), charItem);
         }
 
         public static Stream ToStream(this string s)

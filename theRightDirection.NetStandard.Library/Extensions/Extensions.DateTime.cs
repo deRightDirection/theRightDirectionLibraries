@@ -208,5 +208,23 @@
             var doubleString = $"{(dateTime.Hour * 3600) + (dateTime.Minute * 60) + (dateTime.Second)}.{dateTime.Millisecond}";
             return double.Parse(doubleString);
         }
+
+        /// <summary>
+        /// returns a datetime offset in case the datetime is before the lower value of a datetime or after the maximum value
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public static DateTimeOffset ToDateTimeOffset(this DateTime dateTime)
+        {
+            if (dateTime.ToUniversalTime() <= DateTimeOffset.MinValue.UtcDateTime)
+            {
+                return DateTimeOffset.MinValue;
+            }
+            if (dateTime.ToUniversalTime() >= DateTimeOffset.MaxValue.UtcDateTime)
+            {
+                return DateTimeOffset.MaxValue;
+            }
+            return new DateTimeOffset(dateTime);
+        }
     }
 }
