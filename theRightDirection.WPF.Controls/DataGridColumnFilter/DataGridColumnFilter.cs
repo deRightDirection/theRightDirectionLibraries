@@ -662,6 +662,10 @@ namespace theRightDirection.WPF.Xaml.Controls.DataGridColumnFilter
 
         void query_FilteringStarted(object sender, EventArgs e)
         {
+            if(FilterCurrentData == null)
+            {
+                return;
+            }
             if (FilterCurrentData.Equals((sender as QueryController).ColumnFilterData))
             {
                 this.IsFilteringInProgress = true;
