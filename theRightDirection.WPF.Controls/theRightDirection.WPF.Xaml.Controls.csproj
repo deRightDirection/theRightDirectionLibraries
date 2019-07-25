@@ -130,6 +130,7 @@
     <Compile Include="JsonViewer\JsonViewer.xaml.cs">
       <DependentUpon>JsonViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LabelWithVisibilityTrigger\LabelWithVisibilityTrigger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

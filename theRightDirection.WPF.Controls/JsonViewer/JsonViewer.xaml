@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:specialLabel="clr-namespace:theRightDirection.WPF.Xaml.Controls.LabelWithVisibilityTrigger"
         xmlns:jlinq="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
         xmlns:templateSelectors="clr-namespace:theRightDirection.WPF.Xaml.TemplateSelectors;assembly=theRightDirection.WPF.Xaml"
         xmlns:valueConverters="clr-namespace:theRightDirection.WPF.Xaml.Converters;assembly=theRightDirection.WPF.Xaml"
@@ -18,8 +19,8 @@
         <valueConverters:JArrayLengthConverter x:Key="JArrayLengthConverter"/>
         <HierarchicalDataTemplate DataType="{x:Type jlinq:JArray}" ItemsSource="{Binding Converter={StaticResource MethodToValueConverter}, ConverterParameter='Children'}">
             <StackPanel Orientation="Horizontal" Margin="1">
-                <TextBlock Text="array" Foreground="WhiteSmoke" Background="#a40000" Padding="3, 0, 3, 1" Opacity="0.4" Margin="0,0,5,0"/>
-                <TextBlock Text="{Binding Converter={StaticResource JArrayLengthConverter}}" Foreground="#a40000"/>
+                <TextBlock Text="array" Padding="3, 0, 3, 1" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Converter={StaticResource JArrayLengthConverter}}" />
             </StackPanel>
         </HierarchicalDataTemplate>
         <HierarchicalDataTemplate  x:Key="ArrayPropertyTemplate" DataType="{x:Type jlinq:JProperty}" ItemsSource="{Binding Converter={StaticResource ComplexPropertyMethodToValueConverter}, ConverterParameter='Children'}">
@@ -76,40 +77,61 @@
         </DataTemplate>
     </UserControl.Resources>
     <DockPanel Name="DockPanel">
-        <StackPanel DockPanel.Dock="Top">
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
             <StackPanel Orientation="Horizontal" >
-                <Border CornerRadius="3,3,3,3" BorderThickness="1" BorderBrush="#4e9a06" Margin="5">
-                    <Label Content="String" Foreground="WhiteSmoke" Background="#4e9a06" />
-                </Border>
-                <Border CornerRadius="3,3,3,3" BorderThickness="1" BorderBrush="#ad7fa8" Margin="5">
-                    <Label Content="Number" Foreground="WhiteSmoke" Background="#ad7fa8" />
-                </Border>
-                <Border CornerRadius="3,3,3,3" BorderThickness="1" BorderBrush="#c4a000" Margin="5">
-                    <Label Content="Boolean" Foreground="WhiteSmoke" Background="#c4a000" />
-                </Border>
-                <Border CornerRadius="3,3,3,3" BorderThickness="1" BorderBrush="OrangeRed" Margin="5">
-                    <Label Content="Null" Foreground="WhiteSmoke" Background="OrangeRed" />
-                </Border>
-            </StackPanel>
-            <Label Content="Doubleclick a value to copy to clipboard" Margin="5"></Label>
-            <StackPanel Orientation="Horizontal" >
-                <Button Click="ExpandAll" ToolTip="Expand all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1">
+                <Button Click="ExpandAll" ToolTip="Expand all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" Width="25" Height="25" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial
                                 Width="22"
                                 Height="22"
                                 Foreground="#7BAF1F"
                                 Kind="ArrowExpand" />
                 </Button>
-                <Button Click="CollapseAll" ToolTip="Collapse all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1">
+                <Button Click="CollapseAll" ToolTip="Collapse all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" Width="25" Height="25" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial
                                 Width="22"
                                 Height="22  "
                                 Foreground="#7BAF1F"
                                 Kind="ArrowCollapse" />            
                 </Button>
+                <Button Click="ShowDoubleClickLabel" ToolTip="doubleclick a value to copy to clipboard" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" Width="25" Height="25" VerticalAlignment="Top">
+                    <iconPacks:PackIconMaterial
+                                Width="22"
+                                Height="22  "
+                                Foreground="#7BAF1F"
+                                Kind="Information" />
+                </Button>
+                <Expander Header="legend" VerticalAlignment="Center">
+                    <StackPanel Background="White" >
+                        <Border BorderThickness="1" BorderBrush="Black">
+                            <Label Content="string" Foreground="#4e9a06" />
+                        </Border>
+                        <Border BorderThickness="1 0 1 1" BorderBrush="Black">
+                            <Label Content="number" Foreground="#ad7fa8" />
+                        </Border>
+                        <Border BorderThickness="1 0 1 0" BorderBrush="Black">
+                            <Label Content="boolean" Foreground="#c4a000"  />
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="Black">
+                            <Label Content="null" Foreground="OrangeRed"  />
+                        </Border>
+                    </StackPanel>
+                </Expander>
             </StackPanel>
+            <specialLabel:LabelWithVisibilityTrigger x:Name="dblClickLabel" Content="double click a value to copy to clipboard" Margin="0 0 0 3" BorderThickness="1" BorderBrush="Black" Background="White" Visibility="Collapsed">
+                <specialLabel:LabelWithVisibilityTrigger.Triggers>
+                    <EventTrigger RoutedEvent="specialLabel:LabelWithVisibilityTrigger.VisibilityChanged">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"  Storyboard.TargetProperty="Visibility">
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2" Value="{x:Static Visibility.Collapsed}"/>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </specialLabel:LabelWithVisibilityTrigger.Triggers>
+            </specialLabel:LabelWithVisibilityTrigger>
         </StackPanel>
-        <TreeView Padding="20" Name="JsonTreeView" IsTextSearchEnabled="True" ItemTemplateSelector="{StaticResource JPropertyDataTemplateSelector}" DockPanel.Dock="Bottom"  BorderThickness="1" BorderBrush="Black">
+        <TreeView Padding="5" Name="JsonTreeView" IsTextSearchEnabled="True" ItemTemplateSelector="{StaticResource JPropertyDataTemplateSelector}" DockPanel.Dock="Bottom"  BorderThickness="1" BorderBrush="Black">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}" >
                     <Setter Property="IsExpanded" Value="False" />

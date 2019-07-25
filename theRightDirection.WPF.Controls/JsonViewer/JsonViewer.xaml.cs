@@ -92,20 +92,21 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             ToggleItems(false);
         }
 
+        private void ShowDoubleClickLabel(object sender, RoutedEventArgs e)
+        {
+            dblClickLabel.SetCurrentValue(Label.VisibilityProperty, Visibility.Visible);
+        }
+
         private void ToggleItems(bool isExpanded)
         {
             if (JsonTreeView.Items.IsEmpty)
                 return;
 
             var prevCursor = Cursor;
-            //System.Windows.Controls.DockPanel.Opacity = 0.2;
-            //System.Windows.Controls.DockPanel.IsEnabled = false;
             Cursor = Cursors.Wait;
             _timer = new DispatcherTimer(TimeSpan.FromMilliseconds(500), DispatcherPriority.Normal, delegate
             {
                 ToggleItems(JsonTreeView, JsonTreeView.Items, isExpanded);
-                //System.Windows.Controls.DockPanel.Opacity = 1.0;
-                //System.Windows.Controls.DockPanel.IsEnabled = true;
                 _timer.Stop();
                 Cursor = prevCursor;
             }, Application.Current.Dispatcher);
