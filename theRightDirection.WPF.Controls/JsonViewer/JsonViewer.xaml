@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:jlinq="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
         xmlns:templateSelectors="clr-namespace:theRightDirection.WPF.Xaml.TemplateSelectors;assembly=theRightDirection.WPF.Xaml"
         xmlns:valueConverters="clr-namespace:theRightDirection.WPF.Xaml.Converters;assembly=theRightDirection.WPF.Xaml"
@@ -74,8 +75,8 @@
                            Foreground="{Binding Converter={StaticResource JValueTypeToColorConverter}}" />
         </DataTemplate>
     </UserControl.Resources>
-    <DockPanel Name="DockPanel" Visibility="Visible">
-        <StackPanel DockPanel.Dock="Top" Background="#20848B">
+    <DockPanel Name="DockPanel">
+        <StackPanel DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" >
                 <Border CornerRadius="3,3,3,3" BorderThickness="1" BorderBrush="#4e9a06" Margin="5">
                     <Label Content="String" Foreground="WhiteSmoke" Background="#4e9a06" />
@@ -92,16 +93,23 @@
             </StackPanel>
             <Label Content="Doubleclick a value to copy to clipboard" Margin="5"></Label>
             <StackPanel Orientation="Horizontal" >
-                <Button Click="ExpandAll" ToolTip="Expand All" Margin="5">
-                    <Image Source="/Resources/expand28.png" Height="16"/>
+                <Button Click="ExpandAll" ToolTip="Expand all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1">
+                    <iconPacks:PackIconMaterial
+                                Width="22"
+                                Height="22"
+                                Foreground="#7BAF1F"
+                                Kind="ArrowExpand" />
                 </Button>
-                <Button Click="CollapseAll" ToolTip="Collapse All" Margin="5">
-                    <Image Source="/Resources/two326.png" Height="16"/>
+                <Button Click="CollapseAll" ToolTip="Collapse all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1">
+                    <iconPacks:PackIconMaterial
+                                Width="22"
+                                Height="22  "
+                                Foreground="#7BAF1F"
+                                Kind="ArrowCollapse" />            
                 </Button>
             </StackPanel>
         </StackPanel>
-
-        <TreeView Padding="20" Margin="3" Name="JsonTreeView" IsTextSearchEnabled="True" ItemTemplateSelector="{StaticResource JPropertyDataTemplateSelector}" DockPanel.Dock="Bottom" BorderThickness="0">
+        <TreeView Padding="20" Name="JsonTreeView" IsTextSearchEnabled="True" ItemTemplateSelector="{StaticResource JPropertyDataTemplateSelector}" DockPanel.Dock="Bottom"  BorderThickness="1" BorderBrush="Black">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}" >
                     <Setter Property="IsExpanded" Value="False" />
