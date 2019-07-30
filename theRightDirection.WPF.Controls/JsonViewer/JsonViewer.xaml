@@ -103,16 +103,16 @@
                 <Expander Header="legend" VerticalAlignment="Center">
                     <StackPanel Background="White" >
                         <Border BorderThickness="1" BorderBrush="Black">
-                            <Label Content="string" Foreground="#4e9a06" />
+                            <Label Content="string"  x:Name="legendString" />
                         </Border>
                         <Border BorderThickness="1 0 1 1" BorderBrush="Black">
-                            <Label Content="number" Foreground="#ad7fa8" />
+                            <Label Content="number" Foreground="#ad7fa8" x:Name="legendNumber" />
                         </Border>
                         <Border BorderThickness="1 0 1 0" BorderBrush="Black">
-                            <Label Content="boolean" Foreground="#c4a000"  />
+                            <Label Content="boolean" Foreground="#c4a000"  x:Name="legendBoolean"/>
                         </Border>
                         <Border BorderThickness="1" BorderBrush="Black">
-                            <Label Content="null" Foreground="OrangeRed"  />
+                            <Label Content="null" Foreground="OrangeRed"  x:Name="legendNull" />
                         </Border>
                     </StackPanel>
                 </Expander>

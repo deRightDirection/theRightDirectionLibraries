@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -51,6 +52,7 @@
     <Compile Include="Attributes\ExcludeFromCopyPropertyAttribute.cs" />
     <Compile Include="Comparers\PropertyInfoComparer.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="Extensions\Extensions.SolidColorBrush.cs" />
     <Compile Include="Extensions\Extensions.Assembly.cs" />
     <Compile Include="Extensions\Extensions.Attribute.cs" />
     <Compile Include="Extensions\Extensions.Collection.cs" />

@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-
+//using theRightDirection.Library.Extensions;
 namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
 {
     /// <summary>
@@ -25,6 +25,14 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
     {
         private const GeneratorStatus Generated = GeneratorStatus.ContainersGenerated;
         private DispatcherTimer _timer;
+
+        public static readonly DependencyProperty JsonProperty =
+            DependencyProperty.Register("Json", typeof(string), typeof(JsonViewer), new PropertyMetadata(null, OnJsonSet));
+
+
+
+//        public static readonly DependencyProperty LegendStringColorProperty =
+//    DependencyProperty.Register("LegendStringColor", typeof(SolidColorBrush), typeof(JsonViewer), new PropertyMetadata(SolidColorBrush.ToBrush("#4e9a06") , OnJsonSet));
 
         public JsonViewer()
         {
@@ -37,8 +45,6 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             set { SetValue(JsonProperty, value);}
         }
 
-        public static readonly DependencyProperty JsonProperty =
-            DependencyProperty.Register("Json", typeof(string), typeof(JsonViewer), new PropertyMetadata(null, OnJsonSet));
 
         private static void OnJsonSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

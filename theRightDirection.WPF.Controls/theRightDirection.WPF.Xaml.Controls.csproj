@@ -185,6 +185,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\theRightDirection.Library\theRightDirection.Library.csproj">
+      <Project>{3d0493ec-d6bf-47ba-8b62-fb9a31c66af6}</Project>
+      <Name>theRightDirection.Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\theRightDirection.WPF.Xaml\theRightDirection.WPF.Xaml.csproj">
       <Project>{637d2ba7-f38b-49b3-be33-66c875f9b9b8}</Project>
       <Name>theRightDirection.WPF.Xaml</Name>
