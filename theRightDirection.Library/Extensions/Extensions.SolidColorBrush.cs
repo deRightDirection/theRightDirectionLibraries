@@ -5,13 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace theRightDirection.Library.Extensions
+namespace theRightDirection.Library
 {
-    public static partial class Extensions
-    {
-        public static SolidColorBrush ToBrush(this string HexColorString)
-        {
-            return (SolidColorBrush)(new BrushConverter().ConvertFrom(HexColorString));
-        }
-    }
 }
