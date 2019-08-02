@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +29,7 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
         private DispatcherTimer _timer;
 
         public static readonly DependencyProperty JsonProperty =
-            DependencyProperty.Register("Json", typeof(string), typeof(JsonViewer), new PropertyMetadata(null, OnJsonSet));
+            DependencyProperty.Register("Json", typeof(string), typeof(JsonViewer), new PropertyMetadata(string.Empty, OnJsonSet));
 
         public static readonly DependencyProperty LegendStringColorProperty =
             DependencyProperty.Register("LegendStringColor", typeof(SolidColorBrush), typeof(JsonViewer), new PropertyMetadata(BrushHelper.HexCodeToSolidColorBrush("#4e9a06"), OnStringColorSet));
@@ -40,10 +42,14 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
 
         public static readonly DependencyProperty LegendNullColorProperty =
             DependencyProperty.Register("LegendNullColor", typeof(SolidColorBrush), typeof(JsonViewer), new PropertyMetadata(Brushes.OrangeRed, OnNullColorSet));
- 
+
+        public static readonly DependencyProperty ElementDividerColorProperty =
+            DependencyProperty.Register("ElementDividerColor", typeof(SolidColorBrush), typeof(JsonViewer), new PropertyMetadata(BrushHelper.HexCodeToSolidColorBrush("#729fcf"), OnElementDividerColorSet));
+
         public JsonViewer()
         {
             InitializeComponent();
+            DataContext = this;
         }
         public string Json
         {
@@ -67,10 +73,14 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
         }
         public SolidColorBrush LegendNullColor
         {
-            get { return (SolidColorBrush)GetValue(JsonProperty); }
-            set { SetValue(JsonProperty, value); }
+            get { return (SolidColorBrush)GetValue(LegendNullColorProperty); }
+            set { SetValue(LegendNullColorProperty, value); }
         }
-
+        public SolidColorBrush ElementDividerColor
+        {
+            get { return (SolidColorBrush)GetValue(ElementDividerColorProperty); }
+            set { SetValue(ElementDividerColorProperty, value); }
+        }
         private static void OnJsonSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
@@ -79,29 +89,37 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
         private static void OnBooleanColorSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
-            viewer.legendBoolean.Foreground = ((SolidColorBrush)e.NewValue);
+            viewer.LegendBooleanColor = ((SolidColorBrush)e.NewValue);
         }
         private static void OnNumberColorSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
-            viewer.legendNumber.Foreground = ((SolidColorBrush)e.NewValue);
+            viewer.LegendNumberColor = ((SolidColorBrush)e.NewValue);
         }
 
         private static void OnStringColorSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
-            viewer.legendString.Foreground = ((SolidColorBrush)e.NewValue);
+            viewer.LegendStringColor = ((SolidColorBrush)e.NewValue);
         }
 
         private static void OnNullColorSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
-            viewer.legendNull.Foreground = ((SolidColorBrush)e.NewValue);
+            viewer.LegendNullColor = ((SolidColorBrush)e.NewValue);
         }
-
+        private static void OnElementDividerColorSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.ElementDividerColor = ((SolidColorBrush)e.NewValue);
+        }
 
         private void Load(string json)
         {
+            if(string.IsNullOrEmpty(json))
+            {
+                return;
+            }
             JsonTreeView.ItemsSource = null;
             JsonTreeView.Items.Clear();
 

@@ -8,6 +8,7 @@
         xmlns:jlinq="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
         xmlns:templateSelectors="clr-namespace:theRightDirection.WPF.Xaml.TemplateSelectors;assembly=theRightDirection.WPF.Xaml"
         xmlns:valueConverters="clr-namespace:theRightDirection.WPF.Xaml.Converters;assembly=theRightDirection.WPF.Xaml"
+             x:Name="uc"
         mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -27,24 +28,22 @@
             <StackPanel Orientation="Horizontal" Margin="1">
                 <TextBlock Text="{Binding Path=Name, Mode=OneWay}" />
                 <TextBlock Text=" : "/>
-                <TextBlock Text="array" Foreground="WhiteSmoke" Background="#a40000" Padding="3, 0, 3, 1" Opacity="0.4" Margin="0,0,5,0"/>
-                <TextBlock Text="{Binding Converter={StaticResource JArrayLengthConverter}}" Foreground="#a40000"/>
+                <TextBlock Text="array" Foreground="{Binding LegendNullColor}" Background="#a40000" Padding="3, 0, 3, 1" Opacity="0.4" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Converter={StaticResource JArrayLengthConverter}}" Foreground="Pink"/>
             </StackPanel>
         </HierarchicalDataTemplate>
         <HierarchicalDataTemplate  x:Key="ObjectPropertyTemplate" DataType="{x:Type jlinq:JProperty}" ItemsSource="{Binding Converter={StaticResource ComplexPropertyMethodToValueConverter}, ConverterParameter='Children'}">
             <StackPanel Orientation="Horizontal" Margin="1">
                 <TextBlock Text="{Binding Path=Name, Mode=OneWay}" />
                 <TextBlock Text=" : "/>
-                <TextBlock Text="{}{ }" Foreground="#729fcf"/>
+                <TextBlock Text="{}{ }" Foreground="{Binding DataContext.ElementDividerColor, ElementName=uc}"/>
             </StackPanel>
         </HierarchicalDataTemplate>
         <DataTemplate x:Key="PrimitivePropertyTemplate" DataType="{x:Type jlinq:JProperty}" >
-
             <StackPanel Orientation="Horizontal" Margin="1">
                 <TextBlock Text="{Binding Path=Name, Mode=OneWay}" />
                 <TextBlock Text=" : "/>
                 <TextBlock Text="  "/>
-
                 <TextBlock MouseLeftButtonDown="JValue_OnMouseLeftButtonDown" Width="300" 
                            TextWrapping="Wrap" Text="{Binding Path=Value, Converter={StaticResource JValueConverter}}" 
                            Foreground="{Binding Converter={StaticResource JPropertyTypeToColorConverter}}" />
@@ -53,7 +52,7 @@
         <HierarchicalDataTemplate DataType="{x:Type jlinq:JObject}" ItemsSource="{Binding Converter={StaticResource MethodToValueConverter}, ConverterParameter='Children'}">
             <StackPanel Orientation="Horizontal" Margin="1">
                 <TextBlock Text=" "/>
-                <TextBlock Text="{}{ }" Foreground="#729fcf"/>
+                <TextBlock Text="{}{ }" Foreground="{Binding DataContext.ElementDividerColor, ElementName=uc}"/>
             </StackPanel>
         </HierarchicalDataTemplate>
         <HierarchicalDataTemplate DataType="{x:Type jlinq:JConstructor}" ItemsSource="{Binding Converter={StaticResource MethodToValueConverter}, ConverterParameter='Children'}">
@@ -103,16 +102,16 @@
                 <Expander Header="legend" VerticalAlignment="Center">
                     <StackPanel Background="White" >
                         <Border BorderThickness="1" BorderBrush="Black">
-                            <Label Content="string"  x:Name="legendString" Foreground="#4e9a06" />
+                            <Label Content="string"  Foreground="{Binding LegendStringColor}" />
                         </Border>
                         <Border BorderThickness="1 0 1 1" BorderBrush="Black">
-                            <Label Content="number" x:Name="legendNumber" Foreground="#ad7fa8"/>
+                            <Label Content="number" Foreground="{Binding LegendNumberColor}"/>
                         </Border>
                         <Border BorderThickness="1 0 1 0" BorderBrush="Black">
-                            <Label Content="boolean"  x:Name="legendBoolean" Foreground="#c4a000"/>
+                            <Label Content="boolean" Foreground="{Binding LegendBooleanColor}"/>
                         </Border>
                         <Border BorderThickness="1" BorderBrush="Black">
-                            <Label Content="null" x:Name="legendNull" Foreground="OrangeRed"/>
+                            <Label Content="null" Foreground="{Binding LegendNullColor}"/>
                         </Border>
                     </StackPanel>
                 </Expander>

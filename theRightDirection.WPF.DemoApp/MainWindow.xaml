@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:theRightDirection.WPF.DemoApp"
         xmlns:controls="clr-namespace:theRightDirection.WPF.Xaml.Controls.JsonViewer;assembly=theRightDirection.WPF.Xaml.Controls"
         mc:Ignorable="d"
+        x:Name="mw"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="MainWindow"
         Height="450" Width="800">
     <StackPanel Background="#FF7BAF1F">
         <Button Content="show json" Command="{Binding LoadJsonCommand}" Margin="5" />
-        <controls:JsonViewer Width="400" Height="200" Json="{Binding Json}" FontFamily="Verdana" FontSize="12" FontWeight="Bold" LegendBooleanColor="AliceBlue" LegendNullColor="AntiqueWhite" LegendNumberColor="Aqua" LegendStringColor="Azure"/>
-        <controls:JsonViewer Width="400" Height="200" Json="{Binding Json}" FontFamily="Arial" FontSize="15" />
+        <controls:JsonViewer Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Verdana" FontSize="12" FontWeight="Bold" LegendBooleanColor="AliceBlue" LegendNullColor="AntiqueWhite" LegendNumberColor="Aqua" LegendStringColor="Azure" ElementDividerColor="DarkRed"/>
+        <controls:JsonViewer Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Arial" FontSize="15" />
     </StackPanel>
 </Window>
