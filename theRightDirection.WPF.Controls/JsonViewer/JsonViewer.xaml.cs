@@ -46,6 +46,12 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
         public static readonly DependencyProperty ElementDividerColorProperty =
             DependencyProperty.Register("ElementDividerColor", typeof(SolidColorBrush), typeof(JsonViewer), new PropertyMetadata(BrushHelper.HexCodeToSolidColorBrush("#729fcf"), OnElementDividerColorSet));
 
+        public static readonly DependencyProperty ArrayTextProperty =
+            DependencyProperty.Register("ArrayText", typeof(string), typeof(JsonViewer), new PropertyMetadata("array", OnArrayTextSet));
+
+        public static readonly DependencyProperty ElementNameColorProperty =
+            DependencyProperty.Register("ElementNameColor", typeof(SolidColorBrush), typeof(JsonViewer), new PropertyMetadata(Brushes.Black, OnElementNameColorSet));
+
         public JsonViewer()
         {
             InitializeComponent();
@@ -81,6 +87,16 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             get { return (SolidColorBrush)GetValue(ElementDividerColorProperty); }
             set { SetValue(ElementDividerColorProperty, value); }
         }
+        public string ArrayText
+        {
+            get { return (string)GetValue(ArrayTextProperty); }
+            set { SetValue(ArrayTextProperty, value); }
+        }
+        public SolidColorBrush ElementNameColor
+        {
+            get { return (SolidColorBrush)GetValue(ElementNameColorProperty); }
+            set { SetValue(ElementNameColorProperty, value); }
+        }
         private static void OnJsonSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
@@ -112,6 +128,16 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
         {
             var viewer = (JsonViewer)d;
             viewer.ElementDividerColor = ((SolidColorBrush)e.NewValue);
+        }
+        private static void OnArrayTextSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.ArrayText = (string)e.NewValue;
+        }
+        private static void OnElementNameColorSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.ElementNameColor = ((SolidColorBrush)e.NewValue);
         }
 
         private void Load(string json)

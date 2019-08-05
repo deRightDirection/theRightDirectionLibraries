@@ -7,33 +7,35 @@ using Newtonsoft.Json.Linq;
 
 namespace theRightDirection.WPF.Xaml.Converters
 {
-    public sealed class JPropertyTypeToColorConverter : IValueConverter
+    public sealed class JPropertyTypeToColorConverter : IMultiValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var jprop = value as JProperty;
+            var jprop = values[0] as JProperty;
             if (jprop != null)
             {
+                if(values.Length != 5)
+                {
+                    return Brushes.Black;
+                }
                 switch (jprop.Value.Type)
                 {
                     case JTokenType.String:
-                        return new BrushConverter().ConvertFrom("#4e9a06");
-                    case JTokenType.Float:
+                        return Library.BrushHelper.HexCodeToSolidColorBrush(values[1].ToString());
                     case JTokenType.Integer:
-                        return new BrushConverter().ConvertFrom("#ad7fa8");
+                        return Library.BrushHelper.HexCodeToSolidColorBrush(values[2].ToString());
                     case JTokenType.Boolean:
-                        return new BrushConverter().ConvertFrom("#c4a000");
+                        return Library.BrushHelper.HexCodeToSolidColorBrush(values[3].ToString());
                     case JTokenType.Null:
-                        return new SolidColorBrush(Colors.OrangeRed);
+                        return Library.BrushHelper.HexCodeToSolidColorBrush(values[4].ToString());
                 }
             }
-
-            return value;
+            return Brushes.Black;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return DependencyProperty.UnsetValue;
+            throw new NotImplementedException();
         }
     }
 }
