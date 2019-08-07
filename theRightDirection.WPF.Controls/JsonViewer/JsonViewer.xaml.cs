@@ -28,6 +28,15 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
         private const GeneratorStatus Generated = GeneratorStatus.ContainersGenerated;
         private DispatcherTimer _timer;
 
+        public static readonly DependencyProperty ShowCollapseExpandButtonsProperty =
+            DependencyProperty.Register("ShowCollapseExpandButtons", typeof(bool), typeof(JsonViewer), new PropertyMetadata(true, OnShowCollapseExpandButtons));
+
+        public static readonly DependencyProperty SelectionColorProperty =
+            DependencyProperty.Register("SelectionColor", typeof(Color), typeof(JsonViewer), new PropertyMetadata(Colors.Black, OnSelectionColorSet));
+
+        public static readonly DependencyProperty IsExpandedProperty =
+            DependencyProperty.Register("IsExpanded", typeof(bool), typeof(JsonViewer), new PropertyMetadata(true, OnIsExpandedSet));
+
         public static readonly DependencyProperty JsonProperty =
             DependencyProperty.Register("Json", typeof(string), typeof(JsonViewer), new PropertyMetadata(string.Empty, OnJsonSet));
 
@@ -97,6 +106,21 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             get { return (SolidColorBrush)GetValue(ElementNameColorProperty); }
             set { SetValue(ElementNameColorProperty, value); }
         }
+        public bool IsExpanded
+        {
+            get { return (bool)GetValue(IsExpandedProperty); }
+            set { SetValue(IsExpandedProperty, value); }
+        }
+        public Color SelectionColor
+        {
+            get { return (Color)GetValue(SelectionColorProperty); }
+            set { SetValue(SelectionColorProperty, value); }
+        }
+        public bool ShowCollapseExpandButtons
+        {
+            get { return (bool)GetValue(ShowCollapseExpandButtonsProperty); }
+            set { SetValue(ShowCollapseExpandButtonsProperty, value); }
+        }
         private static void OnJsonSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
@@ -139,6 +163,26 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             var viewer = (JsonViewer)d;
             viewer.ElementNameColor = ((SolidColorBrush)e.NewValue);
         }
+        private static void OnIsExpandedSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.IsExpanded = (bool)e.NewValue;
+        }
+        private static void OnSelectionColorSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.SelectionColor = (Color)e.NewValue;
+        }
+        private static void OnShowCollapseExpandButtons(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.expandAllButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+            viewer.collapseAllButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+            if(!(bool)e.NewValue)
+            {
+                viewer.informationButton.Margin = new Thickness(0, 5, 5, 5);
+            }
+        }
 
         private void Load(string json)
         {
@@ -166,6 +210,7 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             {
                 MessageBox.Show("Could not open the JSON string:\r\n" + ex.Message);
             }
+            ToggleItems(IsExpanded);
         }
 
         private void JValue_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -209,6 +254,8 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
                 Cursor = prevCursor;
             }, Application.Current.Dispatcher);
             _timer.Start();
+            expandAllButton.IsEnabled = !isExpanded;
+            collapseAllButton.IsEnabled = isExpanded;
         }
 
         private void ToggleItems(ItemsControl parentContainer, ItemCollection items, bool isExpanded)

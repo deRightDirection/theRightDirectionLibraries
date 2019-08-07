@@ -86,17 +86,17 @@
     <DockPanel Name="DockPanel">
         <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
             <StackPanel Orientation="Horizontal" >
-                <Button Click="ExpandAll" ToolTip="Expand all" Margin="0 5 5 5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
+                <Button x:Name="expandAllButton" Click="ExpandAll" ToolTip="Expand all" Margin="0 5 5 5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial
                                 Foreground="#7BAF1F"
                                 Kind="ArrowExpand" />
                 </Button>
-                <Button Click="CollapseAll" ToolTip="Collapse all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
+                <Button x:Name="collapseAllButton" Click="CollapseAll" ToolTip="Collapse all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial
                                 Foreground="#7BAF1F"
                                 Kind="ArrowCollapse" />            
                 </Button>
-                <Button Click="ShowDoubleClickLabel" ToolTip="doubleclick a value to copy to clipboard" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
+                <Button x:Name="informationButton" Click="ShowDoubleClickLabel" ToolTip="doubleclick a value to copy to clipboard" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial
                                 Foreground="#7BAF1F"
                                 Kind="Information" />
@@ -132,7 +132,17 @@
                 </specialLabel:LabelWithVisibilityTrigger.Triggers>
             </specialLabel:LabelWithVisibilityTrigger>
         </StackPanel>
-        <TreeView Padding="5" Name="JsonTreeView" IsTextSearchEnabled="True" ItemTemplateSelector="{StaticResource JPropertyDataTemplateSelector}" DockPanel.Dock="Bottom"  BorderThickness="1" BorderBrush="Black">
+        <TreeView Padding="5" Name="JsonTreeView" IsTextSearchEnabled="True" ItemTemplateSelector="{StaticResource JPropertyDataTemplateSelector}" DockPanel.Dock="Bottom"  BorderThickness="1" BorderBrush="Black" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <TreeView.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                      Color="{Binding DataContext.SelectionColor, ElementName=uc}" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                      Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                      Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                      Color="Black" />
+            </TreeView.Resources>
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}" >
                     <Setter Property="IsExpanded" Value="False" />

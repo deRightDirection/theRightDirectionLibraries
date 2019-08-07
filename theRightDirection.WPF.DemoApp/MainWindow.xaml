@@ -12,7 +12,7 @@
         Height="450" Width="800">
     <StackPanel Background="#FF7BAF1F">
         <Button Content="show json" Command="{Binding LoadJsonCommand}" Margin="5" />
-        <controls:JsonViewer Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Verdana" FontSize="12" LegendBooleanColor="#75767F" LegendNullColor="Red" LegendNumberColor="#75767F" LegendStringColor="Black" ElementDividerColor="#7BAF1F" ArrayText="{x:Null}" ElementNameColor="Gray"/>
+        <controls:JsonViewer Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Verdana" FontSize="12" LegendBooleanColor="#75767F" LegendNullColor="Red" LegendNumberColor="#75767F" LegendStringColor="Black" ElementDividerColor="#7BAF1F" ArrayText="{x:Null}" ElementNameColor="Gray" IsExpanded="True" SelectionColor="Yellow" ShowCollapseExpandButtons="False"/>
         <controls:JsonViewer Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Arial" FontSize="15" />
     </StackPanel>
 </Window>
