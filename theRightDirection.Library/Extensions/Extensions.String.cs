@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -31,6 +32,27 @@ namespace theRightDirection.Library
             if (unsecureString == null) throw new ArgumentNullException("unsecureString");
 
             return unsecureString.Aggregate(new SecureString(), AppendChar, MakeReadOnly);
+        }
+
+        /// <summary>
+        /// convert a string to a stream
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static Stream ToStream(this string s)
+        {
+            return s.ToStream(Encoding.UTF8);
+        }
+
+        /// <summary>
+        ///  convert a string to a stream and define the encoding
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="encoding"></param>
+        /// <returns></returns>
+        public static Stream ToStream(this string s, Encoding encoding)
+        {
+            return new MemoryStream(encoding.GetBytes(s ?? ""));
         }
 
         private static SecureString MakeReadOnly(SecureString ss)
