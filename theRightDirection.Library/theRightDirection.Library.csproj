@@ -27,14 +27,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\SharedLibraries\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -49,8 +50,10 @@
     <Compile Include="Attributes\DescriptionAttribute.cs" />
     <Compile Include="Attributes\DisplayStringAttribute.cs" />
     <Compile Include="Attributes\ExcludeFromCopyPropertyAttribute.cs" />
+    <Compile Include="BrushHelper.cs" />
     <Compile Include="Comparers\PropertyInfoComparer.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="Extensions\Extensions.SolidColorBrush.cs" />
     <Compile Include="Extensions\Extensions.Assembly.cs" />
     <Compile Include="Extensions\Extensions.Attribute.cs" />
     <Compile Include="Extensions\Extensions.Collection.cs" />
