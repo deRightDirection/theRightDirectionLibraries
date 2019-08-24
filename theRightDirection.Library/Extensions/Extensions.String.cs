@@ -5,12 +5,29 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace theRightDirection.Library
 {
     public static partial class Extensions
     {
+        /// <summary>
+        /// check of a string can be used as a valid filename
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <param name="platformIndependent"></param>
+        /// <returns></returns>
+        public static bool IsValidFileName(this string filename, bool platformIndependent = false)
+        {
+            string sPattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
+            if (platformIndependent)
+            {
+                sPattern = @"^(([a-zA-Z]:|\\)\\)?(((\.)|(\.\.)|([^\\/:\*\?""\|<>\. ](([^\\/:\*\?""\|<>\. ])|([^\\/:\*\?""\|<>]*[^\\/:\*\?""\|<>\. ]))?))\\)*[^\\/:\*\?""\|<>\. ](([^\\/:\*\?""\|<>\. ])|([^\\/:\*\?""\|<>]*[^\\/:\*\?""\|<>\. ]))?$";
+            }
+            return (Regex.IsMatch(filename, sPattern, RegexOptions.CultureInvariant));
+        }
+
         public static string ToUnsecureString(this SecureString secureString)
         {
             if (secureString == null) throw new ArgumentNullException("secureString");

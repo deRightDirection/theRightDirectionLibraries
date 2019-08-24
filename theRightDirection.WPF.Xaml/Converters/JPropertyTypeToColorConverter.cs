@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media;
 using Newtonsoft.Json.Linq;
-
+using System.Windows.Media;
 namespace theRightDirection.WPF.Xaml.Converters
 {
     public sealed class JPropertyTypeToColorConverter : IMultiValueConverter
@@ -14,7 +12,7 @@ namespace theRightDirection.WPF.Xaml.Converters
             var jprop = values[0] as JProperty;
             if (jprop != null)
             {
-                if(values.Length != 5)
+                if (values.Length != 5)
                 {
                     return Brushes.Black;
                 }
