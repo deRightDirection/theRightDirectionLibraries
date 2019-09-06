@@ -9,6 +9,11 @@ namespace theRightDirection
 {
     public static partial class Extensions
     {
+        public static IEnumerable<string> ListProperties(this object from, bool includePropertiesFromBaseType = false)
+        {
+            IEnumerable<PropertyInfo> sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType);
+            return sourceProperties.Select(x => x.Name);
+        }
         public static void CopyProperties(this object from, object to, bool includePropertiesFromBaseType = false, string[] excludedProperties = null)
         {
             if (to == null)

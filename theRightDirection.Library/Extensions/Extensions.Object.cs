@@ -10,6 +10,13 @@ namespace theRightDirection.Library
 {
     public static partial class Extensions
     {
+        public static List<string> ListProperties(this object from, bool includePropertiesFromBaseType = false)
+        {
+            Dictionary<string, PropertyInfo> sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType);
+            return sourceProperties.Keys.ToList();
+
+        }
+
         public static void CopyProperties(this object from, object to, bool includePropertiesFromBaseType = false, string[] excludedProperties = null)
         {
             if (to == null)
