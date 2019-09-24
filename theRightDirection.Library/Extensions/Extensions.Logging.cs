@@ -13,7 +13,7 @@ namespace theRightDirection
     {
         public static void Exception(this ILog logger, Exception exception)
         {
-            logger.Error(string.Empty, exception);
+            logger.Error(exception.Message, exception);
         }
         public static void LogApplicationSettings(this ILog logger)
         {
