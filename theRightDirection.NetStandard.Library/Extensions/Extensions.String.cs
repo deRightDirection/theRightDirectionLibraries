@@ -3,6 +3,8 @@
     using System;
     using System.Globalization;
     using System.IO;
+    using System.Runtime.InteropServices;
+    using System.Security;
     using System.Security.Cryptography;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -12,6 +14,21 @@
     /// </summary>
     public static partial class Extensions
     {
+        public static string ToUnsecureString(this SecureString secureString)
+        {
+            if (secureString == null) throw new ArgumentNullException("secureString");
+
+            var unmanagedString = IntPtr.Zero;
+            try
+            {
+                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
+                return Marshal.PtrToStringUni(unmanagedString);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+            }
+        }
         public static bool IsValidFileName(this string filename, bool platformIndependent = false)
         {
             string sPattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
