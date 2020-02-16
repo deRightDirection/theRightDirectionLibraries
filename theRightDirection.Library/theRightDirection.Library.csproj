@@ -29,7 +29,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\SharedLibraries\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -52,6 +52,8 @@
     <Compile Include="Attributes\ExcludeFromCopyPropertyAttribute.cs" />
     <Compile Include="BrushHelper.cs" />
     <Compile Include="Comparers\PropertyInfoComparer.cs" />
+    <Compile Include="Configuration\ConfigurationElementBase.cs" />
+    <Compile Include="Configuration\GenericConfigurationElementCollection.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="Extensions\Extensions.SolidColorBrush.cs" />
     <Compile Include="Extensions\Extensions.Assembly.cs" />

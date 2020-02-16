@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using theRightDirection.WPF.DemoApp.ViewModel;
 
 namespace theRightDirection.WPF.DemoApp
 {
@@ -34,6 +37,16 @@ namespace theRightDirection.WPF.DemoApp
                 //JsonViewer.Load(args.Result);
             };
             client.DownloadStringAsync(new Uri("http://jsonplaceholder.typicode.com/users"));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var vm = (MainViewModel)DataContext;
+                vm.Json = File.ReadAllText(openFileDialog.FileName);
+            }
         }
     }
 }
