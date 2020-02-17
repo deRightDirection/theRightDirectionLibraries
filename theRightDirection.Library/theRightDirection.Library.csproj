@@ -62,6 +62,7 @@
     <Compile Include="Extensions\Extensions.Object.cs" />
     <Compile Include="Extensions\Extensions.String.cs" />
     <Compile Include="Extensions\Extensions.Uri.cs" />
+    <Compile Include="Extensions\ExtensionsDateTime.cs" />
     <Compile Include="Logging\LibraryBaseObject.cs" />
     <Compile Include="Logging\LibraryException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

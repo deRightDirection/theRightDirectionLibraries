@@ -18,16 +18,17 @@ namespace theRightDirection
 
         public static void LogApplicationSettings(this ILog logger)
         {
-            logger.Info("----- application configuration -----");
-            NameValueCollection applicationSettings = ConfigurationManager.AppSettings;
-            if (applicationSettings != null)
-            {
-                foreach (string k in applicationSettings.Keys)
-                {
-                    logger.Info($"{k}={applicationSettings[k]}");
-                }
-            }
-            logger.Info("-------------------------------------");
+            throw new NotImplementedException();
+//            logger.Info("----- application configuration -----");
+ //           NameValueCollection applicationSettings = ConfigurationManager.AppSettings;
+  //          if (applicationSettings != null)
+   //         {
+    //            foreach (string k in applicationSettings.Keys)
+     //           {
+      //              logger.Info($"{k}={applicationSettings[k]}");
+       //         }
+        //    }
+          //  logger.Info("-------------------------------------");
         }
 
         public static string GetStackTrace(this ILog logger)

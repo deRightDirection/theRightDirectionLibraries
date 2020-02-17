@@ -3,6 +3,7 @@
     using System;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Runtime.InteropServices;
     using System.Security;
     using System.Security.Cryptography;
@@ -29,6 +30,12 @@
                 Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
             }
         }
+        public static SecureString ToSecureString(this string unsecureString)
+        {
+            if (unsecureString == null) throw new ArgumentNullException("unsecureString");
+            return unsecureString.Aggregate(new SecureString(), AppendChar, MakeReadOnly);
+        }
+
         public static bool IsValidFileName(this string filename, bool platformIndependent = false)
         {
             string sPattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
@@ -269,6 +276,18 @@
                     }
                 }
             }
+        }
+
+        private static SecureString MakeReadOnly(SecureString ss)
+        {
+            ss.MakeReadOnly();
+            return ss;
+        }
+
+        private static SecureString AppendChar(SecureString ss, char c)
+        {
+            ss.AppendChar(c);
+            return ss;
         }
     }
 }

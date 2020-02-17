@@ -226,5 +226,12 @@
             }
             return new DateTimeOffset(dateTime);
         }
+
+        public static DateTime TimeStampAsDateTime(this double unixTimeStamp)
+        {
+            DateTime converted = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            DateTime newDateTime = converted.AddMilliseconds(unixTimeStamp);
+            return newDateTime;
+        }
     }
 }
