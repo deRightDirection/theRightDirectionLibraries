@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -27,6 +29,15 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
     {
         private const GeneratorStatus Generated = GeneratorStatus.ContainersGenerated;
         private DispatcherTimer _timer;
+
+        public static readonly DependencyProperty ShowInfoButtonProperty =
+            DependencyProperty.Register("ShowInfoButton", typeof(bool), typeof(JsonViewer), new PropertyMetadata(true, OnShowInfoButton));
+
+        public static readonly DependencyProperty ShowLegendButtonProperty =
+            DependencyProperty.Register("ShowLegendButton", typeof(bool), typeof(JsonViewer), new PropertyMetadata(true, OnShowLegendButton));
+
+        public static readonly DependencyProperty ShowFileSaveButtonProperty =
+            DependencyProperty.Register("ShowFileSaveButton", typeof(bool), typeof(JsonViewer), new PropertyMetadata(false, OnShowFileSaveButton));
 
         public static readonly DependencyProperty ShowCollapseExpandButtonsProperty =
             DependencyProperty.Register("ShowCollapseExpandButtons", typeof(bool), typeof(JsonViewer), new PropertyMetadata(true, OnShowCollapseExpandButtons));
@@ -121,6 +132,21 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             get { return (bool)GetValue(ShowCollapseExpandButtonsProperty); }
             set { SetValue(ShowCollapseExpandButtonsProperty, value); }
         }
+        public bool ShowLegend
+        {
+            get { return (bool)GetValue(ShowLegendButtonProperty); }
+            set { SetValue(ShowLegendButtonProperty, value); }
+        }
+        public bool ShowInformationButton
+        {
+            get { return (bool)GetValue(ShowInfoButtonProperty); }
+            set { SetValue(ShowInfoButtonProperty, value); }
+        }
+        public bool ShowFileSaveButton
+        {
+            get { return (bool)GetValue(ShowFileSaveButtonProperty); }
+            set { SetValue(ShowFileSaveButtonProperty, value); }
+        }
         private static void OnJsonSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
@@ -182,6 +208,21 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             {
                 viewer.informationButton.Margin = new Thickness(0, 5, 5, 5);
             }
+        }
+        private static void OnShowLegendButton(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.legendExpander.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+        }
+        private static void OnShowFileSaveButton(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.saveButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+        }
+        private static void OnShowInfoButton(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.informationButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void Load(string json)
@@ -284,6 +325,19 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
                 var tvi = itemGen.ContainerFromItem(item) as TreeViewItem;
                 tvi.IsExpanded = isExpanded;
                 ToggleItems(tvi, tvi.Items, isExpanded);
+            }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Json file (*.json)|*.json",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, Json);
             }
         }
     }

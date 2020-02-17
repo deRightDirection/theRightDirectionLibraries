@@ -38,12 +38,11 @@ namespace theRightDirection.Library
                 value = ParseTextToEnumValue<T>(enumValueAsString);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                value = default(T);
+                value = default;
                 return false;
             }
-
         }
 
         public static IEnumerable<string> GetDescriptions<T>()

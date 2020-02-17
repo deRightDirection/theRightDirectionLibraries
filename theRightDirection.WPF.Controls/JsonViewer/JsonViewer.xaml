@@ -101,7 +101,12 @@
                                 Foreground="#7BAF1F"
                                 Kind="Information" />
                 </Button>
-                <Expander Header="legend" VerticalAlignment="Center">
+                <Button x:Name="saveButton" Visibility="Collapsed" ToolTip="Save json to file" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" Click="SaveButton_Click">
+                    <iconPacks:PackIconMaterial
+                                Foreground="#7BAF1F"
+                                Kind="ContentSave" />
+                </Button>
+                <Expander x:Name="legendExpander" Header="legend" VerticalAlignment="Center">
                     <StackPanel Background="White" >
                         <Border BorderThickness="1" BorderBrush="Black">
                             <Label Content="string"  Foreground="{Binding LegendStringColor}" />
