@@ -66,8 +66,6 @@
     <Compile Include="Converters\ComboBoxToQueryStringConverter.cs" />
     <Compile Include="Converters\ComplexPropertyMethodToValueConverter.cs" />
     <Compile Include="Converters\DatePickerToQueryStringConverter.cs" />
-    <Compile Include="Converters\EnumDisplayEntry.cs" />
-    <Compile Include="Converters\EnumDisplayer.cs" />
     <Compile Include="Converters\FontSizeToHeightConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
