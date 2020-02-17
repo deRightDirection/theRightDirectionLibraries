@@ -11,7 +11,7 @@ namespace theRightDirection.Library.Data.DropBox
 {
     public class DropBoxRepository<T> : BaseRepository<T> where T : IEntity
     {
-        private DropboxClient _dropBox;
+        private readonly DropboxClient _dropBox;
 
         internal DropBoxRepository(DropboxClient dropboxClient, string fileName) : base(fileName)
         {

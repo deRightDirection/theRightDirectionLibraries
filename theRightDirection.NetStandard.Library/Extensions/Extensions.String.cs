@@ -36,6 +36,11 @@
             return unsecureString.Aggregate(new SecureString(), AppendChar, MakeReadOnly);
         }
 
+        public static bool IsValidEmail(this string email)
+        {
+            string sPattern = @"^((""[\w -\\s] + "")|([\w-]+(?:\.[\w-]+)*)|(""[\w -\\s] + "")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)";
+            return (Regex.IsMatch(email, sPattern, RegexOptions.CultureInvariant));
+        }
         public static bool IsValidFileName(this string filename, bool platformIndependent = false)
         {
             string sPattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
