@@ -17,18 +17,23 @@ namespace theRightDirection.WPF.DemoApp.ViewModel
 
         private void LoadJson()
         {
-                var client = new WebClient { Proxy = null };
-                client.DownloadStringCompleted += delegate (object sender, DownloadStringCompletedEventArgs args)
-                {
-                    Json = args.Result;
-                };
-               client.DownloadStringAsync(new Uri("http://jsonplaceholder.typicode.com/users"));
+            var client = new WebClient { Proxy = null };
+            client.DownloadStringCompleted += delegate (object sender, DownloadStringCompletedEventArgs args)
+            {
+                Json = args.Result;
+            };
+            client.DownloadStringAsync(new Uri("http://jsonplaceholder.typicode.com/users"));
         }
 
         public string Json
         {
             get { return _json; }
             set { Set(ref _json, value); }
+        }
+
+        public bool Visible
+        {
+            get { return false; }
         }
     }
 }

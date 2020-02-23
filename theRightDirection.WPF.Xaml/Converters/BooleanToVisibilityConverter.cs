@@ -10,6 +10,10 @@ namespace theRightDirection.WPF.Xaml.Converters
 {
     public class BooleanToVisibilityConverter : IValueConverter
     {
+        public BooleanToVisibilityConverter()
+        {
+            HiddenState = Visibility.Collapsed;
+        }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if ((bool)value)
@@ -18,7 +22,7 @@ namespace theRightDirection.WPF.Xaml.Converters
             }
             else
             {
-                return Visibility.Collapsed;
+                return HiddenState;
             }
         }
 
@@ -27,5 +31,7 @@ namespace theRightDirection.WPF.Xaml.Converters
             Visibility visibility = (Visibility)value;
             return visibility == Visibility.Visible ? true : false;
         }
+
+        public Visibility HiddenState { get; set; }
     }
 }
