@@ -38,9 +38,9 @@ namespace theRightDirection
                 value = ParseTextToEnumValue<T>(enumValueAsString);
                 return true;
             }
-            catch (Exception e)
+            catch
             {
-                value = default(T);
+                value = default;
                 return false;
             }
 
