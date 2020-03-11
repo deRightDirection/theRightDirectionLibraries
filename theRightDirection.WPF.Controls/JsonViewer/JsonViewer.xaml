@@ -86,6 +86,7 @@
     <DockPanel Name="DockPanel">
         <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
             <StackPanel Orientation="Horizontal" >
+                <TextBlock x:Name="titleLabel" Text="{Binding Title}" VerticalAlignment="Center" Margin="5" Visibility="{Binding ShowTitle}"/>
                 <Button x:Name="expandAllButton" Click="ExpandAll" ToolTip="Expand all" Margin="0 5 5 5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial
                                 Foreground="#7BAF1F"
@@ -94,7 +95,7 @@
                 <Button x:Name="collapseAllButton" Click="CollapseAll" ToolTip="Collapse all" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial
                                 Foreground="#7BAF1F"
-                                Kind="ArrowCollapse" />            
+                                Kind="ArrowCollapse" />
                 </Button>
                 <Button x:Name="informationButton" Click="ShowDoubleClickLabel" ToolTip="doubleclick a value to copy to clipboard" Margin="5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial

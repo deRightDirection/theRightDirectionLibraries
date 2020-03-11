@@ -39,6 +39,9 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
         public static readonly DependencyProperty ShowFileSaveButtonProperty =
             DependencyProperty.Register("ShowFileSaveButton", typeof(bool), typeof(JsonViewer), new PropertyMetadata(false, OnShowFileSaveButton));
 
+        public static readonly DependencyProperty ShowTitleProperty =
+            DependencyProperty.Register("ShowTitle", typeof(bool), typeof(JsonViewer), new PropertyMetadata(false, OnShowTitle));
+
         public static readonly DependencyProperty ShowCollapseExpandButtonsProperty =
             DependencyProperty.Register("ShowCollapseExpandButtons", typeof(bool), typeof(JsonViewer), new PropertyMetadata(true, OnShowCollapseExpandButtons));
 
@@ -50,6 +53,9 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
 
         public static readonly DependencyProperty JsonProperty =
             DependencyProperty.Register("Json", typeof(string), typeof(JsonViewer), new PropertyMetadata(string.Empty, OnJsonSet));
+
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(JsonViewer));
 
         public static readonly DependencyProperty LegendStringColorProperty =
             DependencyProperty.Register("LegendStringColor", typeof(SolidColorBrush), typeof(JsonViewer), new PropertyMetadata(BrushHelper.HexCodeToSolidColorBrush("#4e9a06"), OnStringColorSet));
@@ -80,7 +86,12 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
         public string Json
         {
             get { return (string)GetValue(JsonProperty); }
-            set { SetValue(JsonProperty, value);}
+            set { SetValue(JsonProperty, value); }
+        }
+        public string Title
+        {
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
         }
         public SolidColorBrush LegendStringColor
         {
@@ -147,6 +158,11 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             get { return (bool)GetValue(ShowFileSaveButtonProperty); }
             set { SetValue(ShowFileSaveButtonProperty, value); }
         }
+        public bool ShowTitle
+        {
+            get { return (bool)GetValue(ShowTitleProperty); }
+            set { SetValue(ShowTitleProperty, value); }
+        }
         private static void OnJsonSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
@@ -204,7 +220,7 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             var viewer = (JsonViewer)d;
             viewer.expandAllButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
             viewer.collapseAllButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
-            if(!(bool)e.NewValue)
+            if (!(bool)e.NewValue)
             {
                 viewer.informationButton.Margin = new Thickness(0, 5, 5, 5);
             }
@@ -219,6 +235,11 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             var viewer = (JsonViewer)d;
             viewer.saveButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
         }
+        private static void OnShowTitle(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewer = (JsonViewer)d;
+            viewer.titleLabel.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+        }
         private static void OnShowInfoButton(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
@@ -227,7 +248,7 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
 
         private void Load(string json)
         {
-            if(string.IsNullOrEmpty(json))
+            if (string.IsNullOrEmpty(json))
             {
                 return;
             }
