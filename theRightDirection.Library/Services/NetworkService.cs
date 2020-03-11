@@ -4,17 +4,18 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using theRightDirection.Library.Interfaces;
 
 namespace theRightDirection.Library.Services
 {
-    public class NetworkService
+    public class NetworkService : INetworkInterface
     {
         /// </summary>
         /// <param name="minimumSpeed">The minimum speed required. Passing 0 will not filter connection using speed.</param>
         /// <returns>
         ///     <c>true</c> if a network connection is available; otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsNetworkAvailable(long minimumSpeed = 0)
+        public bool IsNetworkAvailable(long minimumSpeed = 0)
         {
             if (!NetworkInterface.GetIsNetworkAvailable())
                 return false;

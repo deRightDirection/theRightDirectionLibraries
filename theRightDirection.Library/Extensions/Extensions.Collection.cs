@@ -11,6 +11,38 @@
     public static partial class Extensions
     {
         /// <summary>
+        /// Return a deep clone of a list
+        /// </summary>
+        public static List<T> DeepClone<T>(this List<T> items)
+        {
+            return new List<T>(from x in items select x.DeepClone());
+        }
+
+        /// <summary>
+        // Return a deep clone of an array
+        /// </summary>
+        public static T[] DeepClone<T>(this T[] items)
+        {
+            return (from n in items select n.DeepClone()).ToArray();
+        }
+
+        /// <summary>
+        // Return a shallow clone of a list
+        /// </summary>
+        public static List<T> ShallowClone<T>(this List<T> items)
+        {
+            return new List<T>(items);
+        }
+
+        /// <summary>
+        // Return a shallow clone of an array
+        /// </summary>
+        public static T[] ShallowClone<T>(this T[] items)
+        {
+            return (T[])items.Clone();
+        }
+
+        /// <summary>
         /// Adds the elements of the specified collection to the end of the <see cref="ICollection{T}"/>.
         /// </summary>
         /// <param name="collection">
