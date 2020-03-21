@@ -13,7 +13,12 @@ namespace theRightDirection.WPF.Xaml.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value != null ? Visibility.Visible : Visibility.Collapsed;
+            var visibilityState = Visibility.Collapsed;
+            if (parameter != null)
+            {
+                visibilityState = (Visibility)parameter;
+            }
+            return value != null ? Visibility.Visible : visibilityState;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
