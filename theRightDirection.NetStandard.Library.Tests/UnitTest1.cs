@@ -1,11 +1,27 @@
 ﻿using System;
+using System.Net;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using theRightDirection.Library;
 
 namespace theRightDirection.NetStandard.Library.Tests
 {
     [TestClass]
     public class UnitTest1
     {
+        [TestMethod]
+        public void Webclient_Timeout_Download_Timed_Out()
+        {
+            var x = new TimeoutWebClient(1);
+            x.Invoking(y => y.DownloadString("http://www.therightdirection.nl")).Should().Throw<WebException>();
+        }
+        [TestMethod]
+        public void Webclient_Timeout_Download_Sucessfull()
+        {
+            var x = new TimeoutWebClient();
+            x.Invoking(y => y.DownloadString("http://www.therightdirection.nl")).Should().NotThrow<WebException>();
+        }
+
         [TestMethod]
         public void TestMethod1()
         {
