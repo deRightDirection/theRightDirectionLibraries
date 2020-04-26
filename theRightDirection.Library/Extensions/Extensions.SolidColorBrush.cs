@@ -7,4 +7,8 @@ using System.Windows.Media;
 
 namespace theRightDirection.Library
 {
+    public static partial class Extensions
+    {
+
+    }
 }

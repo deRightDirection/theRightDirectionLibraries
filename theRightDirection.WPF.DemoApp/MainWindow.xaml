@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:theRightDirection.WPF.DemoApp"
         xmlns:controls="clr-namespace:theRightDirection.WPF.Xaml.Controls.JsonViewer;assembly=theRightDirection.WPF.Xaml.Controls"
+        xmlns:controls2="clr-namespace:theRightDirection.WPF.Xaml.Controls.OutlineTextBlock;assembly=theRightDirection.WPF.Xaml.Controls"
         xmlns:convertersTRD="clr-namespace:theRightDirection.WPF.Xaml.Converters;assembly=theRightDirection.WPF.Xaml"
         mc:Ignorable="d"
         x:Name="mw"
@@ -24,6 +25,17 @@
                 <Label Visibility="{Binding Visible, Converter={StaticResource converter2}}">Hidden</Label>
             </StackPanel>
         </GroupBox>
+        <controls2:OutlineTextBlock
+                        Margin="10"
+		                HorizontalAlignment="Right"
+		                VerticalAlignment="Center"
+		                Fill="Yellow"
+		                Stroke="Black"
+		                StrokeThickness="1.5"
+		                FontFamily="Ariel"
+		                FontSize="32"
+		                FontWeight="Bold"
+		                Text="This is a Test of Outline Text" />
         <Button Content="show json" Command="{Binding LoadJsonCommand}" Margin="5" />
         <Button Content="bestand openen voor json" Margin="5" Click="Button_Click_1" />
         <controls:JsonViewer Width="400" Height="200" ShowTitle="True" Title="mannus"  Json="{Binding DataContext.Json, ElementName=mw}" ShowLegend="False" ShowInformationButton="False" ShowCollapseExpandButtons="False" ShowFileSaveButton="True"/>

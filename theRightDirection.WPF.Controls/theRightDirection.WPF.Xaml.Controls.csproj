@@ -117,6 +117,7 @@
       <DependentUpon>JsonViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="LabelWithVisibilityTrigger\LabelWithVisibilityTrigger.cs" />
+    <Compile Include="OutlineTextBlock\OutlineTextBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

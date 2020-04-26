@@ -7,6 +7,7 @@ using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace theRightDirection.Library
 {
@@ -123,6 +124,15 @@ namespace theRightDirection.Library
             return Math.Abs(index) > source.Length ? true : false;
         }
 
+        /// <summary>
+        /// convert a hex code into a solidcolor brush
+        /// </summary>
+        /// <param name="hex_code"></param>
+        /// <returns></returns>
+        public static SolidColorBrush ToSolidColorBrush(this string hex_code)
+        {
+            return (SolidColorBrush)new BrushConverter().ConvertFromString(hex_code);
+        }
         private static SecureString MakeReadOnly(SecureString ss)
         {
             ss.MakeReadOnly();
