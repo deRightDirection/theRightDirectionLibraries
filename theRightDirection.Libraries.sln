@@ -37,7 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net Core", ".Net Core", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.Library.UnitTesting.NetCore", "theRightDirection.NetCore.Library.UnitTesting\theRightDirection.NetCore.Library.UnitTesting\theRightDirection.Library.UnitTesting.NetCore.csproj", "{6189AA2F-4F8B-41F5-A090-72516F48C11A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theRightDirection.Library.NetCore", "theRightDirection.Library.NetCore\theRightDirection.Library.NetCore.csproj", "{C8120C2F-7774-4BE8-B793-3E029A5574A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.Library.Core", "theRightDirection.Library.NetCore\theRightDirection.Library.Core.csproj", "{C8120C2F-7774-4BE8-B793-3E029A5574A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
