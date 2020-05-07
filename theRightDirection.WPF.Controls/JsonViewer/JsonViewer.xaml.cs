@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -224,26 +225,50 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             {
                 viewer.informationButton.Margin = new Thickness(0, 5, 5, 5);
             }
+            CheckDockPanelVisibility(viewer);
         }
         private static void OnShowLegendButton(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
             viewer.legendExpander.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+            CheckDockPanelVisibility(viewer);
         }
         private static void OnShowFileSaveButton(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
             viewer.saveButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+            CheckDockPanelVisibility(viewer);
         }
         private static void OnShowTitle(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
             viewer.titleLabel.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+            CheckDockPanelVisibility(viewer);
         }
         private static void OnShowInfoButton(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewer = (JsonViewer)d;
             viewer.informationButton.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+            CheckDockPanelVisibility(viewer);
+        }
+
+        private static void CheckDockPanelVisibility(JsonViewer viewer)
+        {
+            var condition1 = viewer.informationButton.Visibility == Visibility.Collapsed;
+            var condition2 = viewer.titleLabel.Visibility == Visibility.Collapsed;
+            var condition3 = viewer.saveButton.Visibility == Visibility.Collapsed;
+            var condition4 = viewer.legendExpander.Visibility == Visibility.Collapsed;
+            var condition5 = viewer.expandAllButton.Visibility == Visibility.Collapsed;
+            var condition6 = viewer.collapseAllButton.Visibility == Visibility.Collapsed;
+            if (condition1 & condition2 & condition3 & condition4 & condition5 & condition6)
+            {
+                viewer.content.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                viewer.content.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void Load(string json)

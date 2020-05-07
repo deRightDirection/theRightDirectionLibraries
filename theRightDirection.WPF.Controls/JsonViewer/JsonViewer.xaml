@@ -43,7 +43,7 @@
                 <TextBlock Text="{Binding Path=Name, Mode=OneWay}" Foreground="{Binding DataContext.ElementNameColor, ElementName=uc}"/>
                 <TextBlock Text=" : " Foreground="{Binding DataContext.ElementDividerColor, ElementName=uc}"/>
                 <TextBlock Text="  "/>
-                <TextBlock MouseLeftButtonDown="JValue_OnMouseLeftButtonDown" Width="300" 
+                <TextBlock MouseLeftButtonDown="JValue_OnMouseLeftButtonDown" 
                            TextWrapping="Wrap" Text="{Binding Path=Value, Converter={StaticResource JValueConverter}}">
                     <TextBlock.Foreground>
                         <MultiBinding Converter="{StaticResource JPropertyTypeToColorConverter}">
@@ -84,9 +84,9 @@
         </DataTemplate>
     </UserControl.Resources>
     <DockPanel Name="DockPanel">
-        <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Background="Beige" x:Name="content">
             <StackPanel Orientation="Horizontal" >
-                <TextBlock x:Name="titleLabel" Text="{Binding Title}" VerticalAlignment="Center" Margin="5" Visibility="{Binding ShowTitle}"/>
+                <TextBlock x:Name="titleLabel" Text="{Binding Title}" VerticalAlignment="Center" Margin="5" Visibility="Collapsed"/>
                 <Button x:Name="expandAllButton" Click="ExpandAll" ToolTip="Expand all" Margin="0 5 5 5" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
                     <iconPacks:PackIconMaterial
                                 Foreground="#7BAF1F"
@@ -140,18 +140,14 @@
         </StackPanel>
         <TreeView Padding="5" Name="JsonTreeView" IsTextSearchEnabled="True" ItemTemplateSelector="{StaticResource JPropertyDataTemplateSelector}" DockPanel.Dock="Bottom"  BorderThickness="1" BorderBrush="Black" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <TreeView.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
-                      Color="{Binding DataContext.SelectionColor, ElementName=uc}" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
-                      Color="Black" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
-                      Color="Transparent" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
-                      Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{Binding DataContext.SelectionColor, ElementName=uc}" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
             </TreeView.Resources>
             <TreeView.ItemContainerStyle>
-                <Style TargetType="{x:Type TreeViewItem}" >
-                    <Setter Property="IsExpanded" Value="False" />
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="True"/>
                 </Style>
             </TreeView.ItemContainerStyle>
         </TreeView>

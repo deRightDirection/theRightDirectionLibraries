@@ -45,11 +45,18 @@ namespace theRightDirection.Library
             }
         }
 
-        public static IEnumerable<string> GetDescriptions<T>()
+        public static IEnumerable<string> GetDescriptions<T>(bool descriptionsAsLowerCase = false)
         {
             List<string> result = new List<string>();
             var items = GetValues<T>();
-            items.ForEach(x => result.Add(x.GetDescriptionAttribute()));
+            if (descriptionsAsLowerCase)
+            {
+                items.ForEach(x => result.Add(x.GetDescriptionAttribute().ToLowerInvariant()));
+            }
+            else
+            {
+                items.ForEach(x => result.Add(x.GetDescriptionAttribute()));
+            }
             return result;
         }
 
