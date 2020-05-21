@@ -58,7 +58,6 @@
     <Compile Include="Behaviours\HyperlinkOpenBehaviour.cs" />
     <Compile Include="Converters\BooleanToHeightConverter.cs" />
     <Compile Include="Converters\CheckBoxValueConverter.cs" />
-    <Compile Include="Converters\ClearFilterButtonVisibilityConverter.cs" />
     <Compile Include="Converters\ComboBoxToQueryStringConverter.cs" />
     <Compile Include="Converters\ComplexPropertyMethodToValueConverter.cs" />
     <Compile Include="Converters\DatePickerToQueryStringConverter.cs" />
