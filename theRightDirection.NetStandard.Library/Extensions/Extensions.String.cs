@@ -117,7 +117,44 @@
             }
             return Regex.Replace(result, @"[^\u0009^\u000A^\u000D^\u0020-\u007E]", string.Empty);
         }
-
+        /// <summary>
+        /// remove all characters in string which are not letters or digit
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string RemoveSpecialCharactersFromString(this string input)
+        {
+            StringBuilder sb = new StringBuilder(input.Length);
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (char.IsLetterOrDigit(input[i]))
+                {
+                    sb.Append(input[i]);
+                }
+            }
+            return sb.ToString();
+        }
+        /// <summary>
+        /// remove character at the end of a string which is not a letter or digit
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string RemoveSpecialCharacterAtTheEndFromString(this string input)
+        {
+            StringBuilder sb = new StringBuilder(input.Length);
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (i < input.Length - 1)
+                {
+                    sb.Append(input[i]);
+                }
+                else if (char.IsLetterOrDigit(input[i]))
+                {
+                    sb.Append(input[i]);
+                }
+            }
+            return sb.ToString();
+        }
         public static string RemoveCharFromString(this string input, char charItem)
         {
             int indexOfChar = input.IndexOf(charItem);
