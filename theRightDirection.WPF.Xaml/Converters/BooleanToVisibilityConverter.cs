@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Data;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace theRightDirection.WPF.Xaml.Converters
 {
@@ -16,7 +17,17 @@ namespace theRightDirection.WPF.Xaml.Converters
         }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if ((bool)value)
+            var typeOfValue = value.GetType();
+            bool convertValue = false;
+            if (typeOfValue == typeof(string))
+            {
+                bool.TryParse(value.ToString(), out convertValue);
+            }
+            if (typeOfValue == typeof(bool))
+            {
+                convertValue = (bool)value;
+            }
+            if (convertValue)
             {
                 return Visibility.Visible;
             }
