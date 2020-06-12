@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviours\HyperlinkOpenBehaviour.cs" />
+    <Compile Include="Converters\BooleansEvaluationConverter.cs" />
+    <Compile Include="Converters\BooleansVisibilityEvaluationConverter.cs" />
+    <Compile Include="Converters\BooleansEvaluationMode.cs" />
     <Compile Include="Converters\BooleanToHeightConverter.cs" />
     <Compile Include="Converters\CheckBoxValueConverter.cs" />
     <Compile Include="Converters\ComboBoxToQueryStringConverter.cs" />

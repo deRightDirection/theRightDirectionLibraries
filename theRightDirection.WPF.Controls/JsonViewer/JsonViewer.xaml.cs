@@ -29,7 +29,6 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
     public partial class JsonViewer : UserControl
     {
         private const GeneratorStatus Generated = GeneratorStatus.ContainersGenerated;
-        private DispatcherTimer _timer;
 
         public static readonly DependencyProperty ShowInfoButtonProperty =
             DependencyProperty.Register("ShowInfoButton", typeof(bool), typeof(JsonViewer), new PropertyMetadata(true, OnShowInfoButton));
@@ -332,15 +331,8 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             if (JsonTreeView.Items.IsEmpty)
                 return;
 
-            var prevCursor = Cursor;
-            Cursor = Cursors.Wait;
-            _timer = new DispatcherTimer(TimeSpan.FromMilliseconds(500), DispatcherPriority.Normal, delegate
-            {
-                ToggleItems(JsonTreeView, JsonTreeView.Items, isExpanded);
-                _timer.Stop();
-                Cursor = prevCursor;
-            }, Application.Current.Dispatcher);
-            _timer.Start();
+            ToggleItems(JsonTreeView, JsonTreeView.Items, isExpanded);
+
             expandAllButton.IsEnabled = !isExpanded;
             collapseAllButton.IsEnabled = isExpanded;
         }
@@ -369,8 +361,11 @@ namespace theRightDirection.WPF.Xaml.Controls.JsonViewer
             foreach (var item in items)
             {
                 var tvi = itemGen.ContainerFromItem(item) as TreeViewItem;
-                tvi.IsExpanded = isExpanded;
-                ToggleItems(tvi, tvi.Items, isExpanded);
+                if (tvi != null)
+                {
+                    tvi.IsExpanded = isExpanded;
+                    ToggleItems(tvi, tvi.Items, isExpanded);
+                }
             }
         }
 
