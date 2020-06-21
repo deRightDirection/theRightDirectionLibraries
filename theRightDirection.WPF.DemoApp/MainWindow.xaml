@@ -38,8 +38,20 @@
 		                Text="This is a Test of Outline Text" />
         <Button Content="show json" Command="{Binding LoadJsonCommand}" Margin="5" />
         <Button Content="bestand openen voor json" Margin="5" Click="Button_Click_1" />
-        <controls:JsonViewer Width="400" Height="200" ShowTitle="True" Title="mannus"  Json="{Binding DataContext.Json, ElementName=mw}" ShowLegend="False" ShowInformationButton="False" ShowCollapseExpandButtons="False" ShowFileSaveButton="True"/>
-        <controls:JsonViewer Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Verdana" FontSize="12" LegendBooleanColor="#75767F" LegendNullColor="Red" LegendNumberColor="#75767F" LegendStringColor="Black" ElementDividerColor="#7BAF1F" ArrayText="{x:Null}" ElementNameColor="Gray" IsExpanded="True" SelectionColor="Yellow" ShowCollapseExpandButtons="False"/>
-        <controls:JsonViewer Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Arial" FontSize="15" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <controls:JsonViewer Grid.Row="0" Grid.Column="0" Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" ElementNameColor="Gray" Title="Verena" SelectionColor="#81B844"/>
+            <controls:JsonViewer2 Grid.Row="0" Grid.Column="1" Width="400" Height="200" ShowTitle="True" Title="mannus"  Json="{Binding DataContext.Json, ElementName=mw}" ShowLegend="False" ShowInformationButton="False" ShowCollapseExpandButtons="False" ShowFileSaveButton="True"/>
+            <controls:JsonViewer2 Grid.Row="1" Grid.Column="1" Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Verdana" FontSize="12" LegendBooleanColor="#75767F" LegendNullColor="Red" LegendNumberColor="#75767F" LegendStringColor="Black" ElementDividerColor="#7BAF1F" ArrayText="{x:Null}" ElementNameColor="Gray" IsExpanded="True" SelectionColor="Yellow" ShowCollapseExpandButtons="False"/>
+            <controls:JsonViewer2 Grid.Row="2" Grid.Column="1" Width="400" Height="200" Json="{Binding DataContext.Json, ElementName=mw}" FontFamily="Arial" FontSize="15" />
+        </Grid>
     </StackPanel>
 </Window>

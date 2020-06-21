@@ -63,6 +63,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
@@ -82,7 +85,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MvvmLightLibs.5.4.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
@@ -107,15 +110,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="JsonViewer2\JsonViewer2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="JsonViewer\JsonViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsonViewer2\JsonViewer2.xaml.cs">
+      <DependentUpon>JsonViewer2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JsonViewer\JsonElementNameConverter.cs" />
+    <Compile Include="JsonViewer\JsonInformation.cs" />
+    <Compile Include="JsonViewer\JsonLoader.cs" />
     <Compile Include="JsonViewer\JsonViewer.xaml.cs">
       <DependentUpon>JsonViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="JsonViewer\TypeOfJsonElement.cs" />
     <Compile Include="LabelWithVisibilityTrigger\LabelWithVisibilityTrigger.cs" />
     <Compile Include="OutlineTextBlock\OutlineTextBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
