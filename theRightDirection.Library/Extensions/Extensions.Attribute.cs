@@ -1,4 +1,6 @@
-﻿namespace theRightDirection.Library
+﻿using System.ComponentModel;
+
+namespace theRightDirection.Library
 {
     using System.Linq;
     using System.Reflection;

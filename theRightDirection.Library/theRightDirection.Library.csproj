@@ -55,6 +55,7 @@
     <Compile Include="Configuration\ConfigurationElementBase.cs" />
     <Compile Include="Configuration\GenericConfigurationElementCollection.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="Extensions\Extensions.Exception.cs" />
     <Compile Include="Extensions\Extensions.SolidColorBrush.cs" />
     <Compile Include="Extensions\Extensions.Assembly.cs" />
     <Compile Include="Extensions\Extensions.Attribute.cs" />

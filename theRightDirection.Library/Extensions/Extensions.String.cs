@@ -14,6 +14,17 @@ namespace theRightDirection.Library
     public static partial class Extensions
     {
         /// <summary>
+        /// truncate a string to specific length
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string Truncate(this string value, int length)
+        {
+            if (value.Length > length) return value.Substring(0, length);
+            return value;
+        }
+        /// <summary>
         /// check of a string can be used as a valid filename
         /// </summary>
         /// <param name="filename"></param>
