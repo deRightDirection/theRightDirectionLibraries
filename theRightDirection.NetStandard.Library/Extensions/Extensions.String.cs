@@ -290,6 +290,10 @@
             return Encoding.UTF8.GetBytes(str);
         }
 
+        public static bool IsNumeric(this string str)
+        {
+            return TestStringPattern(str, "^[0-9]+$");
+        }
         public static bool IsAlphaNumeric(this string str, char[] extraAllowedCharacters = null)
         {
             return TestStringPattern(str, "^[a-zA-Z0-9XXX]+$", extraAllowedCharacters);
@@ -300,7 +304,7 @@
             return TestStringPattern(str, "^[a-zA-ZXXX]+$", extraAllowedCharacters);
         }
 
-        private static bool TestStringPattern(string test, string regex, char[] extraAllowedCharacters)
+        private static bool TestStringPattern(string test, string regex, char[] extraAllowedCharacters = null)
         {
             var testPattern = regex;
             if (extraAllowedCharacters == null)
