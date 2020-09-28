@@ -181,7 +181,7 @@
         {
             DateTime utcTime = dateTime.ToUniversalTime();
             TimeSpan t = (utcTime - new DateTime(1970, 1, 1));
-            return t.TotalMilliseconds;
+            return Math.Truncate(t.TotalMilliseconds);
         }
 
         public static double TimeStampInSeconds(this DateTime dateTime)
@@ -227,11 +227,21 @@
             return new DateTimeOffset(dateTime);
         }
 
+        /// <summary>
+        /// convert a unix timestamp with milliseconds to a datetime-object
+        /// </summary>
         public static DateTime TimeStampAsDateTime(this double unixTimeStamp)
         {
-            DateTime converted = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            DateTime newDateTime = converted.AddMilliseconds(unixTimeStamp);
-            return newDateTime;
+            var converted = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return converted.AddMilliseconds(unixTimeStamp);
+        }
+        /// <summary>
+        /// convert a unix timestamp with milliseconds to a datetime-object
+        /// </summary>
+        public static DateTime TimeStampAsDateTime(this long unixTimeStamp)
+        {
+            var converted = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return converted.AddMilliseconds(unixTimeStamp);
         }
     }
 }
