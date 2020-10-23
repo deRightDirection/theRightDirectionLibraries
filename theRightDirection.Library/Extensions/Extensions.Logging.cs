@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Reflection;
 using System.Text;
+using theRightDirection.Library;
 
 namespace theRightDirection
 {
@@ -15,6 +16,25 @@ namespace theRightDirection
         {
             logger.Error(exception.Message, exception);
         }
+
+        public static void LogEnvironmentInformation(this ILog logger)
+        {
+            LogEnvironmentInformation(logger, new List<string>()); ;
+        }
+
+        public static void LogEnvironmentInformation(this ILog logger, List<string> additionalLinesWithInformation)
+        {
+            logger.Info("----- environment configuration -----");
+            logger.Info(Assembly.GetEntryAssembly().DirectoryOfAssembly());
+            var osInformation = new SystemInformationHelper();
+            logger.Info($"{osInformation.WindowsVersionName}{Environment.NewLine}{osInformation.Architecture}{Environment.NewLine}build {osInformation.BuildNumber}");
+            foreach (var lineWithInformation in additionalLinesWithInformation)
+            {
+                logger.Info(lineWithInformation);
+            }
+            logger.Info("-------------------------------------");
+        }
+
         public static void LogApplicationSettings(this ILog logger)
         {
             logger.Info("----- application configuration -----");
