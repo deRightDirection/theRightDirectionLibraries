@@ -10,4 +10,9 @@
     <OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.12" />
+    <PackageReference Include="System.Management" Version="4.7.0" />
+  </ItemGroup>
+
 </Project>
