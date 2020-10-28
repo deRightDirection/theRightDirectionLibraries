@@ -208,12 +208,20 @@
         /// <param name="compareOption">
         /// The compare option.
         /// </param>
+        /// <param name="useRegex">
+        /// Use regular expression to check if the string contains the text
+        /// </param>
         /// <returns>
         /// Returns true if the contained string exists in the text; else false.
         /// </returns>
         public static bool Contains(this string text, string containedString, CompareOptions compareOption)
         {
             return CultureInfo.CurrentCulture.CompareInfo.IndexOf(text, containedString, compareOption) >= 0;
+        }
+        public static bool ContainsWithRegex(this string text, string regex)
+        {
+            var searchText = text.ToLowerInvariant();
+            return TestStringPattern(searchText, regex);
         }
 
         /// <summary>

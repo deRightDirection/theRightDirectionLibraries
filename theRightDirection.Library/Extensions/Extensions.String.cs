@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,6 +14,45 @@ namespace theRightDirection.Library
 {
     public static partial class Extensions
     {
+        /// <summary>
+        /// Checks whether the specified text contains another phrase.
+        /// </summary>
+        /// <param name="text">
+        /// The text to check.
+        /// </param>
+        /// <param name="containedString">
+        /// The string to check exists within the text.
+        /// </param>
+        /// <param name="compareOption">
+        /// The compare option.
+        /// </param>
+        /// <returns>
+        /// Returns true if the contained string exists in the text; else false.
+        /// </returns>
+        public static bool Contains(this string text, string containedString, CompareOptions compareOption)
+        {
+            return CultureInfo.CurrentCulture.CompareInfo.IndexOf(text, containedString, compareOption) >= 0;
+        }
+        public static bool ContainsWithRegex(this string text, string regex)
+        {
+            var searchText = text.ToLowerInvariant();
+            return TestStringPattern(searchText, regex);
+        }
+        private static bool TestStringPattern(string test, string regex, char[] extraAllowedCharacters = null)
+        {
+            var testPattern = regex;
+            if (extraAllowedCharacters == null)
+            {
+                testPattern = testPattern.Replace("XXX", string.Empty);
+            }
+            else
+            {
+                var extraPattern = new string(extraAllowedCharacters);
+                testPattern = testPattern.Replace("XXX", extraPattern);
+            }
+            return Regex.Match(test, testPattern).Success;
+        }
+
         /// <summary>
         /// truncate a string to specific length
         /// </summary>

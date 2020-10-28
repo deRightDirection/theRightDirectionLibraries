@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Net;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,7 +10,18 @@ namespace theRightDirection.NetStandard.Library.Tests
     [TestClass]
     public class UnitTest1
     {
-
+        [TestMethod]
+        public void Contains_With_RegularExpression()
+        {
+            var result = "Mannus".ContainsWithRegex("man");
+            result.Should().BeTrue();
+        }
+        [TestMethod]
+        public void Contains_With_RegularExpression2()
+        {
+            var result = "Mannus".ContainsWithRegex(".*nn.*s");
+            result.Should().BeTrue();
+        }
 
         [TestMethod]
         public void Webclient_Timeout_Download_Timed_Out()
