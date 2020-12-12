@@ -8,7 +8,7 @@ namespace theRightDirection.Library
     /// <summary>
     /// webclient with configurable timeout-period
     /// </summary>
-    public class TimeoutWebClient : WebClient
+    public class TimeoutWebClient : WebClient, IWebClient
     {
         /// <summary>
         /// time out in milliseconds
@@ -27,7 +27,7 @@ namespace theRightDirection.Library
 
         protected override WebRequest GetWebRequest(Uri address)
         {
-            WebRequest request = base.GetWebRequest(address);
+            var request = base.GetWebRequest(address);
             request.Timeout = Timeout;
             return request;
         }
