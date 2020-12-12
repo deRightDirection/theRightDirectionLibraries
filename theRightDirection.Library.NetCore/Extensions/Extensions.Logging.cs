@@ -25,7 +25,7 @@ namespace theRightDirection
             logger.Info("----- environment configuration -----");
             logger.Info(Assembly.GetEntryAssembly().DirectoryOfAssembly());
             var osInformation = new SystemInformationHelper();
-            logger.Info($"{osInformation.WindowsVersionName}{Environment.NewLine}{osInformation.Architecture}{Environment.NewLine}build {osInformation.BuildNumber}");
+            //            logger.Info($"{osInformation.WindowsVersionName}{Environment.NewLine}{osInformation.Architecture}{Environment.NewLine}build {osInformation.BuildNumber}");
             foreach (var lineWithInformation in additionalLinesWithInformation)
             {
                 logger.Info(lineWithInformation);
