@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>theRightDirection.WPF.Controls</RootNamespace>
+    <AssemblyName>theRightDirection.WPF.Controls</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
+  </PropertyGroup>
+
+</Project>
