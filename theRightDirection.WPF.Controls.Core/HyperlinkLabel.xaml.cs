@@ -25,12 +25,12 @@ namespace theRightDirection.WPF.Controls
         public static readonly DependencyProperty UrlProperty = DependencyProperty.Register("Url", typeof(Uri),
             typeof(HyperlinkLabel), new PropertyMetadata(default(Uri)));
 
+
         public HyperlinkLabel()
         {
             InitializeComponent();
             DataContext = this;
         }
-
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
