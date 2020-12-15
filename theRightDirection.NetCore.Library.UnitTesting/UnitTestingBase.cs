@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
 
-namespace theRightDirection.NetCore.Library.UnitTesting
+namespace theRightDirection.UnitTesting
 {
     public class UnitTestingBase
     {
@@ -10,7 +10,7 @@ namespace theRightDirection.NetCore.Library.UnitTesting
         {
             var x = new ConfigurationBuilder()
                    .AddJsonFile("appsettings.json");
-            if(_configuration == null)
+            if (_configuration == null)
             {
                 _configuration = x.Build();
             }

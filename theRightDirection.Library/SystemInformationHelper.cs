@@ -15,7 +15,7 @@ namespace theRightDirection.Library
         private ManagementObject _osInformation;
         public SystemInformationHelper()
         {
-            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem"))
+            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem"))
             {
                 ManagementObjectCollection information = searcher.Get();
                 if (information != null)

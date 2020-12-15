@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.WPF.Controls.Core\theRightDirection.WPF.Controls.Core.csproj" />
+    <ProjectReference Include="..\theRightDirection.WPF.Controls.Core\theRightDirection.WPF.Controls.csproj" />
   </ItemGroup>
 
 </Project>

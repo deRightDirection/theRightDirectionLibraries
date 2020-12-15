@@ -1,4 +1,4 @@
-﻿using System.Management;
+﻿using System;
 
 namespace theRightDirection.Library
 {
@@ -7,30 +7,22 @@ namespace theRightDirection.Library
     /// </summary>
     public class SystemInformationHelper
     {
-        private ManagementObject _osInformation;
+        private OperatingSystem _windowsInformation;
 
         public SystemInformationHelper()
         {
-            using var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
-            var information = searcher.Get();
-            foreach (ManagementObject obj in information)
-            {
-                _osInformation = obj;
-            }
+            _windowsInformation = Environment.OSVersion;
         }
 
-        public string WindowsVersionName => GetInformation("Caption");
+        public string WindowsVersionName => _windowsInformation.VersionString;
 
-        public string Architecture => GetInformation("OSArchitecture");
+        public PlatformID Architecture => _windowsInformation.Platform;
 
-        public string BuildNumber => GetInformation("BuildNumber");
+        public int BuildNumber => _windowsInformation.Version.Build;
 
-        public string ServicePackMajorVersion => GetInformation("ServicePackMajorVersion");
+        public string ServicePackVersion => _windowsInformation.ServicePack;
 
-        public string ServicePackMinorVersion => GetInformation("ServicePackMinorVersion");
+        public string Version => $"{_windowsInformation.Version.Major}.{_windowsInformation.Version.Minor}.{_windowsInformation.Version.Build}";
 
-        public string Version => GetInformation("Version");
-
-        private string GetInformation(string typeOfInformation) => _osInformation == null ? "Unknown" : _osInformation[typeOfInformation].ToString();
     }
 }

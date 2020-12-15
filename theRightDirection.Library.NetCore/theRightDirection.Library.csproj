@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>theRightDirection.Library.Core</AssemblyName>
-    <RootNamespace>theRightDirection.Library.Core</RootNamespace>
+    <AssemblyName>theRightDirection.Library</AssemblyName>
+    <RootNamespace>theRightDirection.Library</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="System.Management" Version="4.7.0" />
   </ItemGroup>
 
 </Project>

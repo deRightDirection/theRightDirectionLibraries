@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>theRightDirection.Library.UnitTesting.NetCore</RootNamespace>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>theRightDirection.UnitTesting</RootNamespace>
     <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
+    <AssemblyName>theRightDirection.UnitTesting</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace theRightDirection.Library.UnitTesting.NetCore
+namespace theRightDirection.UnitTesting
 {
 
     public sealed class ExceptionAssertionExtensions
