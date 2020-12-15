@@ -11,4 +11,8 @@
     <OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
+  </ItemGroup>
+
 </Project>

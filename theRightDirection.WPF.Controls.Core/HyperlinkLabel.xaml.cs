@@ -25,12 +25,12 @@ namespace theRightDirection.WPF.Controls
         public static readonly DependencyProperty UrlProperty = DependencyProperty.Register("Url", typeof(Uri),
             typeof(HyperlinkLabel), new PropertyMetadata(default(Uri)));
 
-
         public HyperlinkLabel()
         {
             InitializeComponent();
             DataContext = this;
         }
+
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
@@ -45,30 +45,7 @@ namespace theRightDirection.WPF.Controls
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            try
-            {
-                Process.Start(e.Uri.AbsoluteUri);
-            }
-            catch
-            {
-                // hack because of this: https://github.com/dotnet/corefx/issues/10361
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    Process.Start(new ProcessStartInfo("cmd", $"/c start {e.Uri}") { CreateNoWindow = true });
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    Process.Start("xdg-open", e.Uri.AbsoluteUri);
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    Process.Start("open", e.Uri.AbsoluteUri);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            e.Uri.OpenInBrowser();
         }
     }
 }
