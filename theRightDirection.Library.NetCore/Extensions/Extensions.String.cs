@@ -7,11 +7,36 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace theRightDirection
 {
     public static partial class Extensions
     {
+        /// <summary>
+        /// checks if the data is Json, it use the dependency Newtonsoft.Json
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static bool IsValidJson<T>(this string data)
+        {
+            data = data.Trim();
+            if ((data.StartsWith("{") && data.EndsWith("}")) || //For object
+                (data.StartsWith("[") && data.EndsWith("]"))) //For array
+            {
+                try
+                {
+                    JsonConvert.DeserializeObject<T>(data);
+                    return true;
+                }
+                catch // not valid
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
         /// <summary>
         /// Checks whether the specified text contains another phrase.
         /// </summary>
