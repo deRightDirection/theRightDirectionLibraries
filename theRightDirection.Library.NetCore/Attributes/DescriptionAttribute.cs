@@ -1,4 +1,4 @@
-﻿namespace theRightDirection.Library
+﻿namespace theRightDirection.Attributes
 {
     using System;
 

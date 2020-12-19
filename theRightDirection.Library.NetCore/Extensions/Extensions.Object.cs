@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
-using theRightDirection.Library;
-using theRightDirection.Library.Comparers;
-using theRightDirection;
+using theRightDirection.Attributes;
+using theRightDirection.Comparers;
+
 namespace theRightDirection
 {
     public static partial class Extensions

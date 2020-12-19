@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using theRightDirection.Library;
 
 namespace theRightDirection.Tests.Library
 {

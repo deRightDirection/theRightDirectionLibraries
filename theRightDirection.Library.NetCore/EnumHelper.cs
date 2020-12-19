@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using theRightDirection;
-namespace theRightDirection.Library
+namespace theRightDirection
 {
     public static class EnumHelper
     {

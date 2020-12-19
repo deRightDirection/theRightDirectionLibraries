@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace theRightDirection.Library.Comparers
+namespace theRightDirection.Comparers
 {
     public sealed class PropertyInfoComparer : IEqualityComparer<PropertyInfo>
     {

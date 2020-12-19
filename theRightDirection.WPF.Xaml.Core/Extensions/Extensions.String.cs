@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media;
 
-namespace theRightDirection.Library
+namespace theRightDirection
 {
     public static partial class Extensions
     {
