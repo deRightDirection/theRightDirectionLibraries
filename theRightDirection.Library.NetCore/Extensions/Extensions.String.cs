@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Exception = System.Exception;
 
 namespace theRightDirection
 {
@@ -84,15 +85,16 @@ namespace theRightDirection
         public static bool IsValidJson<T>(this string data)
         {
             data = data.Trim();
-            if ((data.StartsWith("{") && data.EndsWith("}")) || //For object
-                (data.StartsWith("[") && data.EndsWith("]"))) //For array
+            var objectJson = data.StartsWith("{") && data.EndsWith("}");
+            var arrayJson = data.StartsWith("[") && data.EndsWith("]");
+            if (objectJson || arrayJson)
             {
                 try
                 {
                     JsonConvert.DeserializeObject<T>(data);
                     return true;
                 }
-                catch // not valid
+                catch (Exception e)
                 {
                     return false;
                 }

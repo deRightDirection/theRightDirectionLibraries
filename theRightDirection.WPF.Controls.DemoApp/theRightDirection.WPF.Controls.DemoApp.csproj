@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MvvmCross" Version="7.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\theRightDirection.WPF.Controls.Core\theRightDirection.WPF.Controls.csproj" />
+    <ProjectReference Include="..\theRightDirection.WPF.Xaml.Core\theRightDirection.WPF.Xaml.csproj" />
   </ItemGroup>
 
 </Project>

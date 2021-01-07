@@ -5,9 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:theRightDirection.WPF.Controls.DemoApp"
         xmlns:tRDControls="clr-namespace:theRightDirection.WPF.Controls;assembly=theRightDirection.WPF.Controls"
+        xmlns:converters1="clr-namespace:theRightDirection.WPF.Xaml.Converters;assembly=theRightDirection.WPF.Xaml"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <tRDControls:HyperlinkLabel Url="https://www.mannus.nl" Title="mannus"/>
-    </Grid>
+    <Window.Resources>
+        <converters1:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+        <converters1:StringIsNotNullOrEmptyToVisibilityConverter x:Key="VisibilityConverter2" />
+    </Window.Resources>
+    <StackPanel Margin="50 50 50 50">
+        <tRDControls:HyperlinkLabel Url="https://www.mannus.nl" Title="mannus" />
+        <TextBlock Visibility="{Binding SomeModel.BooleanProperty, Converter={StaticResource VisibilityConverter}}" Text="Visible!" />
+        <TextBlock Visibility="{Binding SomeModel.StringProperty, Converter={StaticResource VisibilityConverter2}}" Text="Visible!" />
+        <Button Content="change string property" Command="{Binding ChangeStringPropertyCommand}" />
+    </StackPanel>
 </Window>

@@ -15,6 +15,7 @@ namespace theRightDirection.WPF.Xaml.Converters
         {
             HiddenState = Visibility.Collapsed;
         }
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var typeOfValue = value.GetType();
@@ -31,16 +32,13 @@ namespace theRightDirection.WPF.Xaml.Converters
             {
                 return Visibility.Visible;
             }
-            else
-            {
-                return HiddenState;
-            }
+            return HiddenState;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Visibility visibility = (Visibility)value;
-            return visibility == Visibility.Visible ? true : false;
+            var visibility = (Visibility)value;
+            return visibility == Visibility.Visible;
         }
 
         public Visibility HiddenState { get; set; }
