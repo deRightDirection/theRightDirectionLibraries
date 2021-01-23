@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>theRightDirection.Library</AssemblyName>
     <RootNamespace>theRightDirection</RootNamespace>
-    <AssemblyVersion>2020.0.7660.0</AssemblyVersion>
-    <FileVersion>1.2020.1221.1710</FileVersion>
+    <AssemblyVersion>2021.0.7682.0</AssemblyVersion>
+    <FileVersion>1.2021.0112.1800</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

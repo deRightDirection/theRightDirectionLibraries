@@ -15,10 +15,25 @@ namespace theRightDirection
 {
     public static partial class Extensions
     {
-        // This constant string is used as a "salt" value for the PasswordDeriveBytes function calls.
-        // This size of the IV (in bytes) must = (keysize / 8).  Default keysize is 256, so the IV must be
-        // 32 bytes long.  Using a 16 character string here gives us 32 bytes when converted to a byte array.
+        /// <summary>
+        /// check if the string can be a valid e-mailaddress
+        /// </summary>
+        public static bool IsValidEmail(this string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return false;
+            }
+            string sPattern = @"^((""[\w -\\s] + "")|([\w-]+(?:\.[\w-]+)*)|(""[\w -\\s] + "")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)";
+            return (Regex.IsMatch(email, sPattern, RegexOptions.CultureInvariant));
+        }
+
+        // This constant string is used as a "salt" value for the PasswordDeriveBytes function
+        // calls. This size of the IV (in bytes) must = (keysize / 8). Default keysize is 256, so
+        // the IV must be 32 bytes long. Using a 16 character string here gives us 32 bytes when
+        // converted to a byte array.
         private static readonly byte[] initVectorBytes = Encoding.ASCII.GetBytes(">8.EP,+rEft,)+tm");
+
         // This constant is used to determine the keysize of the encryption algorithm.
         private const int keysize = 256;
 
@@ -50,8 +65,8 @@ namespace theRightDirection
                 }
             }
         }        /// <summary>
-                 /// decrypt a string
-                 /// </summary>
+
+                 /// decrypt a string </summary>
         public static string Decrypt(this string cipherText, string passPhrase)
         {
             byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
@@ -76,6 +91,7 @@ namespace theRightDirection
                 }
             }
         }
+
         /// <summary>
         /// checks if the data is Json, it use the dependency Newtonsoft.Json
         /// </summary>
@@ -101,21 +117,14 @@ namespace theRightDirection
             }
             return false;
         }
+
         /// <summary>
         /// Checks whether the specified text contains another phrase.
         /// </summary>
-        /// <param name="text">
-        /// The text to check.
-        /// </param>
-        /// <param name="containedString">
-        /// The string to check exists within the text.
-        /// </param>
-        /// <param name="compareOption">
-        /// The compare option.
-        /// </param>
-        /// <returns>
-        /// Returns true if the contained string exists in the text; else false.
-        /// </returns>
+        /// <param name="text">The text to check.</param>
+        /// <param name="containedString">The string to check exists within the text.</param>
+        /// <param name="compareOption">The compare option.</param>
+        /// <returns>Returns true if the contained string exists in the text; else false.</returns>
         public static bool Contains(this string text, string containedString, CompareOptions compareOption)
         {
             return CultureInfo.CurrentCulture.CompareInfo.IndexOf(text, containedString, compareOption) >= 0;
@@ -197,7 +206,7 @@ namespace theRightDirection
         }
 
         /// <summary>
-        ///  convert a string to a stream and define the encoding
+        /// convert a string to a stream and define the encoding
         /// </summary>
         /// <param name="s"></param>
         /// <param name="encoding"></param>
@@ -210,19 +219,18 @@ namespace theRightDirection
         /// <summary>
         /// Returns characters slices from string between two indexes.
         ///
-        /// If start or end are negative, their indexes will be calculated counting
-        /// back from the end of the source string.
-        /// If the end param is less than the start param, the Slice will return a
-        /// substring in reverse order.
+        /// If start or end are negative, their indexes will be calculated counting back from the
+        /// end of the source string. If the end param is less than the start param, the Slice will
+        /// return a substring in reverse order.
         ///
-        /// <param name="source">String the extension method will operate upon.</param>
-        /// <param name="startIndex">Starting index, may be negative.</param>
-        /// <param name="endIndex">Ending index, may be negative).</param>
+        /// <param name="source">String the extension method will operate upon.</param><param
+        /// name="startIndex">Starting index, may be negative.</param><param name="endIndex">Ending
+        /// index, may be negative).</param>
         /// </summary>
         public static string Slice(this string source, int startIndex, int endIndex = int.MaxValue)
         {
-            // If startIndex or endIndex exceeds the length of the string they will be set
-            // to zero if negative, or source.Length if positive.
+            // If startIndex or endIndex exceeds the length of the string they will be set to zero
+            // if negative, or source.Length if positive.
             if (source.ExceedsLength(startIndex)) startIndex = startIndex < 0 ? 0 : source.Length;
             if (source.ExceedsLength(endIndex)) endIndex = endIndex < 0 ? 0 : source.Length;
             // Negative values count back from the end of the source string.
@@ -259,8 +267,8 @@ namespace theRightDirection
         }
 
         /// <summary>
-        /// convert a string into secure string so the value of the string can't be read
-        /// in the memory while the program is running
+        /// convert a string into secure string so the value of the string can't be read in the
+        /// memory while the program is running
         /// </summary>
         public static SecureString ToSecureString(this string unsecureString)
         {
