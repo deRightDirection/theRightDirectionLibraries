@@ -42,5 +42,17 @@ namespace theRightDirection
                 }
             }
         }
+
+        /// <summary>
+        /// rewrite a http-url to https
+        /// </summary>
+        public static Uri RewriteUriToSecureHttps(this Uri uri)
+        {
+            return new UriBuilder(uri)
+            {
+                Scheme = Uri.UriSchemeHttps,
+                Port = uri.IsDefaultPort ? -1 : uri.Port
+            }.Uri;
+        }
     }
 }
