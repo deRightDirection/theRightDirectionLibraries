@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>theRightDirection.Library</AssemblyName>
     <RootNamespace>theRightDirection</RootNamespace>
-    <AssemblyVersion>2021.0.7682.0</AssemblyVersion>
-    <FileVersion>1.2021.0112.1800</FileVersion>
+    <AssemblyVersion>2021.0.7699.0</AssemblyVersion>
+    <FileVersion>1.2021.0129.1951</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
