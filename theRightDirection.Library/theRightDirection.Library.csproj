@@ -58,6 +58,7 @@
     <Compile Include="EnumHelper.cs" />
     <Compile Include="Extensions\Extensions.Dispatcher.cs" />
     <Compile Include="Extensions\Extensions.Exception.cs" />
+    <Compile Include="Extensions\Extensions.Long.cs" />
     <Compile Include="Extensions\Extensions.SolidColorBrush.cs" />
     <Compile Include="Extensions\Extensions.Assembly.cs" />
     <Compile Include="Extensions\Extensions.Attribute.cs" />
