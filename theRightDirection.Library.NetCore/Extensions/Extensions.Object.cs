@@ -12,7 +12,7 @@ namespace theRightDirection
     public static partial class Extensions
     {
         /// <summary>
-        /// Return a deep clone of an object of type T 
+        /// Return a deep clone of an object of type T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
@@ -30,11 +30,11 @@ namespace theRightDirection
                 return (T)formatter.Deserialize(memory_stream);
             }
         }
+
         public static List<string> ListProperties(this object from, bool includePropertiesFromBaseType = false)
         {
             Dictionary<string, PropertyInfo> sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType);
             return sourceProperties.Keys.ToList();
-
         }
 
         public static void CopyProperties(this object from, object to, bool includePropertiesFromBaseType = false, string[] excludedProperties = null)
@@ -62,13 +62,14 @@ namespace theRightDirection
                 }
             }
         }
-        public static bool Compare<T>(T Object1, T object2)
+
+        public static bool Compare<T>(this T object1, T object2)
         {
             //Get the type of the object
-            Type type = typeof(T);
+            var type = typeof(T);
 
             //return false if any of the object is false
-            if (Object1 == null || object2 == null)
+            if (object1 == null || object2 == null)
                 return false;
 
             //Loop through each properties inside class and get values for the property from both the objects and compare
@@ -76,13 +77,13 @@ namespace theRightDirection
             {
                 if (property.Name != "ExtensionData")
                 {
-                    string Object1Value = string.Empty;
-                    string Object2Value = string.Empty;
-                    if (type.GetProperty(property.Name).GetValue(Object1, null) != null)
-                        Object1Value = type.GetProperty(property.Name).GetValue(Object1, null).ToString();
+                    string object1Value = string.Empty;
+                    string object2Value = string.Empty;
+                    if (type.GetProperty(property.Name).GetValue(object1, null) != null)
+                        object1Value = type.GetProperty(property.Name).GetValue(object1, null).ToString();
                     if (type.GetProperty(property.Name).GetValue(object2, null) != null)
-                        Object2Value = type.GetProperty(property.Name).GetValue(object2, null).ToString();
-                    if (Object1Value.Trim() != Object2Value.Trim())
+                        object2Value = type.GetProperty(property.Name).GetValue(object2, null).ToString();
+                    if (object1Value.Trim() != object2Value.Trim())
                     {
                         return false;
                     }
