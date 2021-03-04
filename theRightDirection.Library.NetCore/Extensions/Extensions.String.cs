@@ -131,10 +131,10 @@ namespace theRightDirection
             {
                 try
                 {
-                    var json = JObject.Parse(data);
+                    JObject.Parse(data);
                     return true;
                 }
-                catch ()
+                catch
                 {
                     return false;
                 }
