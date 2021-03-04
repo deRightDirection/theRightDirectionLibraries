@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Exception = System.Exception;
 
 namespace theRightDirection
@@ -111,6 +112,29 @@ namespace theRightDirection
                     return true;
                 }
                 catch (Exception e)
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// checks if the data is Json, it use the dependency Newtonsoft.Json
+        /// </summary>
+        public static bool IsValidJson(this string data)
+        {
+            data = data.Trim();
+            var objectJson = data.StartsWith("{") && data.EndsWith("}");
+            var arrayJson = data.StartsWith("[") && data.EndsWith("]");
+            if (objectJson || arrayJson)
+            {
+                try
+                {
+                    var json = JObject.Parse(data);
+                    return true;
+                }
+                catch ()
                 {
                     return false;
                 }

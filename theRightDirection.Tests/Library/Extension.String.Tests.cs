@@ -13,6 +13,30 @@ namespace theRightDirection.Tests
     public class StringExtensionsTest
     {
         [TestMethod]
+        public void IsValidJson_Is_False1()
+        {
+            string json = "{abc";
+            var result = json.IsValidJson();
+            result.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void IsValidJson_Is_False2()
+        {
+            string json = "[{abc]";
+            var result = json.IsValidJson();
+            result.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void IsValidJson_Is_True2()
+        {
+            string json = "{\"component\":1,\"releaseDate\":\"2020-12-21T00:00:00+01:00\",\"versionNumber\":{\"major\":2021,\"minor\":2,\"build\":0,\"revision\":-1,\"majorRevision\":-1,\"minorRevision\":-1},\"preRelease\":false}";
+            var result = json.IsValidJson();
+            result.Should().BeTrue();
+        }
+
+        [TestMethod]
         public void IsValidJson_Is_True()
         {
             string json = "{\"component\":1,\"releaseDate\":\"2020-12-21T00:00:00+01:00\",\"versionNumber\":{\"major\":2021,\"minor\":2,\"build\":0,\"revision\":-1,\"majorRevision\":-1,\"minorRevision\":-1},\"preRelease\":false}";
@@ -21,12 +45,14 @@ namespace theRightDirection.Tests
         }
     }
 
-    class JsonClass
+    internal class JsonClass
     {
         public JsonClassComponent Component { get; set; }
         public DateTime ReleaseDate { get; set; }
+
         [JsonIgnore]
         public Version VersionNumber { get; set; }
+
         public bool PreRelease { get; set; }
     }
 
