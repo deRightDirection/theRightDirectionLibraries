@@ -5,8 +5,8 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>theRightDirection.WPF.Controls</RootNamespace>
     <AssemblyName>theRightDirection.WPF.Controls</AssemblyName>
-    <AssemblyVersion>2021.0.7733.0</AssemblyVersion>
-    <FileVersion>1.2021.0304.0644</FileVersion>
+    <AssemblyVersion>2021.0.7743.0</AssemblyVersion>
+    <FileVersion>1.2021.0314.1447</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -16,5 +16,4 @@
   <ItemGroup>
     <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
   </ItemGroup>
-
 </Project>
