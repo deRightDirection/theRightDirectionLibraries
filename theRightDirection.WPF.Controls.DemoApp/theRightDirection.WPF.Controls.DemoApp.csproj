@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>2021.0.7733.0</AssemblyVersion>
-    <FileVersion>1.2021.0304.0644</FileVersion>
+    <AssemblyVersion>2021.0.7748.0</AssemblyVersion>
+    <FileVersion>1.2021.0319.1927</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,5 +16,4 @@
     <ProjectReference Include="..\theRightDirection.WPF.Controls.Core\theRightDirection.WPF.Controls.csproj" />
     <ProjectReference Include="..\theRightDirection.WPF.Xaml.Core\theRightDirection.WPF.Xaml.csproj" />
   </ItemGroup>
-
 </Project>

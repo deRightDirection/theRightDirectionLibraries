@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using theRightDirection;
+
 namespace theRightDirection
 {
     public static class EnumHelper
@@ -17,15 +18,21 @@ namespace theRightDirection
         /// <returns>an enum value which belongs to T</returns>
         public static T ParseTextToEnumValue<T>(string value)
         {
-            Object enumValue = Enum.Parse(typeof(T), value);
-            T result = (T)enumValue;
-            return result;
+            try
+            {
+                var enumValue = Enum.Parse(typeof(T), value);
+                T result = (T)enumValue;
+                return result;
+            }
+            catch (ArgumentException e)
+            {
+                throw new EnumHelperException(e.Message);
+            }
         }
 
         /// <summary>
-        /// Parses the text value to enum value which is given by type T
-        /// in case of invalid value, the out parameter will always become the first
-        /// value in the enumeration
+        /// Parses the text value to enum value which is given by type T in case of invalid value,
+        /// the out parameter will always become the first value in the enumeration
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="enumValueAsString">The enum value as string</param>
@@ -38,10 +45,9 @@ namespace theRightDirection
                 value = ParseTextToEnumValue<T>(enumValueAsString);
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                value = default;
-                return false;
+                throw new EnumHelperException(e.Message);
             }
         }
 

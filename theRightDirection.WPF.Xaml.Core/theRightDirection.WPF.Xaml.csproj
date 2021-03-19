@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>theRightDirection.WPF.Xaml</AssemblyName>
     <RootNamespace>theRightDirection.WPF.Xaml</RootNamespace>
-    <AssemblyVersion>2021.0.7733.0</AssemblyVersion>
-    <FileVersion>1.2021.0304.0644</FileVersion>
+    <AssemblyVersion>2021.0.7748.0</AssemblyVersion>
+    <FileVersion>1.2021.0319.1926</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -20,5 +20,4 @@
   <ItemGroup>
     <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
   </ItemGroup>
-
 </Project>

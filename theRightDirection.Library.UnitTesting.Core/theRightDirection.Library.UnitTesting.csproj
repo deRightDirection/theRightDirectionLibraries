@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>2021.0.7733.0</AssemblyVersion>
-    <FileVersion>1.2021.0304.0644</FileVersion>
+    <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
+    <AssemblyVersion>2021.0.7748.0</AssemblyVersion>
+    <FileVersion>1.2021.0319.1935</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -13,6 +13,14 @@
   <ItemGroup>
     <PackageReference Include="AutoFixture" Version="4.15.0" />
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.15.0" />
+    <PackageReference Include="Esri.ArcGISRuntime" Version="100.10.0" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
+  </ItemGroup>
 </Project>
