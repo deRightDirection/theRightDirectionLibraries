@@ -1,22 +1,22 @@
 ﻿using System;
 using System.IO;
-using AutoFixture;
-using AutoFixture.AutoMoq;
 using theRightDirection.Library.UnitTesting.AutoFixture;
 
 namespace theRightDirection.Library.UnitTesting
 {
     public abstract class UnitTestingBase
     {
-        protected Fixture _fixture;
+        // protected Fixture _fixture;
 
         public UnitTestingBase()
         {
+            /*
             _fixture = new Fixture();
             _fixture.Behaviors.Clear();
             _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             _fixture.Customize(new AutoMoqCustomization());
             _fixture.Customize(new XDocumentCustomization());
+            */
         }
 
         /// <summary>

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutoFixture.Kernel;
 
 namespace theRightDirection.Library.UnitTesting.AutoFixture
 {
+    /*
     internal sealed class PropertiesPostprocessor : ISpecimenBuilder
     {
         private readonly ISpecimenBuilder builder;
@@ -25,4 +25,5 @@ namespace theRightDirection.Library.UnitTesting.AutoFixture
             return s;
         }
     }
+    */
 }

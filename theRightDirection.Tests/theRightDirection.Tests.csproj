@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.18362</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>2021.0.7748.0</AssemblyVersion>
+    <AssemblyVersion>2021.0.7751.0</AssemblyVersion>
 
-    <FileVersion>1.2021.0319.1926</FileVersion>
+    <FileVersion>1.2021.0322.0655</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Esri.ArcGISRuntime" Version="100.10.0" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
@@ -24,5 +25,4 @@
   <ItemGroup>
     <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
   </ItemGroup>
-
 </Project>

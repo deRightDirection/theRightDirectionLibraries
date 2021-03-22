@@ -11,7 +11,7 @@ namespace theRightDirection.Library.UnitTesting
     public class EnumHelperTest
     {
         [TestMethod]
-        public void Shapefile()
+        public void Storymap()
         {
             var typeValue = "StoryMap";
             var enumValueIsCorrect = EnumHelper.TryParseTextToEnumValue(typeValue, out PortalItemType result);
