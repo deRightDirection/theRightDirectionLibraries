@@ -17,6 +17,28 @@ namespace theRightDirection
     public static partial class Extensions
     {
         /// <summary>
+        /// remove character at the end of a string which is not a letter or digit
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string RemoveSpecialCharacterAtTheEndFromString(this string input)
+        {
+            StringBuilder sb = new StringBuilder(input.Length);
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (i < input.Length - 1)
+                {
+                    sb.Append(input[i]);
+                }
+                else if (char.IsLetterOrDigit(input[i]))
+                {
+                    sb.Append(input[i]);
+                }
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
         /// check if the string can be a valid e-mailaddress
         /// </summary>
         public static bool IsValidEmail(this string email)
