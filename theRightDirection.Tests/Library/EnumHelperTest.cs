@@ -16,7 +16,16 @@ namespace theRightDirection.Library.UnitTesting
             var typeValue = "StoryMap";
             var enumValueIsCorrect = EnumHelper.TryParseTextToEnumValue(typeValue, out PortalItemType result);
             enumValueIsCorrect.Should().BeFalse();
-            result.Should().Be(PortalItemType.Unknown);
+            result.Should().Be(PortalItemType.ArcGISProAddIn);
+        }
+
+        [TestMethod]
+        public void Storymap_Incorrect()
+        {
+            var typeValue = "StoryMap2";
+            var enumValueIsCorrect = EnumHelper.TryParseTextToEnumValue(typeValue, out PortalItemType result);
+            enumValueIsCorrect.Should().BeFalse();
+            result.Should().Be(PortalItemType.ArcGISProAddIn);
         }
     }
 }

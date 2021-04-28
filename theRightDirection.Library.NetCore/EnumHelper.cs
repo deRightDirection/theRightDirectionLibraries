@@ -21,7 +21,7 @@ namespace theRightDirection
             try
             {
                 var enumValue = Enum.Parse(typeof(T), value);
-                T result = (T)enumValue;
+                var result = (T)enumValue;
                 return result;
             }
             catch (ArgumentException e)
@@ -45,9 +45,10 @@ namespace theRightDirection
                 value = ParseTextToEnumValue<T>(enumValueAsString);
                 return true;
             }
-            catch (Exception e)
+            catch
             {
-                throw new EnumHelperException(e.Message);
+                value = default(T);
+                return false;
             }
         }
 

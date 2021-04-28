@@ -22,7 +22,7 @@ namespace theRightDirection
             using (var memory_stream = new MemoryStream())
             {
                 // Serialize the object into the memory stream.
-                BinaryFormatter formatter = new BinaryFormatter();
+                var formatter = new BinaryFormatter();
                 formatter.Serialize(memory_stream, obj);
 
                 // Rewind the stream and use it to create a new object.
@@ -43,9 +43,9 @@ namespace theRightDirection
             {
                 return;
             }
-            Dictionary<string, PropertyInfo> sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType);
-            Dictionary<string, PropertyInfo> targetProperties = GetProperties(to.GetType(), includePropertiesFromBaseType);
-            IEnumerable<string> commonPropertiesName = sourceProperties.Values.Intersect(targetProperties.Values, new PropertyInfoComparer()).Select(x => x.Name);
+            var sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType);
+            var targetProperties = GetProperties(to.GetType(), includePropertiesFromBaseType);
+            var commonPropertiesName = sourceProperties.Values.Intersect(targetProperties.Values, new PropertyInfoComparer()).Select(x => x.Name);
             foreach (var commonPropertyName in commonPropertiesName)
             {
                 if (excludedProperties != null

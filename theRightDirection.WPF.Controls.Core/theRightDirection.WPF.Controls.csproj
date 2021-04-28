@@ -5,8 +5,8 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>theRightDirection.WPF.Controls</RootNamespace>
     <AssemblyName>theRightDirection.WPF.Controls</AssemblyName>
-    <AssemblyVersion>2021.0.7748.0</AssemblyVersion>
-    <FileVersion>1.2021.0319.1927</FileVersion>
+    <AssemblyVersion>2021.0.7784.0</AssemblyVersion>
+    <FileVersion>1.2021.0424.1946</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
