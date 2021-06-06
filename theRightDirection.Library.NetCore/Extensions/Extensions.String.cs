@@ -17,6 +17,27 @@ namespace theRightDirection
     public static partial class Extensions
     {
         /// <summary>
+        /// split a string at the captital letters and at a space
+        /// </summary>
+        public static string SplitOnCapitalLetters(this string inputString)
+        {
+            if (string.IsNullOrEmpty(inputString))
+            {
+                return string.Empty;
+            }
+            var result = new StringBuilder();
+            foreach (var ch in inputString)
+            {
+                if (char.IsUpper(ch) && result.Length > 0)
+                {
+                    result.Append(' ');
+                }
+                result.Append(ch);
+            }
+            return result.ToString();
+        }
+
+        /// <summary>
         /// remove character at the end of a string which is not a letter or digit
         /// </summary>
         /// <param name="input"></param>

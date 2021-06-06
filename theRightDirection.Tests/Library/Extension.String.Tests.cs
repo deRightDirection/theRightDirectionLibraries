@@ -13,6 +13,42 @@ namespace theRightDirection.Tests
     public class StringExtensionsTest
     {
         [TestMethod]
+        public void SplitAtCapitals_Works_Good()
+        {
+            var text = "MannusAndVerena";
+            var result = text.SplitOnCapitalLetters();
+            result.Should().Be("Mannus And Verena");
+        }
+        [TestMethod]
+        public void SplitAtCapitals_Works_Not_On_A_String_With_No_Capitals()
+        {
+            var text = "mannusandverena";
+            var result = text.SplitOnCapitalLetters();
+            result.Should().Be("mannusandverena");
+        }
+        [TestMethod]
+        public void SplitAtCapitals_Works_Not_On_A_String_With_Only_Capital_At_The_Beginning()
+        {
+            var text = "Mannusandverena";
+            var result = text.SplitOnCapitalLetters();
+            result.Should().Be("Mannusandverena");
+        }
+        [TestMethod]
+        public void SplitAtCapitals_Works_Not_On_A_Empty_String()
+        {
+            var text = "";
+            var result = text.SplitOnCapitalLetters();
+            result.Should().Be("");
+        }
+        [TestMethod]
+        public void SplitAtCapitals_Works_Not_On_A_Null_String()
+        {
+            string text = null;
+            var result = text.SplitOnCapitalLetters();
+            result.Should().Be("");
+        }
+
+        [TestMethod]
         public void IsValidJson_Is_False1()
         {
             string json = "{abc";
