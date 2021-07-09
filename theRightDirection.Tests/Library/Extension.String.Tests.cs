@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -12,6 +14,19 @@ namespace theRightDirection.Tests
     [TestClass]
     public class StringExtensionsTest
     {
+        [TestMethod]
+        public void Null_To_UnSecureString()
+        {
+            var x = new SecureStringProperty();
+            x.Name2.Should().BeNullOrEmpty();
+        }
+        [TestMethod]
+        public void Null_To_SecureString()
+        {
+            var x = new SecureStringProperty();
+            x.Name = null;
+            x.Name.Should().BeNullOrEmpty();
+        }
         [TestMethod]
         public void SplitAtCapitals_Works_Good()
         {
@@ -103,5 +118,19 @@ namespace theRightDirection.Tests
         /// WPF-desktop applicatie
         /// </summary>
         Desktop
+    }
+
+    public class SecureStringProperty
+    {
+        private SecureString _name, _name2;
+        public string Name
+        {
+            get => _name.ToUnsecureString();
+            set => _name = value.ToSecureString(false,true);
+        }
+        public string Name2
+        {
+            get => _name2.ToUnsecureString(false,true);
+        }
     }
 }

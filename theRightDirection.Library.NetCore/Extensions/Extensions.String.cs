@@ -246,10 +246,20 @@ namespace theRightDirection
             return (Regex.IsMatch(filename, sPattern, RegexOptions.CultureInvariant));
         }
 
-        public static string ToUnsecureString(this SecureString secureString)
+        /// <summary>
+        /// <param name="throwExceptionWhenNull">throw argumentnull-exception when unsecurestring is null</param>
+        /// <param name="convertNullToEmptyString">in case you want to be sure that null-values not breaking your code, they can be switch to string empty</param>
+        /// </summary>
+        public static string ToUnsecureString(this SecureString secureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
         {
-            if (secureString == null) throw new ArgumentNullException("secureString");
-
+            if (secureString == null && throwExceptionWhenNull)
+            {
+                throw new ArgumentNullException("secureString");
+            }
+            if (convertNullToEmptyString && secureString == null)
+            {
+                return null;
+            }
             var unmanagedString = IntPtr.Zero;
             try
             {
@@ -336,10 +346,20 @@ namespace theRightDirection
         /// <summary>
         /// convert a string into secure string so the value of the string can't be read in the
         /// memory while the program is running
+        /// <param name="throwExceptionWhenNull">throw argumentnull-exception when unsecurestring is null</param>
+        /// <param name="convertNullToEmptyString">in case you want to be sure that null-values not breaking your code, they can be switch to string empty</param>
         /// </summary>
-        public static SecureString ToSecureString(this string unsecureString)
+        public static SecureString ToSecureString(this string unsecureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
         {
-            if (unsecureString == null) throw new ArgumentNullException("unsecureString");
+            if (unsecureString == null && throwExceptionWhenNull)
+            {
+                throw new ArgumentNullException("unsecureString");
+            }
+
+            if (unsecureString == null && convertNullToEmptyString)
+            {
+                unsecureString = string.Empty;
+            }
             return unsecureString.Aggregate(new SecureString(), AppendChar, MakeReadOnly);
         }
 

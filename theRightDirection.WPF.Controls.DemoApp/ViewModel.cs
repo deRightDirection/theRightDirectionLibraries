@@ -10,7 +10,7 @@ namespace theRightDirection.WPF.Controls.DemoApp
 {
     internal class ViewModel : MvxViewModel
     {
-        private Model _someModel;
+        private Model _someModel, _someModel2;
 
         public MvxCommand ChangeStringPropertyCommand { get; }
 
@@ -42,6 +42,11 @@ namespace theRightDirection.WPF.Controls.DemoApp
         {
             get => _someModel;
             set => SetProperty(ref _someModel, value);
+        }
+        public Model SomeModel2
+        {
+            get => _someModel2;
+            set => SetProperty(ref _someModel2, value);
         }
     }
 }

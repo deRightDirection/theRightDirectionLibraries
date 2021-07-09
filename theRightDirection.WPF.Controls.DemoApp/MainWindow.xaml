@@ -13,9 +13,12 @@
         <converters1:StringIsNotNullOrEmptyToVisibilityConverter x:Key="VisibilityConverter2" />
     </Window.Resources>
     <StackPanel Margin="50 50 50 50">
+        <!--
         <tRDControls:HyperlinkLabel Url="https://www.mannus.nl" Title="mannus" />
         <TextBlock Visibility="{Binding SomeModel.BooleanProperty, Converter={StaticResource VisibilityConverter}}" Text="Visible!" />
         <TextBlock Visibility="{Binding SomeModel.StringProperty, Converter={StaticResource VisibilityConverter2}}" Text="Visible!" />
         <Button Content="change string property" Command="{Binding ChangeStringPropertyCommand}" />
+        -->
+        <TextBlock Visibility="{Binding SomeModel2.BooleanProperty, Converter={StaticResource VisibilityConverter}}" Text="Visible even with SomeModel2 is null!" />
     </StackPanel>
 </Window>
