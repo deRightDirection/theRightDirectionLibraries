@@ -15,6 +15,13 @@ namespace theRightDirection.Tests
     public class StringExtensionsTest
     {
         [TestMethod]
+        public void EnterpriseUrl_Is_AlphaNumeric_And_Special_Character()
+        {
+            char[] chars2 = { ':' };
+            var url = "trdgis.svwxb2emmfbudlqtj25tgxyjla.frax.internal.cloudapp.net:7443";
+            url.IsAlphaNumeric(chars2).Should().BeTrue();
+        }
+        [TestMethod]
         public void Null_To_UnSecureString()
         {
             var x = new SecureStringProperty();
