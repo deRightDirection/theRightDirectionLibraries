@@ -177,7 +177,7 @@ namespace theRightDirection
                     JObject.Parse(data);
                     return true;
                 }
-                catch
+                catch(Exception e)
                 {
                     return false;
                 }

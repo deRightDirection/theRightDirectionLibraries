@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,17 +34,23 @@ namespace theRightDirection
 
         public static List<string> ListProperties(this object from, bool includePropertiesFromBaseType = false)
         {
-            Dictionary<string, PropertyInfo> sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType);
+            var sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType);
             return sourceProperties.Keys.ToList();
         }
 
-        public static void CopyProperties(this object from, object to, bool includePropertiesFromBaseType = false, string[] excludedProperties = null)
+        /// <summary>
+        /// copy the values of matching properties between two objects, they don't need to be the same types, only the properties do need to have the same type and name
+        /// </summary>
+        /// <param name="includePropertiesFromBaseType">include the properties van base-objects</param>
+        /// <param name="excludedProperties">a list of property names which needs to be excluded</param>
+        /// <param name="skipListOrArrayProperties">properties of type list or array will be skipped</param>
+        public static void CopyProperties(this object from, object to, bool includePropertiesFromBaseType = false, bool skipListOrArrayProperties = false, string[] excludedProperties = null)
         {
             if (to == null)
             {
                 return;
             }
-            var sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType);
+            var sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType, skipListOrArrayProperties);
             var targetProperties = GetProperties(to.GetType(), includePropertiesFromBaseType);
             var commonPropertiesName = sourceProperties.Values.Intersect(targetProperties.Values, new PropertyInfoComparer()).Select(x => x.Name);
             foreach (var commonPropertyName in commonPropertiesName)
@@ -103,12 +110,12 @@ namespace theRightDirection
             return attribute != null;
         }
 
-        private static Dictionary<string, PropertyInfo> GetProperties(Type type, bool recursive)
+        private static Dictionary<string, PropertyInfo> GetProperties(Type type, bool recursive, bool skipListOrArrayProperties = false)
         {
             if (recursive)
             {
                 Dictionary<string, PropertyInfo> properties = new Dictionary<string, PropertyInfo>();
-                var retrievedProperties = GetProperties(type);
+                var retrievedProperties = GetProperties(type, skipListOrArrayProperties);
                 foreach (var retrievedProperty in retrievedProperties)
                 {
                     properties.Add(retrievedProperty.Key, retrievedProperty.Value);
@@ -117,7 +124,7 @@ namespace theRightDirection
                 while (typeInfo.BaseType != null)
                 {
                     var baseType = typeInfo.BaseType;
-                    retrievedProperties = GetProperties(baseType);
+                    retrievedProperties = GetProperties(baseType, skipListOrArrayProperties);
                     foreach (var retrievedProperty in retrievedProperties)
                     {
                         if (!properties.ContainsKey(retrievedProperty.Key))
@@ -129,18 +136,28 @@ namespace theRightDirection
                 }
                 return properties;
             }
-            return GetProperties(type);
+            return GetProperties(type, skipListOrArrayProperties);
         }
 
-        private static Dictionary<string, PropertyInfo> GetProperties(Type type)
+        private static Dictionary<string, PropertyInfo> GetProperties(Type type, bool skipListOrArrayProperties = false)
         {
             var typeInfo = type.GetTypeInfo();
             Dictionary<string, PropertyInfo> properties = new Dictionary<string, PropertyInfo>();
             foreach (var property in typeInfo.DeclaredProperties)
             {
+                if (skipListOrArrayProperties && property.IsPropertyACollection())
+                {
+                    continue;
+                }
                 properties.Add(property.Name, property);
             }
             return properties;
+        }
+
+        public static bool IsPropertyACollection(this PropertyInfo property)
+        {
+            return typeof(string) != property.PropertyType &&
+                   typeof(IEnumerable).IsAssignableFrom(property.PropertyType);
         }
     }
 }
