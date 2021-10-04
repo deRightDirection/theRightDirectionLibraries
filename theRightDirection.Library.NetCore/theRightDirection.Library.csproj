@@ -5,7 +5,7 @@
     <AssemblyName>theRightDirection.Library</AssemblyName>
     <RootNamespace>theRightDirection</RootNamespace>
     <AssemblyVersion>2021.0.7946.0</AssemblyVersion>
-    <FileVersion>1.2021.7946.0646</FileVersion>
+    <FileVersion>1.2021.7946.0716</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

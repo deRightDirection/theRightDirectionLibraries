@@ -51,7 +51,7 @@ namespace theRightDirection
                 return;
             }
             var sourceProperties = GetProperties(from.GetType(), includePropertiesFromBaseType, skipListOrArrayProperties);
-            var targetProperties = GetProperties(to.GetType(), includePropertiesFromBaseType);
+            var targetProperties = GetProperties(to.GetType(), includePropertiesFromBaseType, skipListOrArrayProperties);
             var commonPropertiesName = sourceProperties.Values.Intersect(targetProperties.Values, new PropertyInfoComparer()).Select(x => x.Name);
             foreach (var commonPropertyName in commonPropertiesName)
             {

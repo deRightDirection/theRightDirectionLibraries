@@ -15,12 +15,37 @@ namespace theRightDirection.Tests.Library
         public class TypeA
         {
             public string Id { get; set; }
+            public int Count { get; set; }
             public List<string> Names { get; set; }
         }
         public class TypeB
         {
             public string Id { get; set; }
             public List<string> Names { get; set; }
+        }
+
+        public class TypeC : BaseTypeOfC
+        {
+            public string Id { get; set; }
+        }
+
+        public class BaseTypeOfC
+        {
+            public int Count { get; set; }
+        }
+        [TestMethod]
+        public void CopyAllPropertiesIncludingBaseTypeProperties()
+        {
+            var a = new TypeA()
+            {
+                Id = "1",
+                Count = 10,
+                Names = new List<string>() { "abc", "def" }
+            };
+            var c = new TypeC();
+            a.CopyProperties(c,true,true);
+            c.Id.Should().Be("1");
+            c.Count.Should().Be(10);
         }
 
         [TestMethod]
