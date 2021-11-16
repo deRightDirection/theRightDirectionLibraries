@@ -4,8 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>theRightDirection.Library</AssemblyName>
     <RootNamespace>theRightDirection</RootNamespace>
-    <AssemblyVersion>2021.0.7970.0</AssemblyVersion>
-    <FileVersion>1.2021.7970.1847</FileVersion>
+    <AssemblyVersion>2021.0.7990.0</AssemblyVersion>
+    <FileVersion>1.2021.7990.1956</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

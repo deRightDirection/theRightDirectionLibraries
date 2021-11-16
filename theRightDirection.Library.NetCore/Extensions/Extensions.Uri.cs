@@ -11,6 +11,28 @@ namespace theRightDirection
     public static partial class Extensions
     {
         /// <summary>
+        /// check if two URI's are equal, only applies to absolute uri's
+        /// </summary>
+        public static bool IsEqual(this Uri uri, Uri otherUri)
+        {
+            if (!uri.IsAbsoluteUri || !otherUri.IsAbsoluteUri)
+            {
+                return false;
+            }
+            var uri1 = uri.AbsoluteUri.ToLowerInvariant();
+            var uri2 = otherUri.AbsoluteUri.ToLowerInvariant();
+            if (uri1.EndsWith("/"))
+            {
+                uri1 = uri1.RemoveSpecialCharacterAtTheEndFromString();
+            }
+            if (uri2.EndsWith("/"))
+            {
+                uri2 = uri1.RemoveSpecialCharacterAtTheEndFromString();
+            }
+            return uri1.Equals(uri2, StringComparison.Ordinal);
+        }
+
+        /// <summary>
         /// open the uri in a new browser by process.start-call
         /// </summary>
         /// <param name="uri"></param>
