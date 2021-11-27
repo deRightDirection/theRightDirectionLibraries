@@ -55,6 +55,7 @@
     <Compile Include="Comparers\PropertyInfoComparer.cs" />
     <Compile Include="Configuration\ConfigurationElementBase.cs" />
     <Compile Include="Configuration\GenericConfigurationElementCollection.cs" />
+    <Compile Include="Enumerations\TitleCase.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="Extensions\Extensions.Dispatcher.cs" />
     <Compile Include="Extensions\Extensions.Exception.cs" />
@@ -92,5 +93,6 @@
       <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -81,6 +81,7 @@
     <Compile Include="AutoFixture\PropertiesPostprocessor.cs" />
     <Compile Include="AutoFixture\XDocumentCustomization.cs" />
     <Compile Include="Extensions\AssemblyExtension.cs" />
+    <Compile Include="Extensions\StringExtention.cs" />
     <Compile Include="MockBuilder.cs" />
     <Compile Include="Moq\MoqExtensions.cs" />
     <Compile Include="PowerShellExecuter.cs" />
