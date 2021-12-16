@@ -7,6 +7,13 @@
     <AssemblyName>theRightDirection.WPF.Controls</AssemblyName>
     <AssemblyVersion>2021.0.7990.0</AssemblyVersion>
     <FileVersion>1.2021.7990.1956</FileVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>6.0.0</Version>
+    <Company>the Right Direction</Company>
+    <Copyright>the Right Direction BV</Copyright>
+    <PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
+    <RepositoryUrl>https://www.therightdirection.nl</RepositoryUrl>
+    <PackageIcon>tRD-icon-v-400.jpg</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -14,6 +21,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
+    <None Include="..\..\..\Users\info\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="theRightDirection.Library" Version="6.0.0" />
   </ItemGroup>
 </Project>
