@@ -114,66 +114,68 @@ namespace theRightDirection
             return (Regex.IsMatch(email, sPattern, RegexOptions.CultureInvariant));
         }
 
-        // This constant string is used as a "salt" value for the PasswordDeriveBytes function
-        // calls. This size of the IV (in bytes) must = (keysize / 8). Default keysize is 256, so
-        // the IV must be 32 bytes long. Using a 16 character string here gives us 32 bytes when
-        // converted to a byte array.
-        private static readonly byte[] initVectorBytes = Encoding.ASCII.GetBytes(">8.EP,+rEft,)+tm");
-
-        // This constant is used to determine the keysize of the encryption algorithm.
-        private const int keysize = 256;
+        /// <summary>
+        /// convert the passphrase to a 32 byte string
+        /// </summary>
+        public static byte[] ConvertToKey(this string passPhrase)
+        {
+            var length = 32;
+            var bytes = new byte[length];
+            int len = passPhrase.Length > length ? length : passPhrase.Length;
+            Encoding.UTF8.GetBytes(passPhrase.Substring(0, len)).CopyTo(bytes, 0);
+            return bytes;
+        }
 
         /// <summary>
         /// encrypt a text
         /// </summary>
         public static string Encrypt(this string plainText, string passPhrase)
         {
-            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+            using (var aesAlg = Aes.Create())
             {
-                byte[] keyBytes = password.GetBytes(keysize / 8);
-                using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                using (var encryptor = aesAlg.CreateEncryptor(passPhrase.ConvertToKey(), aesAlg.IV))
                 {
-                    symmetricKey.Mode = CipherMode.CBC;
-                    using (ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes))
+                    using (var msEncrypt = new MemoryStream())
                     {
-                        using (MemoryStream memoryStream = new MemoryStream())
+                        using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                        using (var swEncrypt = new StreamWriter(csEncrypt))
                         {
-                            using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
-                            {
-                                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-                                cryptoStream.FlushFinalBlock();
-                                byte[] cipherTextBytes = memoryStream.ToArray();
-                                return Convert.ToBase64String(cipherTextBytes);
-                            }
+                            swEncrypt.Write(plainText);
                         }
+                        var iv = aesAlg.IV;
+                        var decryptedContent = msEncrypt.ToArray();
+                        var result = new byte[iv.Length + decryptedContent.Length];
+                        Buffer.BlockCopy(iv, 0, result, 0, iv.Length);
+                        Buffer.BlockCopy(decryptedContent, 0, result, iv.Length, decryptedContent.Length);
+                        return Convert.ToBase64String(result);
                     }
                 }
             }
-        }        /// <summary>
+        }
 
-                 /// decrypt a string </summary>
         public static string Decrypt(this string cipherText, string passPhrase)
         {
-            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
-            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+            var fullCipher = Convert.FromBase64String(cipherText);
+            var iv = new byte[16];
+            var cipher = new byte[fullCipher.Length - iv.Length];
+            Buffer.BlockCopy(fullCipher, 0, iv, 0, iv.Length);
+            Buffer.BlockCopy(fullCipher, iv.Length, cipher, 0, cipher.Length);
+            using (var aesAlg = Aes.Create())
             {
-                byte[] keyBytes = password.GetBytes(keysize / 8);
-                using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                using (var decryptor = aesAlg.CreateDecryptor(passPhrase.ConvertToKey(), iv))
                 {
-                    symmetricKey.Mode = CipherMode.CBC;
-                    using (ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes))
+                    string result;
+                    using (var msDecrypt = new MemoryStream(cipher))
                     {
-                        using (MemoryStream memoryStream = new MemoryStream(cipherTextBytes))
+                        using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                         {
-                            using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                            using (var srDecrypt = new StreamReader(csDecrypt))
                             {
-                                byte[] plainTextBytes = new byte[cipherTextBytes.Length];
-                                int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
-                                return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+                                result = srDecrypt.ReadToEnd();
                             }
                         }
                     }
+                    return result;
                 }
             }
         }

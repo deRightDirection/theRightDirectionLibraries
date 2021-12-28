@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29025.244
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theRightDirection.WPF.Xaml", "theRightDirection.WPF.Xaml\theRightDirection.WPF.Xaml.csproj", "{637D2BA7-F38B-49B3-BE33-66C875F9B9B8}"
 EndProject
@@ -45,7 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.WPF.Contr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.Tests", "theRightDirection.Tests\theRightDirection.Tests.csproj", "{F4AF2EBE-4208-4708-97CE-47D3AE972873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theRightDirection.Library.UnitTesting", "theRightDirection.Library.UnitTesting.Core\theRightDirection.Library.UnitTesting.csproj", "{330877E5-6009-4A1D-82A7-8F64BE5E26E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.Library.UnitTesting", "theRightDirection.Library.UnitTesting.Core\theRightDirection.Library.UnitTesting.csproj", "{330877E5-6009-4A1D-82A7-8F64BE5E26E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theRightDirection.Library.UnitTests", "theRightDirection.Library.UnitTests\theRightDirection.Library.UnitTests.csproj", "{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -359,6 +361,26 @@ Global
 		{330877E5-6009-4A1D-82A7-8F64BE5E26E5}.Release|x64.Build.0 = Release|Any CPU
 		{330877E5-6009-4A1D-82A7-8F64BE5E26E5}.Release|x86.ActiveCfg = Release|Any CPU
 		{330877E5-6009-4A1D-82A7-8F64BE5E26E5}.Release|x86.Build.0 = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|ARM.Build.0 = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|x64.Build.0 = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Debug|x86.Build.0 = Debug|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|ARM.Build.0 = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|ARM64.Build.0 = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|x64.ActiveCfg = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|x64.Build.0 = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|x86.ActiveCfg = Release|Any CPU
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -379,6 +401,7 @@ Global
 		{5AEA9300-BBCD-4DF7-AD1C-27BE11336E3F} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
 		{F4AF2EBE-4208-4708-97CE-47D3AE972873} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
 		{330877E5-6009-4A1D-82A7-8F64BE5E26E5} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
+		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04EA9CF6-E14B-4C9A-9FCA-3FE4253D123A}
