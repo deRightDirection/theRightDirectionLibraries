@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -10,7 +9,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Exception = System.Exception;
 
 namespace theRightDirection
 {
@@ -131,52 +129,36 @@ namespace theRightDirection
         /// </summary>
         public static string Encrypt(this string plainText, string passPhrase)
         {
-            using (var aesAlg = Aes.Create())
+            if (string.IsNullOrEmpty(plainText))
             {
-                using (var encryptor = aesAlg.CreateEncryptor(passPhrase.ConvertToKey(), aesAlg.IV))
-                {
-                    using (var msEncrypt = new MemoryStream())
-                    {
-                        using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                        using (var swEncrypt = new StreamWriter(csEncrypt))
-                        {
-                            swEncrypt.Write(plainText);
-                        }
-                        var iv = aesAlg.IV;
-                        var decryptedContent = msEncrypt.ToArray();
-                        var result = new byte[iv.Length + decryptedContent.Length];
-                        Buffer.BlockCopy(iv, 0, result, 0, iv.Length);
-                        Buffer.BlockCopy(decryptedContent, 0, result, iv.Length, decryptedContent.Length);
-                        return Convert.ToBase64String(result);
-                    }
-                }
+                return null;
             }
+            var entropy = Encoding.Unicode.GetBytes(passPhrase);
+        var encryptedData = ProtectedData.Protect(
+                Encoding.Unicode.GetBytes(plainText),
+                entropy,
+                DataProtectionScope.CurrentUser);
+            return Convert.ToBase64String(encryptedData);
         }
 
         public static string Decrypt(this string cipherText, string passPhrase)
         {
-            var fullCipher = Convert.FromBase64String(cipherText);
-            var iv = new byte[16];
-            var cipher = new byte[fullCipher.Length - iv.Length];
-            Buffer.BlockCopy(fullCipher, 0, iv, 0, iv.Length);
-            Buffer.BlockCopy(fullCipher, iv.Length, cipher, 0, cipher.Length);
-            using (var aesAlg = Aes.Create())
+            if (string.IsNullOrEmpty(cipherText))
             {
-                using (var decryptor = aesAlg.CreateDecryptor(passPhrase.ConvertToKey(), iv))
-                {
-                    string result;
-                    using (var msDecrypt = new MemoryStream(cipher))
-                    {
-                        using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                        {
-                            using (var srDecrypt = new StreamReader(csDecrypt))
-                            {
-                                result = srDecrypt.ReadToEnd();
-                            }
-                        }
-                    }
-                    return result;
-                }
+                return null;
+            }
+            var entropy = Encoding.Unicode.GetBytes(passPhrase);
+            try
+            {
+                var decryptedData = ProtectedData.Unprotect(
+                    Convert.FromBase64String(cipherText),
+                    entropy,
+                    DataProtectionScope.CurrentUser);
+                return Encoding.Unicode.GetString(decryptedData);
+            }
+            catch
+            {
+                return string.Empty;
             }
         }
 
