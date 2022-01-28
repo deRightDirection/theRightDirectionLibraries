@@ -4,13 +4,13 @@ using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following set of attributes.
 // Change these attribute values to modify the information associated with an assembly.
-[assembly: AssemblyTitle("theRightDirection Library")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("the Right Direction Library .NET Framework")]
+[assembly: AssemblyDescription("the Right Direction library for the dotnet framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("the Right Direction BV")]
 [assembly: AssemblyProduct("theRightDirection Library")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyTrademark("the Right Direction BV")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible to COM components. If
@@ -26,5 +26,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers by using the '*'
 // as shown below: [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2021.0.8001.0")]
-[assembly: AssemblyFileVersion("1.2021.8001.1410")]
+[assembly: AssemblyVersion("4.8.0.0")]
+[assembly: AssemblyFileVersion("4.8.0.0")]
