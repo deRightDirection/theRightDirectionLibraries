@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>theRightDirection.WPF.Xaml</AssemblyName>
     <RootNamespace>theRightDirection.WPF.Xaml</RootNamespace>
@@ -29,6 +29,5 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="theRightDirection.Library" Version="6.0.0" />
   </ItemGroup>
 </Project>

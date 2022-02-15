@@ -14,6 +14,8 @@ namespace theRightDirection
 {
     public static partial class Extensions
     {
+        private static readonly byte[] initVectorBytes = Encoding.ASCII.GetBytes(">8.EP,+rEft,)+tm");
+        private const int keysize = 256;
         public static string ToBase64(this string text)
         {
             return ToBase64(text, Encoding.UTF8);
@@ -129,36 +131,54 @@ namespace theRightDirection
         /// </summary>
         public static string Encrypt(this string plainText, string passPhrase)
         {
-            if (string.IsNullOrEmpty(plainText))
+            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
             {
-                return null;
+                byte[] keyBytes = password.GetBytes(keysize / 8);
+                using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                {
+                    symmetricKey.Mode = CipherMode.CBC;
+                    using (ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes))
+                    {
+                        using (MemoryStream memoryStream = new MemoryStream())
+                        {
+                            using (CryptoStream cryptoStream =
+                                   new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                            {
+                                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                                cryptoStream.FlushFinalBlock();
+                                byte[] cipherTextBytes = memoryStream.ToArray();
+                                return Convert.ToBase64String(cipherTextBytes);
+                            }
+                        }
+                    }
+                }
             }
-            var entropy = Encoding.Unicode.GetBytes(passPhrase);
-        var encryptedData = ProtectedData.Protect(
-                Encoding.Unicode.GetBytes(plainText),
-                entropy,
-                DataProtectionScope.CurrentUser);
-            return Convert.ToBase64String(encryptedData);
         }
 
         public static string Decrypt(this string cipherText, string passPhrase)
         {
-            if (string.IsNullOrEmpty(cipherText))
+            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
+            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
             {
-                return null;
-            }
-            var entropy = Encoding.Unicode.GetBytes(passPhrase);
-            try
-            {
-                var decryptedData = ProtectedData.Unprotect(
-                    Convert.FromBase64String(cipherText),
-                    entropy,
-                    DataProtectionScope.CurrentUser);
-                return Encoding.Unicode.GetString(decryptedData);
-            }
-            catch
-            {
-                return string.Empty;
+                byte[] keyBytes = password.GetBytes(keysize / 8);
+                using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                {
+                    symmetricKey.Mode = CipherMode.CBC;
+                    using (ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes))
+                    {
+                        using (MemoryStream memoryStream = new MemoryStream(cipherTextBytes))
+                        {
+                            using (CryptoStream cryptoStream =
+                                   new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                            {
+                                byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+                                int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                                return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+                            }
+                        }
+                    }
+                }
             }
         }
 
