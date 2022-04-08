@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
     <AssemblyName>theRightDirection.Library</AssemblyName>
     <RootNamespace>theRightDirection</RootNamespace>
     <AssemblyVersion>2021.0.7990.0</AssemblyVersion>
@@ -14,6 +14,7 @@
     <ApplicationIcon>tRD-icon-v-400.ico</ApplicationIcon>
     <Company>the Right Direction BV</Company>
     <RepositoryUrl>https://www.therightdirection.nl</RepositoryUrl>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\Users\info\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
+    <None Include="..\..\..\Users\MannusEtten\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
