@@ -180,7 +180,7 @@ namespace theRightDirection
                     JsonConvert.DeserializeObject<T>(data);
                     return true;
                 }
-                catch (Exception e)
+                catch
                 {
                     return false;
                 }
@@ -203,7 +203,7 @@ namespace theRightDirection
                     JObject.Parse(data);
                     return true;
                 }
-                catch(Exception e)
+                catch
                 {
                     return false;
                 }
@@ -276,7 +276,8 @@ namespace theRightDirection
         /// <param name="throwExceptionWhenNull">throw argumentnull-exception when unsecurestring is null</param>
         /// <param name="convertNullToEmptyString">in case you want to be sure that null-values not breaking your code, they can be switch to string empty</param>
         /// </summary>
-        public static string ToUnsecureString(this SecureString secureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
+        [Obsolete("27-04-2022: new implementation available, this one renamed to ToUnSecureString_Obsolete")]
+        public static string ToUnsecureString_Obsolete(this SecureString secureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
         {
             if (secureString == null && throwExceptionWhenNull)
             {
@@ -375,7 +376,8 @@ namespace theRightDirection
         /// <param name="throwExceptionWhenNull">throw argumentnull-exception when unsecurestring is null</param>
         /// <param name="convertNullToEmptyString">in case you want to be sure that null-values not breaking your code, they can be switch to string empty</param>
         /// </summary>
-        public static SecureString ToSecureString(this string unsecureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
+        [Obsolete("27-04-2022: new implementation available, this one renamed to ToSecureString_Obsolete")]
+        public static SecureString ToSecureString_Obsolete(this string unsecureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
         {
             if (unsecureString == null && throwExceptionWhenNull)
             {
