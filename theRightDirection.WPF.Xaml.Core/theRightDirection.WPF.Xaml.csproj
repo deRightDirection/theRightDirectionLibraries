@@ -8,7 +8,7 @@
     <AssemblyVersion>2021.0.7990.0</AssemblyVersion>
     <FileVersion>1.2021.7990.1956</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>6.0.0</Version>
+    <Version>6.1.0</Version>
     <Company>the Right Direction</Company>
     <Copyright>the Right Direction</Copyright>
     <PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\Users\info\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
+    <None Include="..\..\..\Users\MannusEtten\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

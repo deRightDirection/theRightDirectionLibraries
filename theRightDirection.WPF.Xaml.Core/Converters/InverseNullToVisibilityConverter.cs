@@ -18,6 +18,15 @@ namespace theRightDirection.WPF.Xaml.Converters
             {
                 visibilityState = (Visibility)parameter;
             }
+
+            if (CheckIfStringIsEmpty)
+            {
+                var valueAsString = value as string;
+                if (string.IsNullOrEmpty(valueAsString))
+                {
+                    return visibilityState;
+                }
+            }
             return value != null ? Visibility.Visible : visibilityState;
         }
 
@@ -25,5 +34,9 @@ namespace theRightDirection.WPF.Xaml.Converters
         {
             return DependencyProperty.UnsetValue;
         }
+        /// <summary>
+        /// indien deze waarde True is dan wordt de waarde niet alleen gecheckt of het null is, maar ook of het string.empty is
+        /// </summary>
+        public bool CheckIfStringIsEmpty { get; set; }
     }
 }
