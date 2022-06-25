@@ -41,7 +41,7 @@ namespace theRightDirection.Tests
         [TestMethod]
         public void EnterpriseUrl_Is_AlphaNumeric_And_Special_Character()
         {
-            char[] chars2 = { ':' };
+            char[] chars2 = { ':', '.' };
             var url = "trdgis.svwxb2emmfbudlqtj25tgxyjla.frax.internal.cloudapp.net:7443";
             url.IsAlphaNumeric(chars2).Should().BeTrue();
         }

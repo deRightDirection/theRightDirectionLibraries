@@ -1,28 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-windows10.0.18362.0</TargetFramework>
+	<TargetFramework>net6.0-windows10.0.18362.0</TargetFramework>
 
-    <IsPackable>false</IsPackable>
+	<IsPackable>false</IsPackable>
 
-    <AssemblyVersion>2021.0.7990.0</AssemblyVersion>
+	<AssemblyVersion>2022.0.2506.611</AssemblyVersion>
 
-    <FileVersion>1.2021.7990.1956</FileVersion>
+	<FileVersion>2022.0.2506.611</FileVersion>
+
+	<Version>2022.0.2506.611</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Esri.ArcGISRuntime" Version="100.13.0" />
-    <PackageReference Include="FluentAssertions" Version="6.2.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
-    <PackageReference Include="coverlet.collector" Version="3.1.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+	  <PackageReference Include="Esri.ArcGISRuntime" Version="100.14.1" />
+	  <PackageReference Include="FluentAssertions" Version="6.7.0" />
+	<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+	<PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+	<PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+	<PackageReference Include="coverlet.collector" Version="3.1.2">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
+	<ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
   </ItemGroup>
 </Project>

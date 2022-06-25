@@ -58,7 +58,7 @@ namespace theRightDirection
                 if (excludedProperties != null
                   && excludedProperties.Contains(commonPropertyName))
                     continue;
-                var hasExcludeAttribute = FindAttribute(targetProperties[commonPropertyName]);
+                var hasExcludeAttribute = FindAttribute<ExcludeFromCopyPropertyAttribute>(targetProperties[commonPropertyName]);
                 if (!hasExcludeAttribute)
                 {
                     var value = sourceProperties[commonPropertyName].GetValue(from, null);
@@ -104,9 +104,14 @@ namespace theRightDirection
             return inspect.GetType().GetTypeInfo().DeclaredProperties.Select(o => o.GetValue(inspect)).GetListHashCode();
         }
 
-        private static bool FindAttribute(PropertyInfo commonProperty)
+        /// <summary>
+        /// find the attribute on the property
+        /// </summary>
+        /// <typeparam name="T">the type of attribute to look for</typeparam>
+        /// <returns>true if attribute found</returns>
+        public static bool FindAttribute<T>(PropertyInfo commonProperty) where T:Attribute
         {
-            var attribute = commonProperty.GetCustomAttribute<ExcludeFromCopyPropertyAttribute>();
+            var attribute = commonProperty.GetCustomAttribute<T>();
             return attribute != null;
         }
 
@@ -114,7 +119,7 @@ namespace theRightDirection
         {
             if (recursive)
             {
-                Dictionary<string, PropertyInfo> properties = new Dictionary<string, PropertyInfo>();
+                Dictionary<string, PropertyInfo> properties = new();
                 var retrievedProperties = GetProperties(type, skipListOrArrayProperties);
                 foreach (var retrievedProperty in retrievedProperties)
                 {
@@ -139,7 +144,13 @@ namespace theRightDirection
             return GetProperties(type, skipListOrArrayProperties);
         }
 
-        private static Dictionary<string, PropertyInfo> GetProperties(Type type, bool skipListOrArrayProperties = false)
+        /// <summary>
+        /// find all properties on a type
+        /// </summary>
+        /// <param name="type">the type to look for properties</param>
+        /// <param name="skipListOrArrayProperties">skip array or list properties</param>
+        /// <returns>a dictionary with propertyName and the propertyInfo</returns>
+        public static Dictionary<string, PropertyInfo> GetProperties(Type type, bool skipListOrArrayProperties = false)
         {
             var typeInfo = type.GetTypeInfo();
             Dictionary<string, PropertyInfo> properties = new Dictionary<string, PropertyInfo>();
