@@ -8,7 +8,7 @@
     <AssemblyVersion>2022.0.2506.611</AssemblyVersion>
     <FileVersion>2022.0.2506.611</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>2022.0.2506.611</Version>
+    <Version>6.1.0</Version>
     <Company>the Right Direction</Company>
     <Copyright>the Right Direction BV</Copyright>
     <PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
