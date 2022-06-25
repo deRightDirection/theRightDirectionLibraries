@@ -20,7 +20,7 @@ namespace theRightDirection
         /// <returns></returns>
         public static SecureString ToSecureString(this string value, bool leaveOriginal = false, bool makeReadOnly = true)
         {
-            if(value == null)
+            if(value.IsNullOrEmpty())
             {
                 return new SecureString();
             }
@@ -53,7 +53,7 @@ namespace theRightDirection
         /// <returns>The decrypted String</returns>
         public static string ToUnsecureString(this SecureString value)
         {
-            if(value == null)
+            if(value == null || value.Length == 0)
             {
                 return null;
             }
@@ -86,7 +86,7 @@ namespace theRightDirection
         /// <returns></returns>
         public static bool SecureCompare(this SecureString left, SecureString right)
         {
-            bool result = false;
+            bool result;
 
             //temporarily decrypt both SecureString objects
             string leftValue = ToUnsecureString(left);

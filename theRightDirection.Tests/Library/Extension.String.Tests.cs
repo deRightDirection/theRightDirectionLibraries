@@ -125,6 +125,13 @@ namespace theRightDirection.Tests
             var result = json.IsValidJson<JsonClass>();
             result.Should().BeTrue();
         }
+
+        [TestMethod]
+        public void Empty_String_ToSecureString()
+        {
+            var result = string.Empty.ToSecureString();
+            result.Length.Should().Be(0);
+        }
     }
 
     internal class JsonClass
