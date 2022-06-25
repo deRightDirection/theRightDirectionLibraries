@@ -104,7 +104,12 @@ namespace theRightDirection
             return inspect.GetType().GetTypeInfo().DeclaredProperties.Select(o => o.GetValue(inspect)).GetListHashCode();
         }
 
-        private static bool FindAttribute(PropertyInfo commonProperty)
+        /// <summary>
+        /// find the attribute on the property
+        /// </summary>
+        /// <typeparam name="T">the type of attribute to look for</typeparam>
+        /// <returns>true if attribute found</returns>
+        public static bool FindAttribute<T>(this PropertyInfo commonProperty) where T : Attribute
         {
             var attribute = commonProperty.GetCustomAttribute<ExcludeFromCopyPropertyAttribute>();
             return attribute != null;
