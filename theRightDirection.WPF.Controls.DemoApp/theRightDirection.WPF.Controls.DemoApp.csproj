@@ -4,8 +4,9 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>2021.0.7990.0</AssemblyVersion>
-    <FileVersion>1.2021.7990.1956</FileVersion>
+    <AssemblyVersion>2022.0.2506.611</AssemblyVersion>
+    <FileVersion>2022.0.2506.611</FileVersion>
+    <Version>2022.0.2506.611</Version>
   </PropertyGroup>
 
   <ItemGroup>

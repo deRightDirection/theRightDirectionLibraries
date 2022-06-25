@@ -18,29 +18,29 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
+	<OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="tRD-icon-v-400.ico" />
+	<Content Include="tRD-icon-v-400.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\Users\MannusEtten\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+	<None Include="..\..\..\Users\MannusEtten\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
   </ItemGroup>
 
   <ItemGroup>
 	  <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="6.0.0" />
-    <PackageReference Include="log4net" Version="2.0.13" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	<PackageReference Include="log4net" Version="2.0.14" />
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TimeoutWebClient.cs">
-      <SubType>Component</SubType>
-    </Compile>
+	<Compile Update="TimeoutWebClient.cs">
+	  <SubType>Component</SubType>
+	</Compile>
   </ItemGroup>
 </Project>
