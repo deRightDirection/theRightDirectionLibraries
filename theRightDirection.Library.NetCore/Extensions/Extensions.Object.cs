@@ -109,7 +109,7 @@ namespace theRightDirection
         /// </summary>
         /// <typeparam name="T">the type of attribute to look for</typeparam>
         /// <returns>true if attribute found</returns>
-        public static bool FindAttribute<T>(PropertyInfo commonProperty) where T:Attribute
+        public static bool FindAttribute<T>(this PropertyInfo commonProperty) where T : Attribute
         {
             var attribute = commonProperty.GetCustomAttribute<T>();
             return attribute != null;
