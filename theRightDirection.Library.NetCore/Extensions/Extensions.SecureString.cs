@@ -20,6 +20,10 @@ namespace theRightDirection
         /// <returns></returns>
         public static SecureString ToSecureString(this string value, bool leaveOriginal = false, bool makeReadOnly = true)
         {
+            if(value == null)
+            {
+                return new SecureString();
+            }
             value.CheckNullRef();
             SecureString secureString;
 
@@ -49,6 +53,10 @@ namespace theRightDirection
         /// <returns>The decrypted String</returns>
         public static string ToUnsecureString(this SecureString value)
         {
+            if(value == null)
+            {
+                return null;
+            }
             value.CheckNullRef();
             IntPtr stringPointer = IntPtr.Zero;
             var result = string.Empty;

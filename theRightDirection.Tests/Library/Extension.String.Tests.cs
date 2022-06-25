@@ -161,7 +161,7 @@ namespace theRightDirection.Tests
         }
         public string Name2
         {
-            get => _name2.ToUnsecureString(false,true);
+            get => _name2.ToUnsecureString();
         }
     }
 }
