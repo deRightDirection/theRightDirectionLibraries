@@ -5,6 +5,7 @@ namespace theRightDirection.Library
 {
     public class StringExtensionsTest
     {
+
         [Fact]
         public void Decrypt_Does_Not_Cut_String()
         {
