@@ -7,6 +7,16 @@ namespace theRightDirection.Library
     {
 
         [Fact]
+        public void ToSecureString_Gives_Error()
+        {
+            var code = "skul8NATH.hen1riss";
+            var result = code.ToSecureString();
+            result.Should().NotBeNull();
+            var result2 = result.ToUnsecureString();
+            result2.Should().Be(code);
+        }
+
+        [Fact]
         public void Decrypt_Does_Not_Cut_String()
         {
             var json = "{\"CustomerName\":\"Defensie\",\"CustomerId\":\"fc584745-1347-4579-87d2-56e93ca1d998\",\"Type\":2,\"ExpirationDate\":\"2025-10-24T00:00:00\",\"AnalyzerLicense\":{\"Status\":3,\"NumberOfAllowedPortals\":10},\"OfflineUsage\":false}";

@@ -122,10 +122,6 @@ namespace theRightDirection
                     }
                 }
             }
-            else
-            {
-                throw new Exception("Improper use of SecureClear on a literal or interned object");
-            }
         }
 
         private static void CheckNullRef(this object value)

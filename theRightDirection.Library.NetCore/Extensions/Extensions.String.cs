@@ -321,7 +321,7 @@ namespace theRightDirection
         /// <param name="throwExceptionWhenNull">throw argumentnull-exception when unsecurestring is null</param>
         /// <param name="convertNullToEmptyString">in case you want to be sure that null-values not breaking your code, they can be switch to string empty</param>
         /// </summary>
-        [Obsolete("27-04-2022: new implementation available, this one renamed to ToUnSecureString_Obsolete")]
+        [Obsolete("27-04-2022: new implementation available, this one renamed to ToUnSecureString_Obsolete",true)]
         public static string ToUnsecureString_Obsolete(this SecureString secureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
         {
             if (secureString == null && throwExceptionWhenNull)
@@ -421,7 +421,7 @@ namespace theRightDirection
         /// <param name="throwExceptionWhenNull">throw argumentnull-exception when unsecurestring is null</param>
         /// <param name="convertNullToEmptyString">in case you want to be sure that null-values not breaking your code, they can be switch to string empty</param>
         /// </summary>
-        [Obsolete("27-04-2022: new implementation available, this one renamed to ToSecureString_Obsolete")]
+        [Obsolete("27-04-2022: new implementation available, this one renamed to ToSecureString_Obsolete", true)]
         public static SecureString ToSecureString_Obsolete(this string unsecureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
         {
             if (unsecureString == null && throwExceptionWhenNull)

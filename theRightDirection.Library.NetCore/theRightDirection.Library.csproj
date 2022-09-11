@@ -4,13 +4,13 @@
 	<TargetFrameworks>net6.0</TargetFrameworks>
 	<AssemblyName>theRightDirection.Library</AssemblyName>
 	<RootNamespace>theRightDirection</RootNamespace>
-	<AssemblyVersion>2022.0.2506.611</AssemblyVersion>
-	<FileVersion>2022.0.2506.611</FileVersion>
+	<AssemblyVersion>2022.0.1109.950</AssemblyVersion>
+	<FileVersion>2022.0.1109.950</FileVersion>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<Copyright>the Right Direction BV</Copyright>
 	<PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
 	<PackageIcon>tRD-icon-v-400.jpg</PackageIcon>
-	<Version>6.6.0</Version>
+	<Version>6.6.1</Version>
 	<ApplicationIcon>tRD-icon-v-400.ico</ApplicationIcon>
 	<Company>the Right Direction BV</Company>
 	<RepositoryUrl>https://www.therightdirection.nl</RepositoryUrl>
