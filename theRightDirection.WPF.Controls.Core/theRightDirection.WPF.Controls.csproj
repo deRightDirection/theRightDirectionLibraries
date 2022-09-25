@@ -28,6 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="theRightDirection.Library" Version="6.3.0" />
+    <PackageReference Include="theRightDirection.Library" Version="6.7.0" />
   </ItemGroup>
 </Project>
