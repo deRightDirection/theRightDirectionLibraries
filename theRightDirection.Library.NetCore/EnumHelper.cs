@@ -15,12 +15,13 @@ namespace theRightDirection
         /// </summary>
         /// <typeparam name="T">the type of the enumeration</typeparam>
         /// <param name="value">The value to parse</param>
+        /// <param name="ignoreCase">Ignore casing</param>
         /// <returns>an enum value which belongs to T</returns>
-        public static T ParseTextToEnumValue<T>(string value)
+        public static T ParseTextToEnumValue<T>(string value, bool ignoreCase = true)
         {
             try
             {
-                var enumValue = Enum.Parse(typeof(T), value);
+                var enumValue = Enum.Parse(typeof(T), value, ignoreCase);
                 var result = (T)enumValue;
                 return result;
             }
@@ -37,12 +38,13 @@ namespace theRightDirection
         /// <typeparam name="T"></typeparam>
         /// <param name="enumValueAsString">The enum value as string</param>
         /// <param name="value">The value</param>
+        /// <param name="ignoreCase">Ignore casing</param>
         /// <returns></returns>
-        public static bool TryParseTextToEnumValue<T>(string enumValueAsString, out T value)
+        public static bool TryParseTextToEnumValue<T>(string enumValueAsString, out T value, bool ignoreCase = true)
         {
             try
             {
-                value = ParseTextToEnumValue<T>(enumValueAsString);
+                value = ParseTextToEnumValue<T>(enumValueAsString, ignoreCase);
                 return true;
             }
             catch
