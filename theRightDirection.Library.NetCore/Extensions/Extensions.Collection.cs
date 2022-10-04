@@ -10,6 +10,17 @@ namespace theRightDirection
     public static partial class Extensions
     {
         /// <summary>
+        /// turn any IEnumerable<typeparamref name="T"/> into a ObservableCollection<typeparamref name="T"/>
+        /// </summary>
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> coll)
+        {
+            var c = new ObservableCollection<T>();
+            foreach (var e in coll)
+                c.Add(e);
+            return c;
+        }
+
+        /// <summary>
         /// Return a deep clone of a list
         /// </summary>
         public static List<T> DeepClone<T>(this List<T> items)
