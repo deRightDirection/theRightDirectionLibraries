@@ -1,10 +1,18 @@
 using FluentAssertions;
+using System;
 using Xunit;
 
 namespace theRightDirection.Library
 {
     public class StringExtensionsTest
     {
+        [Fact]
+        public void Decrypt_With_Invalid_String()
+        {
+            var decryptText = "aby9qZ0pVNUrjTFIZWFz7Dngn6gJSkNsN8iqzX-A9hP1fThB6RN71u1KKl3-zqGvmt2CWHzft-YkDwHxM8PmHsIhMaRsRVw7rg7dn7ekMrIKgNZOdoIW_FpwfiEoq_uLCPA2h0QeIQMTlLOO5qbZAKscJt2qiCA_x1JjkWf0_MG7fASiHn3q1W8bCd98790Z5XvWq1tq0o7NGe43Z_O8Bb7SqyrFBMd_z12YpWryBab43-jfSz9g2eTvNl10lS9QEIhTVtVk4kiHhkxZBBRHppnEhyIW91Ri007hLa1xPGrnetricBWT-i9bBnWjnXxjd7nPF0DsehUjVbRtpezZz7vLg3UoAqIKaqLHVGFxhTjzs0OpMAIUi1KhGcU_snbvC_43xLnTtdpZNMIZow04jIFO8-sLWQ1Dl27f6bU5yJKx9gMGlObqwWcb7vy4wO2uG_1fBHo4EHPCXDODI8K9m5YHpkBdAacyKSvmUKr4yGQ.";
+            var key = "Portal Genius";
+            Assert.Throws<ArgumentException>(() => decryptText.Decrypt(key));
+        }
 
         [Fact]
         public void ToSecureString_Gives_Error()

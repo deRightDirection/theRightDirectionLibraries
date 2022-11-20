@@ -171,8 +171,15 @@ namespace theRightDirection
                 throw new ArgumentException("Key must have valid value.", nameof(passPhrase));
             if (string.IsNullOrEmpty(cipherText))
                 throw new ArgumentException("The encrypted text must have valid value.", nameof(cipherText));
-
-            var combined = Convert.FromBase64String(cipherText);
+            byte[] combined;
+            try
+            {
+                combined = Convert.FromBase64String(cipherText);
+            }
+            catch
+            {
+                throw new ArgumentException("The encrypted text is not encrypted properly.", nameof(cipherText));
+            }
             var buffer = new byte[combined.Length];
             var hash = SHA512.Create();
             var aesKey = new byte[24];

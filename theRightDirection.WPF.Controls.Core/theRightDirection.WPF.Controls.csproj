@@ -5,10 +5,10 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>theRightDirection.WPF.Controls</RootNamespace>
     <AssemblyName>theRightDirection.WPF.Controls</AssemblyName>
-    <AssemblyVersion>6.8.1.0</AssemblyVersion>
-    <FileVersion>6.8.1.0</FileVersion>
+    <AssemblyVersion>6.8.2.0</AssemblyVersion>
+    <FileVersion>6.8.2.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>6.8.1.0</Version>
+    <Version>6.8.2.0</Version>
     <Company>the Right Direction</Company>
     <Copyright>the Right Direction BV</Copyright>
     <PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
