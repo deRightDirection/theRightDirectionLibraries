@@ -18,6 +18,10 @@ namespace theRightDirection.WPF.Xaml.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if(value == null) 
+            {
+                return HiddenState; 
+            }
             var typeOfValue = value.GetType();
             bool convertValue = false;
             if (typeOfValue == typeof(string))

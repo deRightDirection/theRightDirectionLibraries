@@ -18,6 +18,7 @@ namespace theRightDirection.WPF.Controls.DemoApp
         {
             ChangeStringPropertyCommand = new MvxCommand(ChangeStringProperty);
             SomeModel = new Model();
+            SomeModel2 = new Model();
         }
 
         private void ChangeStringProperty()

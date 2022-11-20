@@ -13,7 +13,7 @@ namespace theRightDirection.WPF.Controls.DemoApp
             StringProperty = null;
         }
 
-        public bool BooleanProperty { get; set; }
+        public bool? BooleanProperty { get; set; }
         public string StringProperty { get; set; }
     }
 }
