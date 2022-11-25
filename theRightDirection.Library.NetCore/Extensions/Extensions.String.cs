@@ -222,6 +222,10 @@ namespace theRightDirection
         /// <returns></returns>
         public static bool IsValidJson<T>(this string data)
         {
+            if (string.IsNullOrEmpty(data))
+            {
+                return false;
+            }
             data = data.Trim();
             var objectJson = data.StartsWith("{") && data.EndsWith("}");
             var arrayJson = data.StartsWith("[") && data.EndsWith("]");
@@ -245,6 +249,10 @@ namespace theRightDirection
         /// </summary>
         public static bool IsValidJson(this string data)
         {
+            if (string.IsNullOrEmpty(data))
+            {
+                return false;
+            }
             data = data.Trim();
             var objectJson = data.StartsWith("{") && data.EndsWith("}");
             var arrayJson = data.StartsWith("[") && data.EndsWith("]");
