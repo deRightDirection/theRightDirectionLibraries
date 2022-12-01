@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
@@ -287,6 +288,30 @@ namespace theRightDirection
         {
             var searchText = text.ToLowerInvariant();
             return TestStringPattern(searchText, regex);
+        }
+
+        public static string RemoveSpecialCharactersFromString(this string text, string replacement = "", char[] extraAllowedCharacters = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return "";
+            }
+            var stringBuilder = new StringBuilder();
+            foreach (var letter in text)
+            {
+                if (letter.ToString().IsAlphaNumeric(extraAllowedCharacters))
+                {
+                    stringBuilder.Append(letter);
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(replacement))
+                    {
+                        stringBuilder.Append(replacement);
+                    }
+                }
+            }
+            return stringBuilder.ToString();
         }
 
         private static bool TestStringPattern(string test, string regex, char[] extraAllowedCharacters = null)
