@@ -11,7 +11,7 @@ namespace theRightDirection.Tests.Library
         {
             var systemInformation = new SystemInformationHelper();
             var result = systemInformation.WindowsVersionName;
-            result.Should().Be("Microsoft Windows NT 10.0.22000.0");
+            result.Should().Be("Microsoft Windows NT 10.0.22621.0");
         }
 
     }

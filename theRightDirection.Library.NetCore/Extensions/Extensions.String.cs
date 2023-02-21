@@ -15,6 +15,23 @@ namespace theRightDirection
 {
     public static partial class Extensions
     {
+        /// <summary>
+        /// check the string for null, empty, trim the text and check if the length is longer than 0
+        /// true if the text is longer than 0
+        /// </summary>
+        public static bool HasText(this string text)
+        {
+            return text?.Trim().Length > 0;
+        }
+        /// <summary>
+        /// check the string for null, empty, trim the text and check if the length is longer than 0
+        /// true if the text is no longer than 0
+        /// </summary>
+        public static bool HasNoText(this string text)
+        {
+            return string.IsNullOrEmpty(text) || text.Trim().Length == 0;
+        }
+
         public static string ToBase64(this string text)
         {
             return ToBase64(text, Encoding.UTF8);
@@ -250,18 +267,30 @@ namespace theRightDirection
         /// </summary>
         public static bool IsValidJson(this string data)
         {
-            if (string.IsNullOrEmpty(data))
+            if (data.HasNoText())
             {
                 return false;
             }
             data = data.Trim();
             var objectJson = data.StartsWith("{") && data.EndsWith("}");
             var arrayJson = data.StartsWith("[") && data.EndsWith("]");
-            if (objectJson || arrayJson)
+            if (objectJson)
             {
                 try
                 {
                     JObject.Parse(data);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            if (arrayJson)
+            {
+                try
+                {
+                    JArray.Parse(data);
                     return true;
                 }
                 catch

@@ -7,6 +7,70 @@ namespace theRightDirection.Library
     public class StringExtensionsTest
     {
         [Fact]
+        public void HasNoText_With_Null_Is_False()
+        {
+            string text = null;
+            var result = text.HasNoText();
+            result.Should().BeTrue();
+        }
+        [Fact]
+        public void HasNoText_Is_Empty_Is_False()
+        {
+            string text = "";
+            var result = text.HasNoText();
+            result.Should().BeTrue();
+        }
+        [Fact]
+        public void HasNoText_With_Spaces_Is_False()
+        {
+            string text = "   ";
+            var result = text.HasNoText();
+            result.Should().BeTrue();
+        }
+        [Fact]
+        public void HasNoText_With_Text_Is_True()
+        {
+            string text = "Mannus";
+            var result = text.HasNoText();
+            result.Should().BeFalse();
+        }
+        [Fact]
+        public void HasText_With_Null_Is_False()
+        {
+            string text = null;
+            var result = text.HasText();
+            result.Should().BeFalse();
+        }
+        [Fact]
+        public void HasText_Is_Empty_Is_False()
+        {
+            string text = "";
+            var result = text.HasText();
+            result.Should().BeFalse();
+        }
+        [Fact]
+        public void HasText_With_Spaces_Is_False()
+        {
+            string text = "   ";
+            var result = text.HasText();
+            result.Should().BeFalse();
+        }
+        [Fact]
+        public void HasText_With_Text_Is_True()
+        {
+            string text = "Mannus";
+            var result = text.HasText();
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Remove_Special_Characters_With_Spaces_From_String()
+        {
+            var input = "Mannus   Etten";
+            var result = input.RemoveSpecialCharactersFromString("_");
+            result.Should().Be("Mannus___Etten");
+        }
+        [Fact]
         public void Remove_Special_Characters_From_String()
         {
             var input = "Mannus%^&$!Etten";
@@ -53,6 +117,14 @@ namespace theRightDirection.Library
             var encrypted = json.Encrypt(passPhase);
             var result = encrypted.Decrypt(passPhase);
             result.Should().BeEquivalentTo(json);
+        }
+
+        [Fact]
+        public void IsValidJson()
+        {
+            var json =
+                "[{\"name\":\"webhook1\",\"owner\":\"MannusEtten\",\"id\":2,\"globalId\":\"ba2f6e1e-75c1-4889-a00e-ee4d78b8d0c0\",\"tenantId\":27238,\"serviceId\":9,\"active\":false,\"hookUrl\":\"www.mannus.nl\",\"serviceUrl\":\"https://services.arcgis.com/v16XTZeIhHAZEpwh/arcgis/rest/services/punt_lijn_vlak/FeatureServer\",\"signatureKey\":\"\",\"format\":\"json\",\"serverGen\":17004,\"contentType\":\"application/x-www-form-urlencoded\",\"createdTime\":1633183581723,\"lastUpdatedTime\":1633183581723,\"changeTypes\":[\"All\"],\"scheduleInfo\":{\"name\":\"\",\"state\":\"enabled\",\"recurrenceInfo\":{\"frequency\":\"second\",\"interval\":20}}},{\"name\":\"webhook2\",\"owner\":\"MannusEtten\",\"id\":3,\"globalId\":\"b7b47c78-4b4d-463d-89b9-3ac0f632ee89\",\"tenantId\":27238,\"serviceId\":9,\"active\":false,\"hookUrl\":\"www.basketbalnieuws.nl\",\"serviceUrl\":\"https://services.arcgis.com/v16XTZeIhHAZEpwh/ArcGIS/rest/services/punt_lijn_vlak/FeatureServer\",\"signatureKey\":\"\",\"format\":\"json\",\"serverGen\":17004,\"contentType\":\"application/x-www-form-urlencoded\",\"createdTime\":1633183631181,\"lastUpdatedTime\":1633183735028,\"changeTypes\":[\"FeaturesCreated\",\"FeaturesUpdated\",\"FeaturesDeleted\"],\"scheduleInfo\":{\"name\":\"\",\"state\":\"enabled\",\"recurrenceInfo\":{\"frequency\":\"second\",\"interval\":20}}}]";
+            json.IsValidJson().Should().BeTrue();
         }
     }
 }
