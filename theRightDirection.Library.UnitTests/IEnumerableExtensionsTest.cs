@@ -6,7 +6,7 @@ using Xunit;
 
 namespace theRightDirection.Library.UnitTests
 {
-    public class IEnuerableExtensionsTest
+    public class IEnumerableExtensionsTest
     {
         [Fact]
         public void ToDictionaryWithSafeGuard1()
