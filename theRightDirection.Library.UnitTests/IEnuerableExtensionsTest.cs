@@ -1,10 +1,7 @@
-﻿using FluentAssertions;
+﻿using AutoBogus;
+using FluentAssertions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoBogus;
 using Xunit;
 
 namespace theRightDirection.Library.UnitTests
@@ -28,6 +25,7 @@ namespace theRightDirection.Library.UnitTests
             var dictionary = items.ToDictionaryWithSafeGuard(x => x.EntityId, x => x.Owner);
             dictionary.Count.Should().Be(items.Count - 1);
         }
+
         [Fact]
         public void ToDictionaryWithoutSafeguard()
         {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Esri.ArcGISRuntime.Portal;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace theRightDirection.Library.UnitTesting
@@ -27,5 +23,11 @@ namespace theRightDirection.Library.UnitTesting
             enumValueIsCorrect.Should().BeFalse();
             result.Should().Be(PortalItemType.ArcGISProAddIn);
         }
+    }
+
+    public enum PortalItemType
+    {
+        ArcGISProAddIn,
+        StoryMap
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MvvmCross.Commands;
+﻿using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
 namespace theRightDirection.WPF.Controls.DemoApp
@@ -44,6 +39,7 @@ namespace theRightDirection.WPF.Controls.DemoApp
             get => _someModel;
             set => SetProperty(ref _someModel, value);
         }
+
         public Model SomeModel2
         {
             get => _someModel2;

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Data;
 
 namespace theRightDirection.WPF.Xaml.Converters
@@ -31,6 +28,6 @@ namespace theRightDirection.WPF.Xaml.Converters
             return value;
         }
 
-        #endregion
+        #endregion IValueConverter Members
     }
 }

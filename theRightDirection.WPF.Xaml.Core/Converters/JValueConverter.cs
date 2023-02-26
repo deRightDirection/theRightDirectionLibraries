@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-using Newtonsoft.Json.Linq;
 
 namespace theRightDirection.WPF.Xaml.Converters
 {
@@ -17,6 +17,7 @@ namespace theRightDirection.WPF.Xaml.Converters
                 {
                     case JTokenType.String:
                         return "\"" + jval.Value + "\"";
+
                     case JTokenType.Null:
                         return "Null";
                 }

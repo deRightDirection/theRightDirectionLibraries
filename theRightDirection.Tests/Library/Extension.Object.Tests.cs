@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace theRightDirection.Tests.Library
 {
@@ -18,6 +13,7 @@ namespace theRightDirection.Tests.Library
             public int Count { get; set; }
             public List<string> Names { get; set; }
         }
+
         public class TypeB
         {
             public string Id { get; set; }
@@ -33,6 +29,7 @@ namespace theRightDirection.Tests.Library
         {
             public int Count { get; set; }
         }
+
         [TestMethod]
         public void CopyAllPropertiesIncludingBaseTypeProperties()
         {
@@ -43,7 +40,7 @@ namespace theRightDirection.Tests.Library
                 Names = new List<string>() { "abc", "def" }
             };
             var c = new TypeC();
-            a.CopyProperties(c,true,true);
+            a.CopyProperties(c, true, true);
             c.Id.Should().Be("1");
             c.Count.Should().Be(10);
         }
@@ -54,13 +51,14 @@ namespace theRightDirection.Tests.Library
             var a = new TypeA()
             {
                 Id = "1",
-                Names = new List<string>() {"abc", "def"}
+                Names = new List<string>() { "abc", "def" }
             };
             var b = new TypeB();
             a.CopyProperties(b);
             b.Id.Should().Be("1");
             b.Names.Count.Should().Be(2);
         }
+
         [TestMethod]
         public void CopyAllPropertiesExcludingLists()
         {
@@ -70,7 +68,7 @@ namespace theRightDirection.Tests.Library
                 Names = new List<string>() { "abc", "def" }
             };
             var b = new TypeB();
-            a.CopyProperties(b, skipListOrArrayProperties:true);
+            a.CopyProperties(b, skipListOrArrayProperties: true);
             b.Id.Should().Be("1");
             b.Names.Should().BeNull();
         }

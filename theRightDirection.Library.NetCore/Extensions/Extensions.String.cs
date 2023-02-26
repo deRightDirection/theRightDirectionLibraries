@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace theRightDirection
 {
@@ -23,6 +22,7 @@ namespace theRightDirection
         {
             return text?.Trim().Length > 0;
         }
+
         /// <summary>
         /// check the string for null, empty, trim the text and check if the length is longer than 0
         /// true if the text is no longer than 0
@@ -390,7 +390,7 @@ namespace theRightDirection
         /// <param name="throwExceptionWhenNull">throw argumentnull-exception when unsecurestring is null</param>
         /// <param name="convertNullToEmptyString">in case you want to be sure that null-values not breaking your code, they can be switch to string empty</param>
         /// </summary>
-        [Obsolete("27-04-2022: new implementation available, this one renamed to ToUnSecureString_Obsolete",true)]
+        [Obsolete("27-04-2022: new implementation available, this one renamed to ToUnSecureString_Obsolete", true)]
         public static string ToUnsecureString_Obsolete(this SecureString secureString, bool throwExceptionWhenNull = true, bool convertNullToEmptyString = false)
         {
             if (secureString == null && throwExceptionWhenNull)

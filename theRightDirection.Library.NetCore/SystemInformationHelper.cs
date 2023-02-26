@@ -23,6 +23,5 @@ namespace theRightDirection
         public string ServicePackVersion => _windowsInformation.ServicePack;
 
         public string Version => $"{_windowsInformation.Version.Major}.{_windowsInformation.Version.Minor}.{_windowsInformation.Version.Build}";
-
     }
 }

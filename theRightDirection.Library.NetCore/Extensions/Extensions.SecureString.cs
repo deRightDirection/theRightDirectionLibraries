@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace theRightDirection
 {
@@ -20,7 +18,7 @@ namespace theRightDirection
         /// <returns></returns>
         public static SecureString ToSecureString(this string value, bool leaveOriginal = false, bool makeReadOnly = true)
         {
-            if(value.IsNullOrEmpty())
+            if (value.IsNullOrEmpty())
             {
                 return new SecureString();
             }
@@ -53,7 +51,7 @@ namespace theRightDirection
         /// <returns>The decrypted String</returns>
         public static string ToUnsecureString(this SecureString value)
         {
-            if(value == null || value.Length == 0)
+            if (value == null || value.Length == 0)
             {
                 return null;
             }

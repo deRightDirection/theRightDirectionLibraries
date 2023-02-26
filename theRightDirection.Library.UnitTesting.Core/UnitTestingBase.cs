@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using theRightDirection.Library.UnitTesting.AutoFixture;
+﻿using System.IO;
 
 namespace theRightDirection.Library.UnitTesting
 {

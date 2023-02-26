@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Security;
 
 namespace theRightDirection.Tests
 {
@@ -18,6 +14,7 @@ namespace theRightDirection.Tests
         {
             public List<WebHook> Hooks { get; set; }
         }
+
         public class WebHook
         {
             public string Name { get; set; }
@@ -37,12 +34,14 @@ namespace theRightDirection.Tests
             var url = "trdgis.svwxb2emmfbudlqtj25tgxyjla.frax.internal.cloudapp.net:7443";
             url.IsAlphaNumeric(chars2).Should().BeTrue();
         }
+
         [TestMethod]
         public void Null_To_UnSecureString()
         {
             var x = new SecureStringProperty();
             x.Name2.Should().BeNullOrEmpty();
         }
+
         [TestMethod]
         public void Null_To_SecureString()
         {
@@ -50,6 +49,7 @@ namespace theRightDirection.Tests
             x.Name = null;
             x.Name.Should().BeNullOrEmpty();
         }
+
         [TestMethod]
         public void SplitAtCapitals_Works_Good()
         {
@@ -57,6 +57,7 @@ namespace theRightDirection.Tests
             var result = text.SplitOnCapitalLetters();
             result.Should().Be("Mannus And Verena");
         }
+
         [TestMethod]
         public void SplitAtCapitals_Works_Not_On_A_String_With_No_Capitals()
         {
@@ -64,6 +65,7 @@ namespace theRightDirection.Tests
             var result = text.SplitOnCapitalLetters();
             result.Should().Be("mannusandverena");
         }
+
         [TestMethod]
         public void SplitAtCapitals_Works_Not_On_A_String_With_Only_Capital_At_The_Beginning()
         {
@@ -71,6 +73,7 @@ namespace theRightDirection.Tests
             var result = text.SplitOnCapitalLetters();
             result.Should().Be("Mannusandverena");
         }
+
         [TestMethod]
         public void SplitAtCapitals_Works_Not_On_A_Empty_String()
         {
@@ -78,6 +81,7 @@ namespace theRightDirection.Tests
             var result = text.SplitOnCapitalLetters();
             result.Should().Be("");
         }
+
         [TestMethod]
         public void SplitAtCapitals_Works_Not_On_A_Null_String()
         {
@@ -153,11 +157,13 @@ namespace theRightDirection.Tests
     public class SecureStringProperty
     {
         private SecureString _name, _name2;
+
         public string Name
         {
             get => _name.ToUnsecureString();
-            set => _name = value.ToSecureString(false,true);
+            set => _name = value.ToSecureString(false, true);
         }
+
         public string Name2
         {
             get => _name2.ToUnsecureString();

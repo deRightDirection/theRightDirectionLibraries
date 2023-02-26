@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 using theRightDirection.Attributes;
 using theRightDirection.Comparers;
 
@@ -20,16 +20,12 @@ namespace theRightDirection
         /// <returns></returns>
         public static T DeepClone<T>(this T obj)
         {
-            using (var memory_stream = new MemoryStream())
-            {
-                // Serialize the object into the memory stream.
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(memory_stream, obj);
-
-                // Rewind the stream and use it to create a new object.
-                memory_stream.Position = 0;
-                return (T)formatter.Deserialize(memory_stream);
-            }
+            using var memoryStream = new MemoryStream();
+            // Serialize the object into the memory stream.
+            JsonSerializer.Serialize(memoryStream, obj);
+            // Rewind the stream and use it to create a new object.
+            memoryStream.Position = 0;
+            return JsonSerializer.Deserialize<T>(memoryStream);
         }
 
         public static List<string> ListProperties(this object from, bool includePropertiesFromBaseType = false)

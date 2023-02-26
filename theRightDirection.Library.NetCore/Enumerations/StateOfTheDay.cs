@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace theRightDirection.Enumerations
+﻿namespace theRightDirection.Enumerations
 {
     /// <summary>
     /// Defines the enumeration values for a day's current state.

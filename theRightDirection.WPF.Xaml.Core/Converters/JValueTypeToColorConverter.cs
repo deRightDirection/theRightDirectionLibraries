@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using Newtonsoft.Json.Linq;
 
 namespace theRightDirection.WPF.Xaml.Converters
 {
@@ -18,11 +18,14 @@ namespace theRightDirection.WPF.Xaml.Converters
                 {
                     case JTokenType.String:
                         return new BrushConverter().ConvertFrom("#4e9a06");
+
                     case JTokenType.Float:
                     case JTokenType.Integer:
                         return new BrushConverter().ConvertFrom("#ad7fa8");
+
                     case JTokenType.Boolean:
                         return new BrushConverter().ConvertFrom("#c4a000");
+
                     case JTokenType.Null:
                         return new SolidColorBrush(Colors.OrangeRed);
                 }

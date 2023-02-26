@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
@@ -34,6 +30,7 @@ namespace theRightDirection.WPF.Xaml.Converters
         {
             return DependencyProperty.UnsetValue;
         }
+
         /// <summary>
         /// indien deze waarde True is dan wordt de waarde niet alleen gecheckt of het null is, maar ook of het string.empty is
         /// </summary>

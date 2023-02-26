@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
-using Newtonsoft.Json.Linq;
 
 namespace theRightDirection.WPF.Xaml.Converters
 {
@@ -19,8 +19,8 @@ namespace theRightDirection.WPF.Xaml.Converters
             if (methodInfo == null)
                 return null;
             var invocationResult = methodInfo.Invoke(value, new object[0]);
-            var jTokens = (IEnumerable<JToken>) invocationResult;
-            return jTokens.First().Children() ;
+            var jTokens = (IEnumerable<JToken>)invocationResult;
+            return jTokens.First().Children();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

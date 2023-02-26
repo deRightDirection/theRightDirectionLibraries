@@ -13,6 +13,5 @@ namespace theRightDirection.Tests.Library
             var result = systemInformation.WindowsVersionName;
             result.Should().Be("Microsoft Windows NT 10.0.22621.0");
         }
-
     }
 }

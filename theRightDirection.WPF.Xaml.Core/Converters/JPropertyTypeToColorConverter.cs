@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Globalization;
 using System.Windows.Data;
-using Newtonsoft.Json.Linq;
 using System.Windows.Media;
 
 namespace theRightDirection.WPF.Xaml.Converters

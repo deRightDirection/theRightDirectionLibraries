@@ -13,6 +13,7 @@ namespace theRightDirection.Library
             var result = text.HasNoText();
             result.Should().BeTrue();
         }
+
         [Fact]
         public void HasNoText_Is_Empty_Is_False()
         {
@@ -20,6 +21,7 @@ namespace theRightDirection.Library
             var result = text.HasNoText();
             result.Should().BeTrue();
         }
+
         [Fact]
         public void HasNoText_With_Spaces_Is_False()
         {
@@ -27,6 +29,7 @@ namespace theRightDirection.Library
             var result = text.HasNoText();
             result.Should().BeTrue();
         }
+
         [Fact]
         public void HasNoText_With_Text_Is_True()
         {
@@ -34,6 +37,7 @@ namespace theRightDirection.Library
             var result = text.HasNoText();
             result.Should().BeFalse();
         }
+
         [Fact]
         public void HasText_With_Null_Is_False()
         {
@@ -41,6 +45,7 @@ namespace theRightDirection.Library
             var result = text.HasText();
             result.Should().BeFalse();
         }
+
         [Fact]
         public void HasText_Is_Empty_Is_False()
         {
@@ -48,6 +53,7 @@ namespace theRightDirection.Library
             var result = text.HasText();
             result.Should().BeFalse();
         }
+
         [Fact]
         public void HasText_With_Spaces_Is_False()
         {
@@ -55,6 +61,7 @@ namespace theRightDirection.Library
             var result = text.HasText();
             result.Should().BeFalse();
         }
+
         [Fact]
         public void HasText_With_Text_Is_True()
         {
@@ -70,6 +77,7 @@ namespace theRightDirection.Library
             var result = input.RemoveSpecialCharactersFromString("_");
             result.Should().Be("Mannus___Etten");
         }
+
         [Fact]
         public void Remove_Special_Characters_From_String()
         {
@@ -77,6 +85,7 @@ namespace theRightDirection.Library
             var result = input.RemoveSpecialCharactersFromString();
             result.Should().Be("MannusEtten");
         }
+
         [Fact]
         public void Remove_Special_Characters_From_String_With_Replacement()
         {
@@ -84,13 +93,15 @@ namespace theRightDirection.Library
             var result = input.RemoveSpecialCharactersFromString("_");
             result.Should().Be("Mannus_____Etten");
         }
+
         [Fact]
         public void Remove_Special_Characters_From_String_With_Special_Character()
         {
             var input = "Mannus%^&$!Etten";
-            var result = input.RemoveSpecialCharactersFromString("_", new []{'$'});
+            var result = input.RemoveSpecialCharactersFromString("_", new[] { '$' });
             result.Should().Be("Mannus___$_Etten");
         }
+
         [Fact]
         public void Decrypt_With_Invalid_String()
         {

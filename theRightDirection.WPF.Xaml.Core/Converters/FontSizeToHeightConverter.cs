@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Data;
 using System.Globalization;
+using System.Windows.Data;
 
 namespace theRightDirection.WPF.Xaml.Converters
 {
@@ -15,7 +12,7 @@ namespace theRightDirection.WPF.Xaml.Converters
 
             if (value != null)
             {
-                if(Double.TryParse(value.ToString(), out height))
+                if (Double.TryParse(value.ToString(), out height))
                 {
                     return height * 2;
                 }
@@ -23,7 +20,6 @@ namespace theRightDirection.WPF.Xaml.Converters
                 {
                     return Double.NaN;
                 }
-                
             }
             else
             {

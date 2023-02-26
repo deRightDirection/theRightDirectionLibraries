@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace theRightDirection.Attributes
 {
@@ -14,6 +10,7 @@ namespace theRightDirection.Attributes
     public sealed class DisplayStringAttribute : Attribute
     {
         private readonly string value;
+
         public string Value
         {
             get { return value; }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace theRightDirection.WPF.Xaml
+﻿namespace theRightDirection.WPF.Xaml
 {
-    class ResourceHelper
+    internal class ResourceHelper
     {
     }
 }

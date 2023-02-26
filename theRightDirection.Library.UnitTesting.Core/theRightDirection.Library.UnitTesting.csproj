@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <AssemblyVersion>6.10.0.0</AssemblyVersion>
-    <FileVersion>6.10.0.0</FileVersion>
-    <Version>6.10.0.0</Version>
+    <TargetFramework>net7.0</TargetFramework>
+    <AssemblyVersion>7.0.0.0</AssemblyVersion>
+    <FileVersion>7.0.0.0</FileVersion>
+    <Version>7.0.0.0</Version>
     <Company>the Right Direction BV</Company>
     <Copyright>the Right Direction BV</Copyright>
     <PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
@@ -27,9 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
-    <PackageReference Include="theRightDirection.Library" Version="6.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
+    <PackageReference Include="theRightDirection.Library" Version="6.10.0" />
   </ItemGroup>
 </Project>
