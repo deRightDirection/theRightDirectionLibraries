@@ -14,6 +14,26 @@ namespace theRightDirection
 {
     public static partial class Extensions
     {
+
+        /// <summary>
+        /// converts a UTF8-string to a SHA256 hash
+        /// </summary>
+        public static byte[] ToSHA256Hash(this string text)
+        {
+            using SHA256 mySHA256 = SHA256.Create();
+            var utf8 = new UTF8Encoding();
+            return mySHA256.ComputeHash(utf8.GetBytes(text));
+        }
+
+        /// <summary>
+        /// converts a UTF8-string to a SHA256 hash as Base64-string
+        /// </summary>
+        public static string ToSHA256HashAsBase64(this string text)
+        {
+            var hash = ToSHA256Hash(text);
+            return Convert.ToBase64String(hash);
+        }
+
         /// <summary>
         /// check the string for null, empty, trim the text and check if the length is longer than 0
         /// true if the text is longer than 0
@@ -39,7 +59,7 @@ namespace theRightDirection
 
         public static string ToBase64(this string text, Encoding encoding)
         {
-            if (string.IsNullOrEmpty(text))
+            if (text.HasNoText())
             {
                 return text;
             }
