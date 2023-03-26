@@ -1,13 +1,12 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Xunit;
 
-namespace theRightDirection.Tests.Library
+namespace theRightDirection.Library.UnitTests.Extensions
 {
-    [TestClass]
     public class Extension
     {
-        [TestMethod]
+        [Fact]
         public void Two_Uris_Are_Equal1()
         {
             var uri1 = new Uri("https://services.arcgis.com/v16XTZeIhHAZEpwh/ArcGIS/rest/services/Veiligheidsregios/FeatureServer/");
@@ -15,7 +14,7 @@ namespace theRightDirection.Tests.Library
             uri1.IsEqual(uri2).Should().BeTrue();
         }
 
-        [TestMethod]
+        [Fact]
         public void Two_Uris_Are_Equal2()
         {
             var uri1 = new Uri("https://services.arcgis.com/v16XTZeIhHAZEpwh/ArcGIS/rest/services/Veiligheidsregios/FeatureServer/");

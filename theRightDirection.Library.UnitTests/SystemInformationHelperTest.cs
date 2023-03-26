@@ -1,12 +1,11 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
-namespace theRightDirection.Tests.Library
+namespace theRightDirection.Library.UnitTests
 {
-    [TestClass]
     public class SystemInformationHelperTest
     {
-        [TestMethod]
+        [Fact]
         public void WindowsVersionName()
         {
             var systemInformation = new SystemInformationHelper();

@@ -1,12 +1,44 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+using Xunit;
 
-namespace theRightDirection.Tests.Library
+namespace theRightDirection.Library.UnitTests.Extensions
 {
-    [TestClass]
     public class ObjectExtensionsTest
     {
+        [Fact]
+        public void DeepClone_With_No_Cloning_Copy_Has_Same_Value()
+        {
+            var original = new Company()
+            {
+                GBRank = 123,
+                desc = new CompanyDescription("Mannus", "Mannus")
+            };
+            var sut = original;
+            sut.GBRank = 456;
+            sut.desc.CompanyName = "Mannus BV";
+            original.GBRank.Should().Be(456);
+            original.desc.CompanyName.Should().Be("Mannus BV");
+            sut.GBRank.Should().Be(456);
+            sut.desc.CompanyName.Should().Be("Mannus BV");
+        }
+        [Fact]
+        public void DeepClone_With_Cloning_Copy_Has_Not_Same_Value()
+        {
+            var original = new Company()
+            {
+                GBRank = 123,
+                desc = new CompanyDescription("Mannus", "Mannus")
+            };
+            var sut = original.DeepClone();
+            sut.GBRank = 456;
+            sut.desc.CompanyName = "Mannus BV";
+            original.GBRank.Should().Be(123);
+            original.desc.CompanyName.Should().Be("Mannus");
+            sut.GBRank.Should().Be(456);
+            sut.desc.CompanyName.Should().Be("Mannus BV");
+        }
         public class TypeA
         {
             public string Id { get; set; }
@@ -30,7 +62,7 @@ namespace theRightDirection.Tests.Library
             public int Count { get; set; }
         }
 
-        [TestMethod]
+        [Fact]
         public void CopyAllPropertiesIncludingBaseTypeProperties()
         {
             var a = new TypeA()
@@ -45,7 +77,7 @@ namespace theRightDirection.Tests.Library
             c.Count.Should().Be(10);
         }
 
-        [TestMethod]
+        [Fact]
         public void CopyAllPropertiesIncludingLists()
         {
             var a = new TypeA()
@@ -59,7 +91,7 @@ namespace theRightDirection.Tests.Library
             b.Names.Count.Should().Be(2);
         }
 
-        [TestMethod]
+        [Fact]
         public void CopyAllPropertiesExcludingLists()
         {
             var a = new TypeA()
@@ -71,6 +103,25 @@ namespace theRightDirection.Tests.Library
             a.CopyProperties(b, skipListOrArrayProperties: true);
             b.Id.Should().Be("1");
             b.Names.Should().BeNull();
+        }
+    }
+
+    [Serializable]
+    class Company
+    {
+        public int GBRank { get; set; }
+        public CompanyDescription desc { get; set; }
+    }
+    [Serializable]
+    class CompanyDescription
+    {
+
+        public string CompanyName;
+        public string Owner;
+        public CompanyDescription(string c, string o)
+        {
+            CompanyName = c;
+            Owner = o;
         }
     }
 }

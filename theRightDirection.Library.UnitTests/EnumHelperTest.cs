@@ -1,12 +1,11 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
-namespace theRightDirection.Library.UnitTesting
+namespace theRightDirection.Library.UnitTests
 {
-    [TestClass]
     public class EnumHelperTest
     {
-        [TestMethod]
+        [Fact]
         public void Storymap()
         {
             var typeValue = "StoryMap";
@@ -15,7 +14,7 @@ namespace theRightDirection.Library.UnitTesting
             result.Should().Be(PortalItemType.StoryMap);
         }
 
-        [TestMethod]
+        [Fact]
         public void Storymap_Incorrect()
         {
             var typeValue = "StoryMap2";
