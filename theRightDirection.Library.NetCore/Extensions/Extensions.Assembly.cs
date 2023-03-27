@@ -1,10 +1,21 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace theRightDirection
 {
     public static partial class Extensions
     {
+        /// <summary>
+        /// find all types in the assembly which use the specific custom attribute T
+        /// </summary>
+        public static IEnumerable<Type> GetTypesWithSpecificCustomAttribute<T>(this Assembly assembly) where T : Attribute
+        {
+            return assembly.GetTypes().Where(type => type.GetCustomAttributes(typeof(T), true).Length > 0);
+        }
+
         /// <summary>
         /// Finds a file next to assembly, for example the configuration file
         /// if the exception is suppressed the method returns string.empty
