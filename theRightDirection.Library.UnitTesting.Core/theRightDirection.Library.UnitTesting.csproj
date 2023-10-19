@@ -20,13 +20,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\Users\info\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
     <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />

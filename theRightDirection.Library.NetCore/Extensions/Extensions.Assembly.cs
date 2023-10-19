@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Resources;
 
 namespace theRightDirection
 {
@@ -54,6 +55,39 @@ namespace theRightDirection
         public static string DirectoryOfAssembly(this Assembly assembly)
         {
             return Path.GetDirectoryName(assembly.Location);
+        }
+
+        /// <summary>
+        /// check if a resource path exists
+        /// </summary>
+        public static bool ResourceExists(this Assembly assembly, string resourcePath)
+        {
+            return GetResourcePaths(assembly)
+                .Contains(resourcePath);
+        }
+
+        /// <summary>
+        /// determine all resources and their paths from an assembly
+        /// </summary>
+        public static IEnumerable<object> GetResourcePaths(this Assembly assembly)
+        {
+            var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+            var resourceName = assembly.GetName().Name + ".g";
+            var resourceManager = new ResourceManager(resourceName, assembly);
+
+            try
+            {
+                var resourceSet = resourceManager.GetResourceSet(culture, true, true);
+
+                foreach (System.Collections.DictionaryEntry resource in resourceSet)
+                {
+                    yield return resource.Key;
+                }
+            }
+            finally
+            {
+                resourceManager.ReleaseAllResources();
+            }
         }
     }
 }
