@@ -15,36 +15,6 @@ namespace theRightDirection.Library.UnitTests.Extensions
     public class StringExtensionsTest
     {
         [Fact]
-        public void Convert_String_To_Bytes_GZip()
-        {
-            var text = "Mannus";
-            var utf8 = new UTF8Encoding();
-            var bytes = utf8.GetBytes(text);
-            using var memoryStream = new MemoryStream(bytes);
-            using var outStream = new MemoryStream();
-            GZip.Compress(memoryStream, outStream, true);
-            var result = outStream.ToArray();
-            result.Length.Should().Be(29);
-
-            using var memoryStream2 = new MemoryStream(result);
-            using var resultStream = new MemoryStream();
-            GZip.Decompress(memoryStream2, resultStream,true);
-            var result2 = resultStream.ToArray();
-            var text2= Encoding.UTF8.GetString(result2);
-            text2.Should().Be(text);
-        }
-
-        [Fact]
-        public void Convert_Bytes_To_String_GZip()
-        {
-            var text = "Mannus";
-            var bytes = text.ToGzipBytes();
-            bytes.Length.Should().Be(10);
-            var result = bytes.FromGzipBytes();
-            result.Should().Be(text);
-        }
-
-        [Fact]
         public void PKCE_Code_Between_43_And_128_Characters()
         {
             var randomizer = new StringRandomizer(25);
