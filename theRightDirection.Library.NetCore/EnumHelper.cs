@@ -72,9 +72,20 @@ namespace theRightDirection
 
         public static T ParseIntToEnumValue<T>(int enumValue)
         {
-            Array result = Enum.GetValues(typeof(T));
-            object value = result.GetValue(enumValue);
-            return (T)value;
+            Array numericValues = Enum.GetValuesAsUnderlyingType(typeof(T));
+            Array textValues= Enum.GetValues(typeof(T));
+            var enumValues = new Dictionary<int, T>();
+            for (var i = 0; i < textValues.Length; i++)
+            {
+                var textValue = textValues.GetValue(i);
+                var numValue = numericValues.GetValue(i);
+                enumValues.Add((int)numValue, (T)textValue);
+            }
+            if (enumValues.ContainsKey(enumValue))
+            {
+                return enumValues[enumValue];
+            }
+            throw new EnumHelperException($"there is no value in the enum type {typeof(T)} with a value of {enumValue}");
         }
 
         public static T GetValueFromDescription<T>(string selectedWorkout)

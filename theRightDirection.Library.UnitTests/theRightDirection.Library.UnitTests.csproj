@@ -41,4 +41,10 @@
     <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="theRightDirection.PortalGenius.Domain">
+      <HintPath>..\testdata\theRightDirection.PortalGenius.Domain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
