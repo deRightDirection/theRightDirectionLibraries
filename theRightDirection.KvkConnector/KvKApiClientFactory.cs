@@ -3,9 +3,9 @@ using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 
 namespace theRightDirection.KvKConnector;
-public class KvKApiClientFactory
+internal class KvKApiClientFactory
 {
-    public static IKvKApiClient CreateKvKClient()
+    internal static IKvKApiClient CreateKvKClient()
     {
         var resourceReader = new ResourceReader();
         var certFolder = "Certificates";
@@ -17,6 +17,7 @@ public class KvKApiClientFactory
             {
                 var certificate = resourceReader.ReadDataFromResourceAsCertificate(x, certFolder, false);
                 certificates.Add(certificate);
+                // TODO loggen van verloopdatum certificaten
             }
         });
         var handler = new HttpClientHandler

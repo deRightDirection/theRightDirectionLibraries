@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>8.0.0.0</Version>
+    <Version>8.0.2</Version>
     <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
     <Company>the Right Direction BV</Company>
     <Copyright>the Right Direction BV</Copyright>
