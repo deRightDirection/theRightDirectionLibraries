@@ -1,0 +1,38 @@
+﻿using Refit;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
+
+namespace theRightDirection.KvKConnector;
+public class KvKApiClientFactory
+{
+    public static IKvKApiClient CreateKvKClient()
+    {
+        var resourceReader = new ResourceReader();
+        var certFolder = "Certificates";
+        var resources = resourceReader.GetResources(certFolder);
+        var certificates = new X509Certificate2Collection();
+        resources.ForEach(x =>
+        {
+            if (x.EndsWith(".crt"))
+            {
+                var certificate = resourceReader.ReadDataFromResourceAsCertificate(x, certFolder, false);
+                certificates.Add(certificate);
+            }
+        });
+        var handler = new HttpClientHandler
+        {
+            ClientCertificateOptions = ClientCertificateOption.Manual,
+            SslProtocols = SslProtocols.Tls13
+        };
+        handler.ServerCertificateCustomValidationCallback =
+            (requestMessage, certificate, chain, sslErrors) => {
+                chain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
+                chain.ChainPolicy.CustomTrustStore.AddRange(certificates);
+                return chain.Build(certificate);
+            };
+        return RestService.For<IKvKApiClient>(new HttpClient(handler)
+        {
+            BaseAddress = new Uri("https://api.kvk.nl/api/v2")
+        });
+    }
+}
