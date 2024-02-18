@@ -2,7 +2,7 @@
 using theRightDirection.KvKConnector;
 using theRightDirection.KvKConnector.Model;
 
-namespace theRightDirection.Tests.KvKConnector;
+namespace KvKConnector;
 public class KvkApiClientTest
 {
     private readonly KvKApiClient _kvk;

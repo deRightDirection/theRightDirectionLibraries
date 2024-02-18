@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using System.Reflection;
 using FluentAssertions;
-using Xunit;
+using theRightDirection;
 
-namespace theRightDirection.Library.UnitTests;
+namespace Library.UnitTests;
 
 public class ResourceReaderTest
 {
@@ -10,7 +10,7 @@ public class ResourceReaderTest
 
     public ResourceReaderTest()
     {
-        _resourceReader = new ResourceReader();
+        _resourceReader = new ResourceReader(Assembly.GetExecutingAssembly());
     }
 
     [Fact]

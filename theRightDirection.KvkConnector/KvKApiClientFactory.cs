@@ -1,4 +1,5 @@
 ﻿using Refit;
+using System.Reflection;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 
@@ -7,7 +8,7 @@ internal class KvKApiClientFactory
 {
     internal static IKvKApiClient CreateKvKClient()
     {
-        var resourceReader = new ResourceReader();
+        var resourceReader = new ResourceReader(Assembly.GetExecutingAssembly());
         var certFolder = "Certificates";
         var resources = resourceReader.GetResources(certFolder);
         var certificates = new X509Certificate2Collection();
@@ -15,7 +16,7 @@ internal class KvKApiClientFactory
         {
             if (x.EndsWith(".crt"))
             {
-                var certificate = resourceReader.ReadDataFromResourceAsCertificate(x, certFolder, false);
+                var certificate = resourceReader.ReadDataFromResourceAsCertificate(x, certFolder);
                 certificates.Add(certificate);
                 // TODO loggen van verloopdatum certificaten
             }

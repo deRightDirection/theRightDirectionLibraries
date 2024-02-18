@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net7", ".Net7", "{41943FD1-0E37-4D44-B851-2384CF6E5885}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.Library", "theRightDirection.Library.NetCore\theRightDirection.Library.csproj", "{C8120C2F-7774-4BE8-B793-3E029A5574A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.WPF.Xaml", "theRightDirection.WPF.Xaml.Core\theRightDirection.WPF.Xaml.csproj", "{21F53C1D-E671-4776-B9DB-B7ABC64ED1DA}"
@@ -21,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.KvKConnec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.Tests", "theRightDirection.Tests\theRightDirection.Tests.csproj", "{E5654087-D2AC-4409-9AB9-26C3949C99AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theRightDirection.EntityFramework", "theRightDirection.EntityFramework\theRightDirection.EntityFramework.csproj", "{13B77052-3233-4284-8E11-3EFA00EAA9E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theRightDirection.EntityFramework", "theRightDirection.EntityFramework\theRightDirection.EntityFramework.csproj", "{13B77052-3233-4284-8E11-3EFA00EAA9E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -144,14 +142,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C8120C2F-7774-4BE8-B793-3E029A5574A4} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
-		{21F53C1D-E671-4776-B9DB-B7ABC64ED1DA} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
-		{23C77F4F-2681-4B53-B8A8-0D174D915608} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
-		{5AEA9300-BBCD-4DF7-AD1C-27BE11336E3F} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
-		{330877E5-6009-4A1D-82A7-8F64BE5E26E5} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
-		{35CB5B08-7CD1-463C-8B53-8AC9F92F3ABA} = {41943FD1-0E37-4D44-B851-2384CF6E5885}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04EA9CF6-E14B-4C9A-9FCA-3FE4253D123A}

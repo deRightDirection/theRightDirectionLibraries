@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>8.0.0.1</Version>
+    <Version>8.0.2.0</Version>
     <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
     <Company>the Right Direction BV</Company>
     <Copyright>the Right Direction BV</Copyright>
@@ -33,6 +33,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
 	</ItemGroup>
 </Project>
