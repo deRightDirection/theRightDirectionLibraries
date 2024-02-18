@@ -5,9 +5,9 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>theRightDirection.WPF.Controls</RootNamespace>
     <AssemblyName>theRightDirection.WPF.Controls</AssemblyName>
-	  <AssemblyVersion>8.0.2.0</AssemblyVersion>
-	  <FileVersion>8.0.2.0</FileVersion>
-	  <Version>8.0.2.0</Version>
+	  <AssemblyVersion>8.0.3.0</AssemblyVersion>
+	  <FileVersion>8.0.3.0</FileVersion>
+	  <Version>8.0.3.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Company>the Right Direction</Company>
     <Copyright>the Right Direction BV</Copyright>
