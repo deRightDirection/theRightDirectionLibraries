@@ -1,16 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
+	  <TargetFramework>net8.0-windows</TargetFramework>
+	  <Nullable>enable</Nullable>
+	  <UseWPF>true</UseWPF>
+	  <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>theRightDirection.WPF.Xaml</AssemblyName>
     <RootNamespace>theRightDirection.WPF.Xaml</RootNamespace>
-	  <AssemblyVersion>8.0.3.0</AssemblyVersion>
-	  <FileVersion>8.0.3.0</FileVersion>
-	  <Version>8.0.3.0</Version>
+	  <AssemblyVersion>8.0.4.0</AssemblyVersion>
+	  <FileVersion>8.0.4.0</FileVersion>
+	  <Version>8.0.4.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Company>the Right Direction</Company>
-    <Copyright>the Right Direction</Copyright>
+    <Company>the Right Direction BV</Company>
+    <Copyright>the Right Direction BV</Copyright>
     <PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
     <PackageIcon>tRD-icon-v-400.jpg</PackageIcon>
     <RepositoryUrl>https://www.therightdirection.nl</RepositoryUrl>
@@ -29,6 +31,6 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="theRightDirection.Library" Version="8.0.2" />
+    <PackageReference Include="theRightDirection.Library" Version="8.0.4" />
   </ItemGroup>
 </Project>
