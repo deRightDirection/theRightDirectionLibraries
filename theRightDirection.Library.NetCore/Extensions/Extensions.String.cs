@@ -3,8 +3,8 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Globalization;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
@@ -15,6 +15,13 @@ namespace theRightDirection;
 
 public static partial class Extensions
 {
+    public static string AddRunningLocationToPathOfFile(this string file)
+    {
+        var location = Assembly.GetEntryAssembly().GetName();
+        var fileinfo = new FileInfo(location.FullName).Directory.FullName;
+        return Path.Combine(fileinfo, file);
+    }
+
     /// <summary>
     /// converts a UTF8-string to a SHA256 hash
     /// </summary>

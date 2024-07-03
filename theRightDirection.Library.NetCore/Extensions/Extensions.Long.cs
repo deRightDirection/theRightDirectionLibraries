@@ -1,4 +1,6 @@
-﻿namespace theRightDirection;
+﻿using System;
+
+namespace theRightDirection;
 
 public static partial class Extensions
 {
@@ -9,16 +11,35 @@ public static partial class Extensions
     /// <returns></returns>
     public static string ToFileLengthRepresentation(this long fileLength, bool spaceBetweenNumberAndAbbreviation = true)
     {
-        var spacer = spaceBetweenNumberAndAbbreviation ? " " : string.Empty;
-        if (fileLength >= 1 << 30)
-            return $"{fileLength >> 30}{spacer}Gb";
+        long KB = 1024;
+        long MB = KB * 1024;
+        long GB = MB * 1024;
+        long TB = GB * 1024;
+        double size = fileLength;
+        if (fileLength >= TB)
+        {
+            size = Math.Round((double)fileLength / TB, 2);
+            return $"{size} Tb";
+        }
 
-        if (fileLength >= 1 << 20)
-            return $"{fileLength >> 20}{spacer}Mb";
+        if (fileLength >= GB)
+        {
+            size = Math.Round((double)fileLength / GB, 2);
+            return $"{size} Gb";
+        }
 
-        if (fileLength >= 1 << 10)
-            return $"{fileLength >> 10}{spacer}Kb";
+        if (fileLength >= MB)
+        {
+            size = Math.Round((double)fileLength / MB, 2);
+            return $"{size} Mb";
+        }
 
-        return $"{fileLength}{spacer}B";
+        if (fileLength >= KB)
+        {
+            size = Math.Round((double)fileLength / KB, 2);
+            return $"{size} kb";
+        }
+
+        return $"{size} Bytes";
     }
 }
