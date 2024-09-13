@@ -23,10 +23,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\Users\MannusEtten\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+	  <Content Include="tRD-icon-v-400.jpg">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </Content>
   </ItemGroup>
 
   <ItemGroup>

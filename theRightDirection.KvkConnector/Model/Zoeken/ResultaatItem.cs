@@ -30,20 +30,9 @@ public class ResultaatItem
     [JsonPropertyName("naam")]
     public string Naam { get; set; }
 
-    //[JsonPropertyName("adres")]
-    // TODO
-    //public string Adres { get; set; }
+    [JsonPropertyName("adres")]
 
-    [JsonPropertyName("straatnaam")] public string Straatnaam { get; set; }
-
-    [JsonPropertyName("huisnummer")] public int? Huisnummer { get; set; }
-
-    [JsonPropertyName("huisnummerToevoeging")]
-    public string HuisnummerToevoeging { get; set; }
-
-    [JsonPropertyName("postcode")] public string Postcode { get; set; }
-
-    [JsonPropertyName("plaats")] public string Plaats { get; set; }
+    public Adres Adres { get; set; }
 
     /// <summary>
     /// hoofdvestiging/nevenvestiging/rechtspersoon
@@ -72,10 +61,10 @@ public class ResultaatItem
     [JsonPropertyName("actief")]
     public string ActiefString { get; set; }
 
-        /// <summary>
+    /// <summary>
     /// Indicatie of inschrijving actief is.
     /// </summary>
-//    public JaNeeIndicatie Actief { get; set; }
+    //    public JaNeeIndicatie Actief { get; set; }
 
     /// <summary>
     /// Bevat de vervallen handelsnaam of statutaire naam waar dit zoekresultaat mee gevonden is.

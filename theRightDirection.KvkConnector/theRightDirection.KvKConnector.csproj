@@ -16,30 +16,9 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
 	</PropertyGroup>
-  
-	<ItemGroup>
-    <None Remove="Certificates\api_kvk_nl.crt" />
-    <None Remove="Certificates\QuoVadis_PKIoverheid_Private_Services_CA_-_G1.crt" />
-    <None Remove="Certificates\Staat_der_Nederlanden_Private_Root_CA_-_G1.crt" />
-    <None Remove="Certificates\Staat_der_Nederlanden_Private_Services_CA_-_G1.crt" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="theRightDirection.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Certificates\api_kvk_nl.crt" />
-    <EmbeddedResource Include="Certificates\QuoVadis_PKIoverheid_Private_Services_CA_-_G1.crt" />
-    <EmbeddedResource Include="Certificates\Staat_der_Nederlanden_Private_Root_CA_-_G1.crt" />
-    <EmbeddedResource Include="Certificates\Staat_der_Nederlanden_Private_Services_CA_-_G1.crt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\Users\MannusEtten\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>

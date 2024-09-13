@@ -22,14 +22,15 @@
     <OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\..\Users\MannusEtten\OneDrive - the Right Direction\logo &amp; templates\tRD-icon-v-400.jpg" Link="tRD-icon-v-400.jpg">
-      <PackagePath>\</PackagePath>
-      <Pack>True</Pack>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="tRD-icon-v-400.jpg">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
+
+	<ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="4.11.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2478.35" />

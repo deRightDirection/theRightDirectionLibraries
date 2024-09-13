@@ -1,4 +1,5 @@
-﻿using theRightDirection.KvKConnector.Model;
+﻿using Serilog;
+using theRightDirection.KvKConnector.Model;
 using theRightDirection.KvKConnector.Model.Zoeken;
 
 namespace theRightDirection.KvKConnector;
@@ -16,12 +17,18 @@ public class KvKApiClient
     {
         try
         {
-            return await _kvkApi.Search(queryParameters, _apiKey).ConfigureAwait(false);
+            var result = await _kvkApi.Search(queryParameters, _apiKey).ConfigureAwait(false);
+            if (result.IsSuccessStatusCode)
+            {
+                return result.Content;
+            }
+            Log.Logger.Here().Error(result.Error.Content);
         }
-        catch
+        catch (Exception e)
         {
+
             // TODO loggen
-            return new Resultaat();
         }
+        return new Resultaat();
     }
 }

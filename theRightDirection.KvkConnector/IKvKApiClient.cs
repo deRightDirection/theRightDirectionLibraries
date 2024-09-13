@@ -12,9 +12,9 @@ public interface IKvKApiClient
     /// <param name="queryParameters"></param>
     /// <returns>lijst met resultaten</returns>
     [Get("/zoeken")]
-    Task<Resultaat> Search(SearchParameters queryParameters, [Header("apikey")] string apikey);
+    Task<ApiResponse<Resultaat>> Search(SearchParameters queryParameters, [Header("apikey")] string apikey);
 
-    
+
     [Get("/zoeken")]
     Task<string> SearchRaw(SearchParameters queryParameters, [Header("apikey")] string apikey);
 }
