@@ -19,13 +19,6 @@ public class KvkApiClientTest
         var result = await _kvk.Search(new SearchParameters { KvkNummer = "85058769" });
         result.Resultaten.First().Naam.Should().Be("the Right Direction B.V.");
     }
-    [Fact]
-    public async Task Zoek_By_KvkNummer2()
-    {
-        var result = await _kvk.Search(new SearchParameters { KvkNummer = "59734817" });
-        var hoofd = result.Resultaten.First(x => x.Type == Vestigingstype.Hoofdvestiging);
-        result.Resultaten.First().Naam.Should().Be("the Right Direction B.V.");
-    }
 
     [Fact]
     public async Task Zoek_By_Naam()
@@ -35,9 +28,15 @@ public class KvkApiClientTest
     }
 
     [Fact]
-    public async Task Zoek_By_Naam2()
+    public async Task Zoek_Hoofdvestiging_Adres_For_Gemeente_Leeuwarden()
     {
-        var result = await _kvk.Search(new SearchParameters { Handelsnaam = "Gemeente Leeuwarden" });
-        result.Resultaten.First().Naam.Should().Be("the Right Direction B.V.");
+        var response = await _kvk.Search(new SearchParameters { Handelsnaam = "Gemeente Leeuwarden" });
+        var result = response.Resultaten.Where(x => x.Type == Vestigingstype.Hoofdvestiging && x.KvkNummer == "59734817");
+        result.Count().Should().Be(1);
+        var vestigingsNummer = result.First().Vestigingsnummer;
+        var vestiging = await _kvk.GetVestigingsProfiel(vestigingsNummer);
+        vestiging.Adressen.Count().Should().Be(2);
+        var bezoekAdres = vestiging.Adressen.First(x => x.Type == Adrestype.Bezoekadres);
+        bezoekAdres.VolledigAdres.Should().Be("Oldehoofsterkerkhof 2 8911DH Leeuwarden");
     }
 }

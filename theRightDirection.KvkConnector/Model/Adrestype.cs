@@ -1,13 +1,14 @@
 ﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
-namespace HR.KvkConnector.Model
+namespace theRightDirection.KvKConnector.Model;
+
+[JsonConverter(typeof(JsonStringEnumConverter<Adrestype>))]
+public enum Adrestype
 {
-    public enum Adrestype
-    {
-        [EnumMember(Value = "correspondentieadres")]
-        Correspondentieadres = 1,
+    [EnumMember(Value = "correspondentieadres")]
+    Correspondentieadres = 1,
 
-        [EnumMember(Value = "bezoekadres")]
-        Bezoekadres
-    }
+    [EnumMember(Value = "bezoekadres")]
+    Bezoekadres
 }

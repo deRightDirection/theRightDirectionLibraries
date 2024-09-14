@@ -4,6 +4,7 @@ using HR.KvkConnector.Model.Zoeken;
 using System.Net;
 using System.Text.Json;
 using theRightDirection;
+using theRightDirection.KvKConnector.Model;
 using theRightDirection.KvKConnector.Model.Zoeken;
 
 namespace HR.KvkConnector

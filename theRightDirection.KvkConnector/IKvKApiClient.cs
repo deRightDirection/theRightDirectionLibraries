@@ -11,10 +11,15 @@ public interface IKvKApiClient
     /// </summary>
     /// <param name="queryParameters"></param>
     /// <returns>lijst met resultaten</returns>
-    [Get("/zoeken")]
+    [Get("/api/v2/zoeken")]
     Task<ApiResponse<Resultaat>> Search(SearchParameters queryParameters, [Header("apikey")] string apikey);
 
 
-    [Get("/zoeken")]
+    [Get("/api/v2/zoeken")]
     Task<string> SearchRaw(SearchParameters queryParameters, [Header("apikey")] string apikey);
+
+    [Get("/api/v1/vestigingsprofielen/{vestigingsNummer}")]
+    Task<ApiResponse<Vestiging>> GetVestigingsProfiel(string vestigingsNummer, [Header("apikey")] string apikey);
+    [Get("/api/v1/vestigingsprofielen/{vestigingsNummer}")]
+    Task<string> GetVestigingsProfielRaw(string vestigingsNummer, [Header("apikey")] string apikey);
 }

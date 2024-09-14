@@ -13,6 +13,29 @@ public class KvKApiClient
         _apiKey = apikey;
         _kvkApi = KvKApiClientFactory.CreateKvKClient();
     }
+
+    public async Task<Vestiging> GetVestigingsProfiel(string vestigingsNummer)
+    {
+        try
+        {
+            var result = await _kvkApi.GetVestigingsProfiel(vestigingsNummer, _apiKey).ConfigureAwait(false);
+            var result2 = await _kvkApi.GetVestigingsProfielRaw(vestigingsNummer, _apiKey);
+
+            if (result.IsSuccessStatusCode)
+            {
+                return result.Content;
+            }
+            Log.Logger.Here().Error(result.Error.Content);
+        }
+        catch (Exception e)
+        {
+
+            // TODO loggen
+        }
+        return new Vestiging();
+
+    }
+
     public async Task<Resultaat> Search(SearchParameters queryParameters)
     {
         try

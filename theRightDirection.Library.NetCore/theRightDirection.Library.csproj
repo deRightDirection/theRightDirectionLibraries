@@ -4,9 +4,9 @@
 	<TargetFrameworks>net8.0</TargetFrameworks>
 	<AssemblyName>theRightDirection.Library</AssemblyName>
 	<RootNamespace>theRightDirection</RootNamespace>
-	<AssemblyVersion>8.0.7.0</AssemblyVersion>
-	<FileVersion>8.0.7.0</FileVersion>
-	<Version>8.0.7.0</Version>
+	<AssemblyVersion>8.0.8.0</AssemblyVersion>
+	<FileVersion>8.0.8.0</FileVersion>
+	<Version>8.0.8.0</Version>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<Copyright>the Right Direction BV</Copyright>
 	<PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
@@ -51,7 +51,7 @@
   <ItemGroup>
 	<PackageReference Include="log4net" Version="2.0.17" />
 	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	<PackageReference Include="Serilog" Version="4.0.0" />
+	<PackageReference Include="Serilog" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>

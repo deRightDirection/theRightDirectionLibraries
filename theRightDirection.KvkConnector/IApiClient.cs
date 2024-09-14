@@ -1,5 +1,6 @@
 ﻿using HR.KvkConnector.Model;
 using HR.KvkConnector.Model.Zoeken;
+using theRightDirection.KvKConnector.Model;
 using theRightDirection.KvKConnector.Model.Zoeken;
 
 namespace HR.KvkConnector

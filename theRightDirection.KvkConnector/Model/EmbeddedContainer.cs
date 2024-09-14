@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using theRightDirection.KvKConnector.Model;
 
 namespace HR.KvkConnector.Model
 {

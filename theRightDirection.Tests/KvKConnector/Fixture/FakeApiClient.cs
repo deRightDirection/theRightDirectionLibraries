@@ -1,9 +1,7 @@
-﻿using HR.KvkConnector;
-using HR.KvkConnector.Model;
-using HR.KvkConnector.Model.Zoeken;
+﻿using HR.KvkConnector.Model;
 using System.Reflection;
 using System.Text.Json;
-using theRightDirection.KvKConnector.Model.Zoeken;
+using theRightDirection.KvKConnector.Model;
 
 namespace theRightDirection.Tests.KvKConnector.Fixture;
 

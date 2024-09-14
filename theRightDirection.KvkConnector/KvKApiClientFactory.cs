@@ -1,20 +1,14 @@
 ﻿using Refit;
-using System.Security.Authentication;
+using theRightDirection.Http;
 
 namespace theRightDirection.KvKConnector;
 internal class KvKApiClientFactory
 {
     internal static IKvKApiClient CreateKvKClient()
     {
-        var handler = new HttpClientHandler
+        return RestService.For<IKvKApiClient>(new HttpClient(new HttpLoggingService())
         {
-            ClientCertificateOptions = ClientCertificateOption.Manual,
-            SslProtocols = SslProtocols.Tls13
-        };
-
-        return RestService.For<IKvKApiClient>(new HttpClient
-        {
-            BaseAddress = new Uri("https://api.kvk.nl/api/v2")
+            BaseAddress = new Uri("https://api.kvk.nl")
         });
     }
 }

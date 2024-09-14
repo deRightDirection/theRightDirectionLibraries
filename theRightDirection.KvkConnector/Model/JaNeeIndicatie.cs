@@ -2,6 +2,7 @@
 
 namespace theRightDirection.KvKConnector.Model;
 
+[JsonConverter(typeof(JsonStringEnumConverter<JaNeeIndicatie>))]
 public enum JaNeeIndicatie
 {
     Onbekend = -1,

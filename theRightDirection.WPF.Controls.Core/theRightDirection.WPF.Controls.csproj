@@ -31,10 +31,10 @@
 
 
 	<ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="4.11.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2478.35" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.1" />
+    <PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2739.15" />
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
-    <PackageReference Include="theRightDirection.Library" Version="8.0.4" />
+    <PackageReference Include="theRightDirection.Library" Version="8.0.7" />
   </ItemGroup>
 </Project>
