@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <AssemblyVersion>8.0.0.0</AssemblyVersion>
-	  <FileVersion>8.0.0.0</FileVersion>
-	  <Version>8.0.0.0</Version>
+	  <AssemblyVersion>9.0.0.0</AssemblyVersion>
+	  <FileVersion>9.0.0.0</FileVersion>
+	  <Version>9.0.0.0</Version>
 	  <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
 	  <Company>the Right Direction BV</Company>
 	  <Copyright>the Right Direction BV</Copyright>
@@ -30,7 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <PackageReference Include="Refit" Version="7.1.2" />
+    <PackageReference Include="Refit" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
