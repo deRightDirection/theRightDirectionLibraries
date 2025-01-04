@@ -1,8 +1,9 @@
 ﻿using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using theRightDirection.EntityFramework.Util;
+using theRightDirection.Tests.EntityFramework;
 
-namespace theRightDirection.Tests.EntityFramework;
+namespace EntityFramework;
 public class EncryptColumnAttributeTest
 {
     [Fact]

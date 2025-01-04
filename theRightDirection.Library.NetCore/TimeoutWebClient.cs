@@ -1,33 +1,36 @@
 ﻿using System;
 using System.Net;
 
-namespace theRightDirection
+namespace theRightDirection;
+
+/// <summary>
+/// webclient with configurable timeout-period
+/// </summary>
+[Obsolete("dependencies are obsolete so do not use this class anymore, will be removed in future releases")]
+public class TimeoutWebClient : WebClient, IWebClient
 {
     /// <summary>
-    /// webclient with configurable timeout-period
+    /// time out in milliseconds
     /// </summary>
-    public class TimeoutWebClient : WebClient, IWebClient
+    [Obsolete("dependencies are obsolete so do not use this class anymore, will be removed in future releases")]
+    public int Timeout { get; set; }
+
+    [Obsolete("dependencies are obsolete so do not use this class anymore, will be removed in future releases")]
+    public TimeoutWebClient()
     {
-        /// <summary>
-        /// time out in milliseconds
-        /// </summary>
-        public int Timeout { get; set; }
+        Timeout = 60000;
+    }
 
-        public TimeoutWebClient()
-        {
-            Timeout = 60000;
-        }
+    [Obsolete("dependencies are obsolete so do not use this class anymore, will be removed in future releases")]
+    public TimeoutWebClient(int timeout)
+    {
+        Timeout = timeout;
+    }
 
-        public TimeoutWebClient(int timeout)
-        {
-            Timeout = timeout;
-        }
-
-        protected override WebRequest GetWebRequest(Uri address)
-        {
-            var request = base.GetWebRequest(address);
-            request.Timeout = Timeout;
-            return request;
-        }
+    protected override WebRequest GetWebRequest(Uri address)
+    {
+        var request = base.GetWebRequest(address);
+        request.Timeout = Timeout;
+        return request;
     }
 }

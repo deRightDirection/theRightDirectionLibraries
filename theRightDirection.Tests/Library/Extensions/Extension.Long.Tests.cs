@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
-using Xunit;
+using theRightDirection;
 
-namespace theRightDirection.Library.UnitTests.Extensions;
+namespace Library.Extensions;
 public class LongExtensionsTest
 {
     [Theory]

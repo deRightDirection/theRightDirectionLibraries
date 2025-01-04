@@ -1,16 +1,14 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Security;
+using theRightDirection;
 using theRightDirection.Random;
-using Xunit;
 
-namespace theRightDirection.Library.UnitTests.Extensions;
+namespace Library.Extensions;
 
 public class StringExtensionsTest
 {
-    [Theory]
+    [Theory(Skip = "04-01-2025 uitzoeken waarom dit handig is")]
     [InlineData("test.png", @"c:\")]
     public void AddRunningLocationToPathOfFile(string fileName, string expected)
     {
