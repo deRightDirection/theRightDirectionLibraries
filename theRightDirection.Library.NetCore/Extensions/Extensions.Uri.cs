@@ -10,6 +10,19 @@ namespace theRightDirection;
 public static partial class Extensions
 {
     /// <summary>
+    /// determine of the URI is coming from ArcGIS Online or ArcGIS Enterprise
+    /// </summary>
+    public static bool IsArcGISOnline(this Uri uri)
+    {
+        if (uri == null)
+        {
+            return false;
+        }
+        var absoluteUri = uri.AbsoluteUri;
+        return absoluteUri.Contains("maps.arcgis.com", StringComparison.InvariantCultureIgnoreCase) || absoluteUri.Contains("www.arcgis.com", StringComparison.InvariantCultureIgnoreCase);
+    }
+
+    /// <summary>
     /// rewrite the uri, strip the values of queryparameters to a maximum of five characters<br/>
     /// current supported query paramaters names:<br/>
     /// - code<br/>
