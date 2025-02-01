@@ -1,23 +1,13 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Configuration;
 using System.Reflection;
 
 namespace theRightDirection;
 
 public static partial class Extensions
 {
-    [Obsolete("we do not use log4net anymore, will be removed in future releases")]
-    public static void Exception(this ILog logger, Exception exception)
-    {
-        logger.Error(exception.Message, exception);
-    }
-
-    [Obsolete("we do not use log4net anymore, will be removed in future releases")]
-    public static void LogEnvironmentInformation(this ILog logger)
-    {
-        LogEnvironmentInformation(logger, new List<string>()); ;
-    }
 
     [Obsolete("we do not use log4net anymore, will be removed in future releases")]
     public static void LogEnvironmentInformation(this ILog logger, List<string> additionalLinesWithInformation)
@@ -46,20 +36,5 @@ public static partial class Extensions
             }
         }
         logger.Info("-------------------------------------");
-    }
-
-    [Obsolete("we do not use log4net anymore, will be removed in future releases")]
-    public static string GetStackTrace(this ILog logger)
-    {
-        var stackTrace = new StackTrace();
-        var stackFrames = stackTrace.GetFrames();
-        if (stackFrames.Length < 4)
-        {
-            return string.Empty;
-        }
-        var trace = stackFrames[3];
-        var mb = trace.GetMethod();
-        var t = mb.DeclaringType;
-        return $"{t}.{mb.Name}";
     }
 }
