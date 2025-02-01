@@ -380,6 +380,7 @@ public static partial class Extensions
         else
         {
             var extraPattern = new string(extraAllowedCharacters);
+            extraPattern = extraPattern.Replace("-", @"\-");
             testPattern = testPattern.Replace("XXX", extraPattern);
         }
         return Regex.Match(test, testPattern).Success;
