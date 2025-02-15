@@ -33,6 +33,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="FluentAssertions" Version="7.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
@@ -51,6 +52,7 @@
   <ItemGroup>
     <ProjectReference Include="..\theRightDirection.EntityFramework\theRightDirection.EntityFramework.csproj" />
     <ProjectReference Include="..\theRightDirection.KvkConnector\theRightDirection.KvKConnector.csproj" />
+    <ProjectReference Include="..\theRightDirection.Library.FluentValidation\theRightDirection.Library.FluentValidation.csproj" />
     <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
     <ProjectReference Include="..\theRightDirection.PDOKGeocoder\theRightDirection.PDOKGeocoder.csproj" />
   </ItemGroup>
