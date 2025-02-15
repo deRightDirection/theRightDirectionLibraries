@@ -22,14 +22,6 @@
 	<OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
-    <DebugType>full</DebugType>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
-    <DebugType>full</DebugType>
-  </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="EntityFramework\**" />
     <EmbeddedResource Remove="EntityFramework\**" />
