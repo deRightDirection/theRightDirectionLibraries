@@ -9,14 +9,10 @@ using System.Threading.Tasks;
 
 namespace theRightDirection.Http;
 
-public class HttpLoggingService : DelegatingHandler
+public class HttpLoggingService(HttpMessageHandler innerHandler = null)
+    : DelegatingHandler(innerHandler ?? new HttpClientHandler())
 {
-    private readonly bool _showMinimalPostInformation;
-    public HttpLoggingService(HttpMessageHandler innerHandler = null, bool showMinimalPostInformation = true)
-        : base(innerHandler ?? new HttpClientHandler())
-    {
-        _showMinimalPostInformation = showMinimalPostInformation;
-    }
+    private readonly bool _showMinimalPostInformation = true;
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
         CancellationToken cancellationToken)
