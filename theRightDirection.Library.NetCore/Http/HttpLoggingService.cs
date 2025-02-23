@@ -11,9 +11,11 @@ namespace theRightDirection.Http;
 
 public class HttpLoggingService : DelegatingHandler
 {
-    public HttpLoggingService(HttpMessageHandler innerHandler = null)
+    private readonly bool _showMinimalPostInformation;
+    public HttpLoggingService(HttpMessageHandler innerHandler = null, bool showMinimalPostInformation = true)
         : base(innerHandler ?? new HttpClientHandler())
     {
+        _showMinimalPostInformation = showMinimalPostInformation;
     }
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
@@ -21,9 +23,9 @@ public class HttpLoggingService : DelegatingHandler
     {
         var req = request;
         var id = Guid.NewGuid().ToString();
-        var msg = $"[{id} -   Request]";
+        var msg = $"[{id} - Request]";
 
-        Log.Logger.Here().Debug($"{msg}========Start==========");
+        Log.Logger.Here().Debug($"{msg} ========Start==========");
         Log.Logger.Here().Debug($"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
         Log.Logger.Here().Debug($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
 
@@ -48,41 +50,41 @@ public class HttpLoggingService : DelegatingHandler
 
         var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
-        var end = DateTime.Now;
-
-        Log.Logger.Here().Debug($"{msg} Duration: {end - start}");
-        Log.Logger.Here().Debug($"{msg}==========End==========");
+        Log.Logger.Here().Debug($"{msg} ==========End==========");
 
         msg = $"[{id} - Response]";
-        Log.Logger.Here().Debug($"{msg}=========Start=========");
+        Log.Logger.Here().Debug($"{msg} =========Start=========");
 
         var resp = response;
+        if (!_showMinimalPostInformation)
+        {
+            Log.Logger.Here().Debug(
+                $"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
 
-        Log.Logger.Here().Debug(
-            $"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
-
-        foreach (var header in resp.Headers)
-            Log.Logger.Here().Debug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+            foreach (var header in resp.Headers)
+                Log.Logger.Here().Debug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+        }
 
         if (resp.Content != null)
         {
-            foreach (var header in resp.Content.Headers)
-                Log.Logger.Here().Debug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+            if (!_showMinimalPostInformation)
+            {
+                foreach (var header in resp.Content.Headers)
+                    Log.Logger.Here().Debug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+            }
 
             if (resp.Content is StringContent || this.IsTextBasedContentType(resp.Headers) ||
-                this.IsTextBasedContentType(resp.Content.Headers))
+                IsTextBasedContentType(resp.Content.Headers))
             {
-                start = DateTime.Now;
                 var result = await resp.Content.ReadAsStringAsync();
-                end = DateTime.Now;
 
-                Log.Logger.Here().Debug($"{msg} Content:");
-                Log.Logger.Here().Debug($"{msg} {result}");
-                Log.Logger.Here().Debug($"{msg} Duration: {end - start}");
+                Log.Logger.Here().Debug($"{msg} Content: {result}");
             }
         }
 
-        Log.Logger.Here().Debug($"{msg}==========End==========");
+        var end = DateTime.Now;
+        Log.Logger.Here().Debug($"{msg} ==========End==========");
+        Log.Logger.Here().Debug($"{msg} Duration: {end - start}");
         return response;
     }
 
