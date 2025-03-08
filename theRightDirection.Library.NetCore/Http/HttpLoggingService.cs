@@ -22,7 +22,7 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
         var msg = $"[{id} - Request]";
 
         Log.Logger.Here().Debug($"{msg} ========Start==========");
-        Log.Logger.Here().Debug($"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
+        Log.Logger.Here().Debug($"{msg} {req.Method} {req.RequestUri.PathAndQuery}"); // {req.RequestUri.Scheme}/{req.Version}");
         Log.Logger.Here().Debug($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
 
         foreach (var header in req.Headers)
