@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theRightDirection.PDOKGeoco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theRightDirection.Library.FluentValidation", "theRightDirection.Library.FluentValidation\theRightDirection.Library.FluentValidation.csproj", "{7D77C24C-415B-4BDD-91B2-ACEBD9CF8BAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theRightDirection.AspNet.Middleware", "theRightDirection.AspNet.Middleware\theRightDirection.AspNet.Middleware.csproj", "{414432C5-3E69-4428-B44A-A0E594B0D5B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +169,18 @@ Global
 		{7D77C24C-415B-4BDD-91B2-ACEBD9CF8BAE}.Release|x64.Build.0 = Release|Any CPU
 		{7D77C24C-415B-4BDD-91B2-ACEBD9CF8BAE}.Release|x86.ActiveCfg = Release|Any CPU
 		{7D77C24C-415B-4BDD-91B2-ACEBD9CF8BAE}.Release|x86.Build.0 = Release|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Debug|x64.Build.0 = Debug|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Debug|x86.Build.0 = Debug|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Release|x64.ActiveCfg = Release|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Release|x64.Build.0 = Release|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Release|x86.ActiveCfg = Release|Any CPU
+		{414432C5-3E69-4428-B44A-A0E594B0D5B8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

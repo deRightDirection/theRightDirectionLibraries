@@ -7,9 +7,9 @@
 	  <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>theRightDirection.WPF.Xaml</AssemblyName>
     <RootNamespace>theRightDirection.WPF.Xaml</RootNamespace>
-	  <AssemblyVersion>9.0.0.0</AssemblyVersion>
-	  <FileVersion>9.0.0.0</FileVersion>
-	  <Version>9.0.0.0</Version>
+	  <AssemblyVersion>9.0.5.0</AssemblyVersion>
+	  <FileVersion>9.0.5.0</FileVersion>
+	  <Version>9.0.5.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Company>the Right Direction BV</Company>
     <Copyright>the Right Direction BV</Copyright>
