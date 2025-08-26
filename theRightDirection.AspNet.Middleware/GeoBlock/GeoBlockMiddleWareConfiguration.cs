@@ -17,22 +17,28 @@ public class GeoBlockMiddleWareConfiguration
         }
         // NL is Nederland
         // DE is Duitsland
+        // SE is Zweden
         if (isoCountryNames == null)
         {
-            isoCountryNames = new List<string> { "NL", "DE" };
+            // TODO 26-08-2025 voor KLIC Genius dit flexibel maken
+            isoCountryNames = new List<string> { "NL", "DE", "SE" };
         }
         _isoCountryNames = isoCountryNames.ToArray();
     }
 
     public bool IPIsFromAllowedCountry(IPAddress ip)
     {
+#if DEBUG
+        return true;
+#endif
         var data = Lookup(ip);
         var countryCode = GetCountryCode(data);
-        Log.Logger.Here().Debug($"ISO country code for IP: {countryCode}");
         if (countryCode.HasNoText() || !_isoCountryNames.Contains(countryCode))
         {
+            Log.Logger.Here().Debug($"ip denied: {countryCode} {ip}");
             return false;
         }
+        Log.Logger.Here().Debug($"ip allowed: {countryCode} {ip}");
         return true;
     }
 
@@ -41,7 +47,6 @@ public class GeoBlockMiddleWareConfiguration
         if (data != null)
         {
             var cnty = data["country"] as Dictionary<string, object>;
-            Log.Logger.Here().Debug((string)cnty["iso_code"]);
             return (string)cnty["iso_code"];
         }
         return string.Empty;
