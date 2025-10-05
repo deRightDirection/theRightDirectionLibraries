@@ -8,12 +8,14 @@ public class GeoBlockMiddleWareConfiguration
 {
     private readonly Reader _reader;
     private readonly string[] _isoCountryNames;
+    private readonly bool _isValid;
 
     public GeoBlockMiddleWareConfiguration(string maxMindDatabaseFilePath, List<string> isoCountryNames = null)
     {
         if (File.Exists(maxMindDatabaseFilePath))
         {
             _reader = new Reader(maxMindDatabaseFilePath, FileAccessMode.Memory);
+            _isValid = true;
         }
         // NL is Nederland
         // DE is Duitsland
@@ -31,6 +33,11 @@ public class GeoBlockMiddleWareConfiguration
 #if DEBUG
         return true;
 #endif
+        if (!_isValid)
+        {
+            Log.Logger.Here().Warning($"there is no MaxMind database file found, all IP-addresses are allowed");
+            return true;
+        }
         var data = Lookup(ip);
         var countryCode = GetCountryCode(data);
         if (countryCode.HasNoText() || !_isoCountryNames.Contains(countryCode))
