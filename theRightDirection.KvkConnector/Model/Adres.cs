@@ -36,7 +36,8 @@ public class Adres
     public string Land { get; set; }
     //    public string HuisnummerToevoeging { get; set; }
 
-    //    public string Huisletter { get; set; }
+    [JsonPropertyName("huisletter")]
+    public string Huisletter { get; set; }
 
     //    public string AanduidingBijHuisnummer { get; set; }
 

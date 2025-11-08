@@ -7,8 +7,7 @@ public class Vestiging
     /// <summary>
     /// Vestigingsnummer: uniek nummer dat bestaat uit 12 cijfers.
     /// </summary>
-    [JsonPropertyName("vestigingsnummer")]
-    public string Vestigingsnummer { get; set; }
+//    public string Vestigingsnummer { get; set; }
 
     /// <summary>
     /// Nederlands Kamer van Koophandel nummer: bestaat uit 8 cijfers.
@@ -29,7 +28,7 @@ public class Vestiging
     public string Rsin { get; set; }
 
     [JsonPropertyName("adressen")]
-    public IEnumerable<Adres> Adressen { get; set; } = Enumerable.Empty<Adres>();
+    public IEnumerable<Adres> Adressen { get; set; } = [];
 
     /// <summary>
     /// Hiermee geeft de onderneming aan geen ongevraagde reclame per post of verkoop aan de deur te willen ontvangen.

@@ -1,15 +1,11 @@
-﻿using System.Runtime.Serialization;
-using theRightDirection.KvKConnector.Model;
+﻿using System.Text.Json.Serialization;
 
-namespace HR.KvkConnector.Model
+namespace theRightDirection.KvKConnector.Model;
+
+public class EmbeddedContainer
 {
-    [DataContract]
-    public class EmbeddedContainer
-    {
-        [DataMember(Name = "hoofdvestiging")]
-        public Vestiging Hoofdvestiging { get; set; }
+    [JsonPropertyName("hoofdvestiging")]
+    public Vestiging Hoofdvestiging { get; set; }
 
-        [DataMember(Name = "eigenaar")]
-        public Eigenaar Eigenaar { get; set; }
-    }
+    //public Eigenaar Eigenaar { get; set; }
 }

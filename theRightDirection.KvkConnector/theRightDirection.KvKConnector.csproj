@@ -32,11 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+	<PackageReference Include="Ben.Demystifier" Version="0.4.1" />
     <PackageReference Include="Refit" Version="8.0.0" />
+    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="theRightDirection.Library" Version="9.0.4" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
-  </ItemGroup>
-
 </Project>
