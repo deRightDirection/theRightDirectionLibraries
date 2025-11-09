@@ -1,5 +1,4 @@
-﻿using HR.KvkConnector.Model;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace theRightDirection.KvKConnector.Model;
 
@@ -9,6 +8,7 @@ public class Basisprofiel
     /// Nederlands Kamer van Koophandel nummer: bestaat uit 8 cijfers.
     /// </summary>
     public string KvkNummer { get; set; }
+    public string Naam { get; set; }
 
     ///// <summary>
     ///// Hiermee geeft de onderneming aan geen ongevraagde reclame per post of verkoop aan de deur te willen ontvangen.
@@ -41,7 +41,7 @@ public class Basisprofiel
     /// <summary>
     /// Alle namen waaronder een onderneming of vestiging handelt (op volgorde van registreren).
     /// </summary>
-    public IEnumerable<Handelsnaam> Handelsnamen { get; set; } = Enumerable.Empty<Handelsnaam>();
+    //public IEnumerable<Handelsnaam> Handelsnamen { get; set; } = Enumerable.Empty<Handelsnaam>();
 
     /// <summary>
     /// Code beschrijving van SBI activiteiten conform SBI 2008 (Standard Industrial Classification). 
