@@ -4,9 +4,9 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <AssemblyVersion>9.0.6.0</AssemblyVersion>
-	  <FileVersion>9.0.6.0</FileVersion>
-	  <Version>9.0.6.0</Version>    
+	  <AssemblyVersion>9.0.8.0</AssemblyVersion>
+	  <FileVersion>9.0.8.0</FileVersion>
+	  <Version>9.0.8.0</Version>    
 	  <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
     <Company>the Right Direction BV</Company>
     <Copyright>the Right Direction BV</Copyright>
@@ -33,7 +33,7 @@
 
   <ItemGroup>
 	<PackageReference Include="Ben.Demystifier" Version="0.4.1" />
-    <PackageReference Include="Refit" Version="8.0.0" />
+    <PackageReference Include="Refit" Version="9.0.2" />
     <PackageReference Include="Serilog" Version="4.3.0" />
     <PackageReference Include="theRightDirection.Library" Version="9.0.4" />
   </ItemGroup>
