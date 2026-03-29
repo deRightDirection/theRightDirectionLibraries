@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Company>the Right Direction BV</Company>
     <PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
     <Copyright>the Right Direction BV</Copyright>
     <PackageIcon>tRD-icon-v-400.jpg</PackageIcon>
-	  <AssemblyVersion>9.0.5.0</AssemblyVersion>
-	  <FileVersion>9.0.5.0</FileVersion>
-	  <Version>9.0.5.0</Version>
+	  <AssemblyVersion>10.0.0.0</AssemblyVersion>
+	  <FileVersion>10.0.0.0</FileVersion>
+	  <Version>10.0.0.0</Version>
   </PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
   </ItemGroup>
 
 </Project>

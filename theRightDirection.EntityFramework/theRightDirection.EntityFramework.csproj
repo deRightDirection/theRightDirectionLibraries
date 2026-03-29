@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>9.0.5.0</Version>
+    <Version>10.0.0.0</Version>
     <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
     <Company>the Right Direction BV</Company>
     <Copyright>the Right Direction BV</Copyright>
@@ -33,6 +33,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
 	</ItemGroup>
 </Project>

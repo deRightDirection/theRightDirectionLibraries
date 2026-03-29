@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-	  <TargetFramework>net9.0-windows</TargetFramework>
+	  <TargetFramework>net10.0-windows</TargetFramework>
 	  <Nullable>enable</Nullable>
 	  <UseWPF>true</UseWPF>
 	  <ImplicitUsings>enable</ImplicitUsings>
-	  <AssemblyVersion>9.0.5.0</AssemblyVersion>
-	  <FileVersion>9.0.5.0</FileVersion>
-	  <Version>9.0.5.0</Version>
+	  <AssemblyVersion>10.0.0.0</AssemblyVersion>
+	  <FileVersion>10.0.0.0</FileVersion>
+	  <Version>10.0.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MvvmCross" Version="9.3.0" />
+    <PackageReference Include="MvvmCross" Version="10.1.2" />
   </ItemGroup>
 
   <ItemGroup>

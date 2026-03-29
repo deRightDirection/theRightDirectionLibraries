@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-	  <TargetFramework>net9.0-windows</TargetFramework>
+	  <TargetFramework>net10.0-windows</TargetFramework>
 	  <Nullable>enable</Nullable>
 	  <UseWPF>true</UseWPF>
 	  <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>theRightDirection.WPF.Xaml</AssemblyName>
     <RootNamespace>theRightDirection.WPF.Xaml</RootNamespace>
-	  <AssemblyVersion>9.0.5.0</AssemblyVersion>
-	  <FileVersion>9.0.5.0</FileVersion>
-	  <Version>9.0.5.0</Version>
+	  <AssemblyVersion>10.0.0.0</AssemblyVersion>
+	  <FileVersion>10.0.0.0</FileVersion>
+	  <Version>10.0.0.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Company>the Right Direction BV</Company>
     <Copyright>the Right Direction BV</Copyright>
@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="theRightDirection.Library" Version="8.0.8" />
   </ItemGroup>
 </Project>

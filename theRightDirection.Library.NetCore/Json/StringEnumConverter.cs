@@ -1,8 +1,7 @@
-﻿using log4net;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Serilog;
 using System;
-using System.Reflection;
 
 namespace theRightDirection.Json;
 
@@ -15,11 +14,10 @@ public class StringEnumConverter<T> : StringEnumConverter where T : Enum
 {
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-        var log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         var enumValueString = reader.Value?.ToString();
         if (enumValueString == null)
         {
-            log.Warn($"{typeof(T)} value is null or empty");
+            Log.Logger.Here().Warning($"{typeof(T)} value is null or empty");
             return default(T);
         }
         enumValueString = enumValueString.Replace(" ", string.Empty);
@@ -36,7 +34,7 @@ public class StringEnumConverter<T> : StringEnumConverter where T : Enum
         }
         catch
         {
-            log.Warn($"value '{enumValueString}' not recognized for type '{objectType}'");
+            Log.Logger.Here().Warning($"value '{enumValueString}' not recognized for type '{objectType}'");
         }
         return result;
     }

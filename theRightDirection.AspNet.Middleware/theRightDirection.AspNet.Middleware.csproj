@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <AssemblyVersion>9.0.7.0</AssemblyVersion>
-	  <FileVersion>9.0.7.0</FileVersion>
-	  <Version>9.0.7.0</Version>
+	  <AssemblyVersion>10.0.0.0</AssemblyVersion>
+	  <FileVersion>10.0.0.0</FileVersion>
+	  <Version>10.0.0.0</Version>
 	  <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <Copyright>the Right Direction BV</Copyright>
@@ -35,10 +35,10 @@
     </Content>
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="MaxMind.Db" Version="4.2.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.9" />
-		<PackageReference Include="Serilog" Version="4.3.0" />
+		<PackageReference Include="MaxMind.Db" Version="5.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.9" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.5" />
+		<PackageReference Include="Serilog" Version="4.3.1" />
 		<PackageReference Include="theRightDirection.Library" Version="9.0.4" />
 	</ItemGroup>
 </Project>
