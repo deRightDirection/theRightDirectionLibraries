@@ -4,9 +4,9 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <AssemblyVersion>10.0.0.0</AssemblyVersion>
-	  <FileVersion>10.0.0.0</FileVersion>
-	  <Version>10.0.0.0</Version>    
+	  <AssemblyVersion>10.0.1.0</AssemblyVersion>
+	  <FileVersion>10.0.1.0</FileVersion>
+	  <Version>10.0.1.0</Version>    
 	  <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
     <Company>the Right Direction BV</Company>
     <Copyright>the Right Direction BV</Copyright>

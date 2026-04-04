@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using FluentAssertions;
+﻿using FluentAssertions;
+using System.Reflection;
 using theRightDirection;
 
 namespace Library.UnitTests;
@@ -34,7 +34,7 @@ public class ResourceReaderTest
     public void Logo_Is_Found_As_Resource()
     {
         var image = _resourceReader.ReadDataFromResourceAsFile("tRD-logo-1regel.png");
-        image.Length.Should().BeGreaterOrEqualTo(10);
+        image.Length.Should().BeGreaterThanOrEqualTo(10);
     }
     [Fact]
     public void Text_Is_Read_From_Resource()
@@ -46,6 +46,6 @@ public class ResourceReaderTest
     public void Text_In_Bytes_From_Resource()
     {
         var text = _resourceReader.ReadDataFromResourceAsFile("test.txt", "TestResources");
-        text.Length.Should().BeGreaterOrEqualTo(9);
+        text.Length.Should().BeGreaterThanOrEqualTo(9);
     }
 }

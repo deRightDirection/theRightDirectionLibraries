@@ -1,34 +1,22 @@
-﻿using System.Runtime.Serialization;
-using theRightDirection.KvKConnector.Model;
+﻿using HR.KvkConnector.Model;
+using System.Text.Json.Serialization;
 
-namespace HR.KvkConnector.Model
+namespace theRightDirection.KvKConnector.Model;
+
+public class Eigenaar
 {
-    [DataContract]
-    public class Eigenaar
-    {
-        /// <summary>
-        /// Rechtspersonen Samenwerkingsverbanden Informatie Nummer.
-        /// </summary>
-        [DataMember(Name = "rsin")]
-        public string Rsin { get; set; }
+    /// <summary>
+    /// Rechtspersonen Samenwerkingsverbanden Informatie Nummer.
+    /// </summary>
+    public string Rsin { get; set; }
 
-        [DataMember(Name = "rechtsvorm")]
-        public string Rechtsvorm { get; set; }
+    public string Rechtsvorm { get; set; }
 
-        [DataMember(Name = "uitgebreideRechtsvorm")]
-        public string UitgebreideRechtsvorm { get; set; }
+    public string UitgebreideRechtsvorm { get; set; }
 
-        [DataMember(Name = "adressen")]
-        public IEnumerable<Adres> Adressen { get; set; } = Enumerable.Empty<Adres>();
+    [JsonPropertyName("adressen")]
+    public IEnumerable<Adres> Adressen { get; set; } = Enumerable.Empty<Adres>();
 
-        [DataMember(Name = "links")]
-        public IEnumerable<Link> Links { get; set; } = Enumerable.Empty<Link>();
+    public IEnumerable<Link> Links { get; set; } = Enumerable.Empty<Link>();
 
-        [OnDeserializing]
-        protected void OnDeserializing(StreamingContext context)
-        {
-            Adressen = Enumerable.Empty<Adres>();
-            Links = Enumerable.Empty<Link>();
-        }
-    }
 }

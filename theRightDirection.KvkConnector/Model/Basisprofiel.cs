@@ -10,6 +10,27 @@ public class Basisprofiel
     public string KvkNummer { get; set; }
     public string Naam { get; set; }
 
+    public Adres GetBezoekAdres()
+    {
+        if (Embedded?.Hoofdvestiging?.Adressen != null)
+        {
+            var adres = Embedded.Hoofdvestiging.Adressen.FirstOrDefault(x => x.Type == Adrestype.Bezoekadres);
+            if (adres != null)
+            {
+                return adres;
+            }
+        }
+
+        if (Embedded?.Eigenaar?.Adressen != null)
+        {
+            var adres = Embedded.Eigenaar.Adressen.FirstOrDefault(x => x.Type == Adrestype.Bezoekadres);
+            if (adres != null)
+            {
+                return adres;
+            }
+        }
+        return new Adres();
+    }
     ///// <summary>
     ///// Hiermee geeft de onderneming aan geen ongevraagde reclame per post of verkoop aan de deur te willen ontvangen.
     ///// </summary>

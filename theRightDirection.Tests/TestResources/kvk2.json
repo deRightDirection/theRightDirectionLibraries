@@ -1,0 +1,98 @@
+{
+  "kvkNummer": "85058769",
+  "indNonMailing": "Ja",
+  "naam": "the Right Direction B.V.",
+  "formeleRegistratiedatum": "20220104",
+  "materieleRegistratie": {
+    "datumAanvang": "20220103"
+  },
+  "totaalWerkzamePersonen": 1,
+  "statutaireNaam": "the Right Direction B.V.",
+  "handelsnamen": [
+    {
+      "naam": "the Right Direction B.V.",
+      "volgorde": 0
+    }
+  ],
+  "sbiActiviteiten": [
+    {
+      "sbiCode": "62100",
+      "sbiOmschrijving": "Ontwerpen van computerprogramma’s",
+      "indHoofdactiviteit": "Ja"
+    },
+    {
+      "sbiCode": "62900",
+      "sbiOmschrijving": "Overige diensten op het gebied van informatietechnologie en computer",
+      "indHoofdactiviteit": "Nee"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://api.kvk.nl/api/v1/basisprofielen/85058769"
+    },
+    {
+      "rel": "vestigingen",
+      "href": "https://api.kvk.nl/api/v1/basisprofielen/85058769/vestigingen"
+    }
+  ],
+  "_embedded": {
+    "hoofdvestiging": {
+      "vestigingsnummer": "000051127369",
+      "kvkNummer": "85058769",
+      "formeleRegistratiedatum": "20220104",
+      "materieleRegistratie": {
+        "datumAanvang": "20220103"
+      },
+      "eersteHandelsnaam": "the Right Direction B.V.",
+      "indHoofdvestiging": "Ja",
+      "indCommercieleVestiging": "Ja",
+      "totaalWerkzamePersonen": 1,
+      "adressen": [
+        {
+          "type": "bezoekadres",
+          "indAfgeschermd": "Nee",
+          "volledigAdres": "Van Iddekingeweg 133 9721CD Groningen",
+          "straatnaam": "Van Iddekingeweg",
+          "huisnummer": 133,
+          "postcode": "9721CD",
+          "plaats": "Groningen",
+          "land": "Nederland"
+        }
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.kvk.nl/api/v1/basisprofielen/85058769/hoofdvestiging"
+        },
+        {
+          "rel": "vestigingen",
+          "href": "https://api.kvk.nl/api/v1/basisprofielen/85058769/vestigingen"
+        },
+        {
+          "rel": "basisprofiel",
+          "href": "https://api.kvk.nl/api/v1/basisprofielen/85058769"
+        },
+        {
+          "rel": "vestigingsprofiel",
+          "href": "https://api.kvk.nl/api/v1/vestigingsprofielen/000051127369"
+        }
+      ]
+    },
+    "eigenaar": {
+      "rsin": "863492459",
+      "rechtsvorm": "Besloten Vennootschap",
+      "uitgebreideRechtsvorm": "Besloten Vennootschap",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.kvk.nl/api/v1/basisprofielen/85058769/eigenaar"
+        },
+        {
+          "rel": "basisprofiel",
+          "href": "https://api.kvk.nl/api/v1/basisprofielen/85058769"
+        }
+      ]
+    }
+  }
+}

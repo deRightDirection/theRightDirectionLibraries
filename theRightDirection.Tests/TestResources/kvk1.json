@@ -1,0 +1,51 @@
+{
+  "kvkNummer": "27276405",
+  "indNonMailing": "Nee",
+  "naam": "Stichting Breedband Delft",
+  "materieleRegistratie": {
+    "datumAanvang": "20050407"
+  },
+  "statutaireNaam": "Stichting Breedband Delft",
+  "sbiActiviteiten": [
+    {
+      "sbiCode": "61900",
+      "sbiOmschrijving": "Overige activiteiten op het gebied van telecommunicatie",
+      "indHoofdactiviteit": "Ja"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://api.kvk.nl/api/v1/basisprofielen/27276405"
+    }
+  ],
+  "_embedded": {
+    "eigenaar": {
+      "rsin": "814506884",
+      "rechtsvorm": "Stichting",
+      "uitgebreideRechtsvorm": "Stichting",
+      "adressen": [
+        {
+          "type": "bezoekadres",
+          "indAfgeschermd": "Nee",
+          "volledigAdres": "Vlinderweg 2 2623AX Delft",
+          "straatnaam": "Vlinderweg",
+          "huisnummer": 2,
+          "postcode": "2623AX",
+          "plaats": "Delft",
+          "land": "Nederland"
+        }
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.kvk.nl/api/v1/basisprofielen/27276405/eigenaar"
+        },
+        {
+          "rel": "basisprofiel",
+          "href": "https://api.kvk.nl/api/v1/basisprofielen/27276405"
+        }
+      ]
+    }
+  }
+}
