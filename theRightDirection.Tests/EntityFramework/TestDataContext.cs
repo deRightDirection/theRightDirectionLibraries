@@ -1,22 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using theRightDirection.EntityFramework.Extension;
-using theRightDirection.EntityFramework.Interfaces;
+using theRightDirection.EntityFramework;
+using theRightDirection.EntityFramework.Converter;
 
 namespace theRightDirection.Tests.EntityFramework;
 
-public class TestDataContext : DbContext
+public class TestDataContext(DbContextOptions<TestDataContext> options, EncryptionService encryptionService)
+    : DbContext(options)
 {
-    public static IEncryptionProvider EncryptionProvider;
-    public DbSet<GeheimeData> Namen { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Pooling=False;Filename=c:\\temp\\unittest.db");
-        base.OnConfiguring(optionsBuilder);
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.UseEncryption(EncryptionProvider);
+        var encryptionConverter = new EncryptionConverter(encryptionService);
+        modelBuilder.Entity<GeheimeData>(entity =>
+        {
+            entity.HasKey(x => x.Id);
+            entity.Property(x => x.FirstName).HasConversion(encryptionConverter);
+            entity.Property(x => x.LastName).HasConversion(encryptionConverter);
+        });
     }
+    public DbSet<GeheimeData> Namen { get; set; }
+
 }
