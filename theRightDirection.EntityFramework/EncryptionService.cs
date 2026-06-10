@@ -52,6 +52,11 @@ public class EncryptionService
         _key = Convert.FromBase64String(windowsCredential.Password);
     }
 
+    public EncryptionService(string key)
+    {
+        _key = Convert.FromBase64String(key);
+    }
+
     public string Encrypt(string plaintext)
     {
         // Convert the plaintext string to a byte array
