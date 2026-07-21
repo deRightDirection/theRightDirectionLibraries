@@ -27,17 +27,17 @@ public class KvKApiClient
         try
         {
             var result = await _kvkApi.GetBasisProfiel(_apiKey.ToUnsecureString(), kvkNummer).ConfigureAwait(false);
-            if (result.IsSuccessStatusCode)
+            if (result.IsSuccessful)
             {
                 return result;
             }
-            Log.Logger.Here().Error(result.Error?.Content);
+            Log.Logger.Here().Error(result.GetErrorMessage());
         }
         catch (Exception e)
         {
             Log.Logger.Here().Error(e.ToStringDemystified());
         }
-        return new ApiResponse<Basisprofiel>(new HttpResponseMessage(HttpStatusCode.NotFound), new Basisprofiel(), new RefitSettings());
+        return new ApiResponse<Basisprofiel>(new HttpRequestMessage(), new HttpResponseMessage(HttpStatusCode.NotFound), new Basisprofiel(), new RefitSettings());
     }
 
 

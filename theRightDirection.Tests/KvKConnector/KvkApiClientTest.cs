@@ -1,24 +1,23 @@
 ﻿using FluentAssertions;
-using Meziantou.Framework.Win32;
 using Shouldly;
 using System.Reflection;
 using System.Text.Json;
 using theRightDirection;
 using theRightDirection.KvKConnector;
 using theRightDirection.KvKConnector.Model;
+using theRightDirection.Tests;
 
 namespace KvKConnector;
 
-public class KvkApiClientTest
+public class KvkApiClientTest : UnitTestHelper
 {
     private readonly KvKApiClient _kvk;
     private readonly ResourceReader _resources;
 
     public KvkApiClientTest()
     {
-        var kvkApiKey = CredentialManager.ReadCredential("kvkApiKey").Password.ToSecureString();
-        _kvk = new KvKApiClient(kvkApiKey);
         _resources = new ResourceReader(Assembly.GetExecutingAssembly());
+        _kvk = GetKvKClient();
     }
 
     // TODO 04-04-2026 9155985 uitzoeken waarom deze niets terug geeft
@@ -35,42 +34,26 @@ public class KvkApiClientTest
         adres.Straatnaam.ShouldContain(adresPart);
     }
 
-    [Fact]
-    public async Task Find_Delft_BreedBand()
+    [Theory]
+    [InlineData("37026706", "Boven Vredenburgpassage")]
+    [InlineData("27276405", "Vlinderweg")]
+    [InlineData("27124701", "Wilhelminakade")]
+    [InlineData("11111111", "Boven Vredenburgpassage")]
+    [InlineData("8155796", "mannus")]
+    public async Task Find_Address(string kvk, string street)
     {
-        var response = await _kvk.GetBasisProfiel("27276405");
+        var response = await _kvk.GetBasisProfiel(kvk);
         if (!response.IsSuccessful)
         {
-            Assert.Fail();
+            Assert.Fail("niet gevonden");
         }
-        var hoofdVestiging = response.Content?.Embedded?.Hoofdvestiging;
-        var bezoekAdres = hoofdVestiging?.Adressen
-            ?.FirstOrDefault(x => x.Type == Adrestype.Bezoekadres);
+        var bezoekAdres = response.Content.GetBezoekAdres();
         if (bezoekAdres == null)
         {
             Assert.Fail("geen bezoek adres gevonden");
         }
         var straat = $"{bezoekAdres.Straatnaam} {bezoekAdres.Huisnummer}{bezoekAdres.Huisletter}";
-        straat.Should().Contain("Wilhelminakade");
-    }
-
-    [Fact]
-    public async Task Find_KPN_BezoekAdres()
-    {
-        var response = await _kvk.GetBasisProfiel("27124701");
-        if (!response.IsSuccessful)
-        {
-            Assert.Fail();
-        }
-        var hoofdVestiging = response.Content?.Embedded?.Hoofdvestiging;
-        var bezoekAdres = hoofdVestiging?.Adressen
-            ?.FirstOrDefault(x => x.Type == Adrestype.Bezoekadres);
-        if (bezoekAdres == null)
-        {
-            Assert.Fail();
-        }
-        var straat = $"{bezoekAdres.Straatnaam} {bezoekAdres.Huisnummer}{bezoekAdres.Huisletter}";
-        straat.Should().Contain("Wilhelminakade");
+        straat.Should().Contain(street);
     }
 
     [Fact]

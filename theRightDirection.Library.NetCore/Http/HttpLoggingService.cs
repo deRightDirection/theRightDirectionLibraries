@@ -19,46 +19,33 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
     {
         var req = request;
         var id = Guid.NewGuid().ToString();
-        var msg = $"[{id} - Request]";
-
-        Log.Logger.Here().Debug($"{msg} ========Start==========");
-        Log.Logger.Here().Debug($"{msg} {req.Method} {req.RequestUri.PathAndQuery}"); // {req.RequestUri.Scheme}/{req.Version}");
-        Log.Logger.Here().Debug($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
+        var query = StripPathAndQuery(req.RequestUri.PathAndQuery);
+        Log.Logger.Http(id, "request").Debug($"{req.Method} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host} {query}");
 
         foreach (var header in req.Headers)
-            Log.Logger.Here().Debug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+            Log.Logger.Http(id, "request").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
 
         if (req.Content != null)
         {
             foreach (var header in req.Content.Headers)
-                Log.Logger.Here().Debug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+                Log.Logger.Http(id, "request").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
 
             if (req.Content is StringContent || IsTextBasedContentType(req.Headers) ||
                 IsTextBasedContentType(req.Content.Headers))
             {
                 var result = await req.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
-                Log.Logger.Here().Debug($"{msg} Content: {result}");
+                Log.Logger.Http(id, "request").Debug($"{result}");
             }
         }
-
         var start = DateTime.Now;
-
         var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-        Log.Logger.Here().Debug($"{msg} ==========End==========");
-
-        msg = $"[{id} - Response]";
-        Log.Logger.Here().Debug($"{msg} =========Start=========");
-
         var resp = response;
         if (!_showMinimalPostInformation)
         {
-            Log.Logger.Here().Debug(
-                $"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
+            Log.Logger.Http(id, "response").Debug($"{req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
 
             foreach (var header in resp.Headers)
-                Log.Logger.Here().Debug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+                Log.Logger.Http(id, "response").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
         }
 
         if (resp.Content != null)
@@ -66,7 +53,7 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
             if (!_showMinimalPostInformation)
             {
                 foreach (var header in resp.Content.Headers)
-                    Log.Logger.Here().Debug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+                    Log.Logger.Http(id, "response").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
             }
 
             if (resp.Content is StringContent || this.IsTextBasedContentType(resp.Headers) ||
@@ -74,17 +61,17 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
             {
                 var result = await resp.Content.ReadAsStringAsync();
 
-                Log.Logger.Here().Debug($"{msg} Content: {result}");
+                Log.Logger.Http(id, "response").Debug($"Content: {result}");
             }
         }
 
         var end = DateTime.Now;
-        Log.Logger.Here().Debug($"{msg} ==========End==========");
-        Log.Logger.Here().Debug($"{msg} Duration: {end - start}");
+        Log.Logger.Http(id, "response").Debug($"Duration: {end - start}");
         return response;
     }
 
     readonly string[] types = new[] { "html", "text", "xml", "json", "txt", "x-www-form-urlencoded" };
+    private readonly string[] queryParameterNamesToStrip = new[] { "token", "apikey", "fmetoken" };
 
     bool IsTextBasedContentType(HttpHeaders headers)
     {
@@ -94,5 +81,46 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
         var header = string.Join(" ", values).ToLowerInvariant();
 
         return types.Any(t => header.Contains(t));
+    }
+
+#if DEBUG
+    internal string StripPathAndQuery(string pathAndQuery)
+#else
+    private string StripPathAndQuery(string pathAndQuery)
+#endif
+    {
+        if (pathAndQuery.HasNoText())
+        {
+            return string.Empty;
+        }
+        var parts = pathAndQuery.Trim().Split("?", StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length != 2)
+        {
+            return pathAndQuery;
+        }
+        var query = parts[1];
+        var queryParameters = query.Split("&", StringSplitOptions.RemoveEmptyEntries);
+        var newParameters = new List<string>();
+        foreach (var queryParameter in queryParameters)
+        {
+            var parameterParts = queryParameter.Split("=");
+            if (parameterParts.Length != 2)
+            {
+                newParameters.Add(queryParameter);
+            }
+            var name = parameterParts[0].ToLowerInvariant();
+            if (queryParameterNamesToStrip.Contains(name))
+            {
+                var value = parameterParts[1];
+                var newValue = value.ToStripForLogging();
+                newParameters.Add($"{name}={newValue}");
+            }
+            else
+            {
+                newParameters.Add(queryParameter);
+            }
+        }
+        var newQuery = string.Join("&", newParameters);
+        return $"{parts[0]}?{newQuery}";
     }
 }

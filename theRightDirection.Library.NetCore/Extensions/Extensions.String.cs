@@ -15,6 +15,30 @@ namespace theRightDirection;
 
 public static partial class Extensions
 {
+    /// <summary>
+    /// remove parts from the text, only the first 3 character and last three
+    /// minimal 4 characters
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    public static string ToStripForLogging(this string text, int numberToStrip = 3)
+    {
+        if (text.HasNoText())
+        {
+            return string.Empty;
+        }
+        var textToStrip = text.Trim();
+        if (textToStrip.Length <= 3)
+        {
+            return string.Empty;
+        }
+        if (text.Length < numberToStrip)
+        {
+            return text;
+        }
+        return $"{textToStrip.Substring(0, numberToStrip)}..{textToStrip.Substring(textToStrip.Length - numberToStrip)}";
+    }
+
     public static string AddRunningLocationToPathOfFile(this string file)
     {
         var location = Assembly.GetEntryAssembly().GetName();

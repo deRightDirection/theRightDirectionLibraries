@@ -38,15 +38,24 @@ public class GeoBlockMiddleWareConfiguration
             Log.Logger.Here().Warning($"there is no MaxMind database file found, all IP-addresses are allowed");
             return true;
         }
-        var data = Lookup(ip);
-        var countryCode = GetCountryCode(data);
-        if (countryCode.HasNoText() || !_isoCountryNames.Contains(countryCode))
+        try
         {
-            Log.Logger.Here().Debug($"ip denied: {countryCode} {ip}");
-            return false;
+            var data = Lookup(ip);
+            var countryCode = GetCountryCode(data);
+            if (countryCode.HasNoText() || !_isoCountryNames.Contains(countryCode))
+            {
+                Log.Logger.Here().Debug($"ip denied: {countryCode} {ip}");
+                return false;
+            }
+            Log.Logger.Here().Debug($"ip allowed: {countryCode} {ip}");
+            return true;
+
         }
-        Log.Logger.Here().Debug($"ip allowed: {countryCode} {ip}");
-        return true;
+        catch (Exception e)
+        {
+            Log.Logger.Here().Error($"IP not allowed: {e.Message}");
+        }
+        return false;
     }
 
     private string GetCountryCode(Dictionary<string, object> data)

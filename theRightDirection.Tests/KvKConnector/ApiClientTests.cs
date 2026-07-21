@@ -1,16 +1,11 @@
-﻿using FluentAssertions;
-using HR.KvkConnector.Model.Zoeken;
-using HR.KvkConnector;
-using theRightDirection.Tests.KvKConnector.Fixture;
-
-namespace theRightDirection.Tests.KvKConnector;
+﻿namespace theRightDirection.Tests.KvKConnector;
 
 public class ApiClientTests
 {
     //[Fact]
     //public async Task GetVestiging_No_Issue_DateTime()
     //{
-    //    IApiClient client = new ApiClient(new Uri("https://api.kvk.nl/api/v1"), "l7xxd760b2c8441c490c941d6f2f81e6e387");
+    //    IApiClient client = new ApiClient(new Uri("https://api.kvk.nl/api/v1"), "");
     //    var result = await client.GetVestigingsprofielAsync("000051127369");
     //    result.MaterieleRegistratie.DatumAanvang.Value.Date.Should().Be(new DateTime(2022, 1, 3));
     //}
@@ -18,7 +13,7 @@ public class ApiClientTests
     //[Fact]
     //public async Task GetVestiging_DateTime_Reset_To_Minimum_Value()
     //{
-    //    IApiClient client = new ApiClient(new Uri("https://api.kvk.nl/api/v1"), "l7xxd760b2c8441c490c941d6f2f81e6e387");
+    //    IApiClient client = new ApiClient(new Uri("https://api.kvk.nl/api/v1"), "");
     //    var result = await client.GetVestigingsprofielAsync("000019061714");
     //    result.MaterieleRegistratie.DatumAanvang.Value.Date.Should().Be(new DateTime(1, 1, 1));
     //}
@@ -27,7 +22,7 @@ public class ApiClientTests
     //[Fact]
     //public async Task GetZoeken_TestData_From_Live_Service_KVK()
     //{
-    //    IApiClient client = new ApiClient(new Uri("https://api.kvk.nl/api/v1"), "l7xxd760b2c8441c490c941d6f2f81e6e387");
+    //    IApiClient client = new ApiClient(new Uri("https://api.kvk.nl/api/v1"), "");
     //    var result = await client.ZoekenAsync(new Parameters() { KvkNummer = "85058769" });
     //    var handelsNaam = result.Resultaten.First().Handelsnaam;
     //    handelsNaam.Should().Be("the Right Direction B.V.");
@@ -63,7 +58,7 @@ public class ApiClientTests
     //[Fact]
     //public async Task GetVestiging()
     //{
-    //    IApiClient client = new ApiClient(new Uri("https://api.kvk.nl/api/v1"), "l7xxd760b2c8441c490c941d6f2f81e6e387");
+    //    IApiClient client = new ApiClient(new Uri("https://api.kvk.nl/api/v1"), "");
     //    var result6 = await client.GetVestigingenAsync("85058769");
     //    var result5 = await client.GetBasisprofielAsync("85058769");
     //    var result4 = await client.GetEigenaarAsync("85058769");

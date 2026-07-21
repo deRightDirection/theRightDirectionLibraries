@@ -4,9 +4,9 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <AssemblyVersion>10.0.0.0</AssemblyVersion>
-	  <FileVersion>10.0.0.0</FileVersion>
-	  <Version>10.0.0.0</Version>
+	  <AssemblyVersion>10.0.2.0</AssemblyVersion>
+	  <FileVersion>10.0.2.0</FileVersion>
+	  <Version>10.0.2.0</Version>
 	  <ApplicationIcon>theRightDirection.ico</ApplicationIcon>
 	  <Company>the Right Direction BV</Company>
 	  <Copyright>the Right Direction BV</Copyright>
@@ -30,7 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <PackageReference Include="Refit" Version="10.1.6" />
+    <PackageReference Include="Refit" Version="12.0.0" />
   </ItemGroup>
 
   <ItemGroup>
