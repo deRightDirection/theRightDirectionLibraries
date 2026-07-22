@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
+using Shouldly;
 using System.Security;
 using theRightDirection;
 using theRightDirection.Random;
@@ -8,6 +9,25 @@ namespace Library.Extensions;
 
 public class StringExtensionsTest
 {
+    [Fact]
+    public void RemoveSensitiveData()
+    {
+        var json = File.ReadAllText(@"C:\Github\theRightDirectionLibraries\testdata\sensitivedata.json");
+        json.Length.ShouldBe(1856);
+        var masked = json.RemoveSensitiveData();
+        masked.Length.ShouldBeLessThan(json.Length);
+        masked.Length.ShouldBe(3299);
+    }
+    [Fact]
+    public void MinifyJson()
+    {
+        var json = File.ReadAllText(@"C:\Github\theRightDirectionLibraries\testdata\PortalAnalyzer_item.json");
+        json.Length.ShouldBe(3546);
+        var minify = json.Minifiy();
+        minify.Length.ShouldBeLessThan(json.Length);
+        minify.Length.ShouldBe(3299);
+    }
+
     [Theory(Skip = "04-01-2025 uitzoeken waarom dit handig is")]
     [InlineData("test.png", @"c:\")]
     public void AddRunningLocationToPathOfFile(string fileName, string expected)

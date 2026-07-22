@@ -33,8 +33,8 @@
 	<ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
     <PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="6.2.1" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3856.49" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4078.44" />
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
-    <PackageReference Include="theRightDirection.Library" Version="8.0.8" />
+    <PackageReference Include="theRightDirection.Library" Version="10.0.2" />
   </ItemGroup>
 </Project>

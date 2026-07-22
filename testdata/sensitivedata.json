@@ -1,0 +1,38 @@
+    {
+        "clientid": "2xH0HOeJnbfcFPSp",
+        "token": "aPvECyzw_Q7rSlO1vvUFV9w..ERGoYzotTph3yVGOQzz2bSJb8ANjkW-fPOI4AMVgNDyCwsBN8_eR71X9PfF-xQc8a_0iOwmno3We9LYsiMtNZaYYhoZ0S8xKVlPPSWLK550yVlPNKeCQhD_tSOuioIFk9M773P0cV-Mx8y4nOrcnp_QeFnFIfYRdui7mCjz6G3JeQ60iYfo05nlPlFMB2l53nvJgZVcPQfLocpZ6MGEhJzIqgKCTox4lfRIFgYAoN9vCF3ENKhL57ZqUVxcOgl0DuHzzs1kKZ_aXb_sNJnfS5QQMcbgKiNmq0xpx-4r0bXzFZKMCkpPu-Y6P0HgJPMs0EkoTIN2ENB6mBL0iBM3w0-1Mwk56c3WGScmJ4RdtREFgIDPvBDiknE6CtgoOq48pjHsCXUFrly6ilKirl18W1ZMMvkY0vgwrb_mwKZfSssPXgF3xfYvJC0kCRs61kvyVlOpABfc_Yf0Y48FfSZYWSyRZz4yjlB0DRTX345mB3Nvl6ZMjwcFYmptE8WMXdRA.",
+        "naam": "functioneel beheer",
+        "telefoon": "0612345678",
+        "email": "fbgeo@leeuwarden.nl",
+        "kadaster": {
+            "customerid": "123392810069099999",
+            "name": "GeoWorx",
+            "payperuse": false,
+            "contractstart": "2024-01-31T23:00:00Z",
+            "contractend": "0001-01-01T00:00:00",
+            "connectors": [],
+            "tasks": [],
+            "transactions": [],
+            "kadaster": {
+                "id": 18,
+                "relatienummer": "0000484461",
+                "isactive": true,
+                "contactpersons": [
+                    {
+                        "id": 30,
+                        "naam": "Teon de Witte",
+                        "telefoon": "0612345678",
+                        "email": "teon.dewitte@leeuwarden.nl",
+                        "isprimary": true
+                    },
+                    {
+                        "id": 32,
+                        "naam": "functioneel beheer",
+                        "telefoon": "0612345678",
+                        "email": "fbgeo@leeuwarden.nl",
+                        "isprimary": false
+                    }
+                ]
+            }
+        }
+    }
