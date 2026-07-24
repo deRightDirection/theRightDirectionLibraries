@@ -2,6 +2,7 @@
 using theRightDirection.Http;
 
 namespace theRightDirection.KvKConnector;
+
 internal class KvKApiClientFactory
 {
     internal static IKvKApiClient CreateKvKClient()

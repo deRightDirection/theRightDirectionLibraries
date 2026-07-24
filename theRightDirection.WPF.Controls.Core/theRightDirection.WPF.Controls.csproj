@@ -35,6 +35,6 @@
     <PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="6.2.1" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4078.44" />
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
-    <PackageReference Include="theRightDirection.Library" Version="10.0.2" />
+    <PackageReference Include="theRightDirection.Library" Version="10.0.6" />
   </ItemGroup>
 </Project>

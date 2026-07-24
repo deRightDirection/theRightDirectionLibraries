@@ -9,6 +9,25 @@ namespace Library.Extensions;
 
 public class StringExtensionsTest
 {
+
+    [Fact]
+    public void RemoveSensitiveData3()
+    {
+        var data = "client_id=2xH0HOeJnbfcFPSp&grant_type=exchange_refresh_token&refresh_token=a3XQDHMZq0HAS8s-PEnHEYg..7kG5VKoFtNgRJFrkJEZoVhFldGjxbw3_r0WjP13ToYgSHmrH8L7_Fl7Nv-JY-zYxqXIix65r3n03iuyBZ35u92AEnP-5P1tITNhyJjk9r6ELmH9cNQD1MlIw_s6fwD05rCemcQEHWqjOkXEl4UyRDJM64lJYo72JCEROlOC2KJkfMzjKVDArm6vWPRNzwQkVRssJX5AnM-0cYALpuAqwz47wOTFd08ZSXzd5XFDdC2gJ1NxUfyHfzMu0X5tPGsz25bNtbNPI_u5DbyhSMS0fCe8ESVj_kCgouNCVAk8-FNgERkJlguaaRYVIlMJ9KqqHaLoPGMmiMOhT9G3Mgs1cF1KGmfUHbDDEqr1BpyDDAx4KVYuoFLVlhNXX4EK5764cllPQk3OO5hP5YpKY9_mMESFRwXc02AsyH5nFkzoN_2nR8Cu-n4GsWyjv3dmfC1abiv-9Mrp61M0uuV2a42FCcqfJ5UWtio4EYLJZ-NP57i3wyYt1NJWLTL6xbFMsysA.&redirect_uri=http%3A%2F%2Flocalhost%3A4200";
+        var dataRemover = new SensitiveDataRemover(data);
+        var masked = dataRemover.Remove();
+        masked.Length.ShouldBeLessThan(data.Length);
+    }
+
+    [Fact]
+    public void RemoveSensitiveData2()
+    {
+        var data = "{\"customerid\":\"123392810069099999\",\"name\":\"GeoWorx\",\"payperuse\":false,\"contractstart\":\"2024-01-31T23:00:00Z\",\"contractend\":\"0001-01-01T00:00:00\",\"connectors\":[],\"tasks\":[],\"transactions\":[],\"kadaster\":{\"id\":18,\"relatienummer\":\"0000484461\",\"isactive\":true,\"contactpersons\":[{\"id\":30,\"naam\":\"Teon de Witte\",\"telefoon\":\"0612345678\",\"email\":\"teon.dewitte@leeuwarden.nl\",\"isprimary\":true},{\"id\":32,\"naam\":\"functioneel beheer\",\"telefoon\":\"0612345678\",\"email\":\"fbgeo@leeuwarden.nl\",\"isprimary\":false}]},\"autocad\":{\"id\":0,\"clientid\":null,\"clientsecret\":null,\"accprojectid\":null,\"accfolderid\":null,\"isactive\":false,\"exportonlygeometrie\":true,\"hubname\":null,\"projectname\":null,\"foldername\":null,\"useautodeskconstructioncloud\":false},\"isvalidated\":true,\"istrial\":false,\"istest\":false,\"organisation\":{\"id\":8,\"customerid\":\"0\",\"name\":\"Gemeente Leeuwarden\",\"kvk\":\"59734817\",\"bagid\":\"0080200010085646\",\"street\":\"Oldehoofsterkerkhof\",\"housenumber\":2,\"houseletter\":\"\",\"housenumberextra\":\"\",\"city\":\"Leeuwarden\",\"postalcode\":\"8911DH\"},\"aanvraagmodule\":false,\"uploadmodule\":false}";
+        var dataRemover = new SensitiveDataRemover(data);
+        var masked = dataRemover.Remove();
+        masked.Length.ShouldBeLessThan(data.Length);
+    }
+
     [Fact]
     public void RemoveSensitiveData()
     {

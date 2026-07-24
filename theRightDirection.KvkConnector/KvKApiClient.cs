@@ -37,7 +37,7 @@ public class KvKApiClient
         {
             Log.Logger.Here().Error(e.ToStringDemystified());
         }
-        return new ApiResponse<Basisprofiel>(new HttpRequestMessage(), new HttpResponseMessage(HttpStatusCode.NotFound), new Basisprofiel(), new RefitSettings());
+        return new ApiResponse<Basisprofiel>(new HttpResponseMessage(HttpStatusCode.NotFound), new Basisprofiel(), new RefitSettings());
     }
 
 

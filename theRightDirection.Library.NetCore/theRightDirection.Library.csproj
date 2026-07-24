@@ -4,9 +4,9 @@
 	<TargetFrameworks>net10.0</TargetFrameworks>
 	<AssemblyName>theRightDirection.Library</AssemblyName>
 	<RootNamespace>theRightDirection</RootNamespace>
-	<AssemblyVersion>10.0.3.0</AssemblyVersion>
-	<FileVersion>10.0.3.0</FileVersion>
-	<Version>10.0.3.0</Version>
+	<AssemblyVersion>10.0.7.0</AssemblyVersion>
+	<FileVersion>10.0.7.0</FileVersion>
+	<Version>10.0.7.0</Version>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<Copyright>the Right Direction BV</Copyright>
 	<PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
@@ -20,6 +20,14 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	<OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0|AnyCPU'">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0|AnyCPU'">
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,7 +52,7 @@
 	  <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
 	  <PackageReference Include="JsonPath.Net" Version="3.0.2" />
 	<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-	<PackageReference Include="Refit" Version="13.1.0" />
+	<PackageReference Include="Refit" Version="10.2.0" />
 	<PackageReference Include="Serilog" Version="4.4.0" />
   </ItemGroup>
 

@@ -17,7 +17,7 @@ namespace theRightDirection.Library
         public LibraryException(string message) : base(message)
         {
             Console.WriteLine(String.Format("error occured: {0}", message));
-            //            Logger.GetLogger().LogException(this);
+            Log.Logger.Here().Error(this);
         }
 
         #endregion Constructors 

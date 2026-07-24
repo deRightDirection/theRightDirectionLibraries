@@ -1,9 +1,6 @@
-﻿using Json.Path;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ReactiveUI.Primitives;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -12,44 +9,16 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 
 namespace theRightDirection;
 
 public static partial class Extensions
 {
-    public static string RemoveSensitiveData(this string jsonString)
+    public static string RemoveSensitiveData(this string contentString)
     {
-        var jsonNode = JsonNode.Parse(jsonString);
-        if (jsonNode == null)
-        {
-            return jsonString;
-        }
-        var newJson = jsonString;
-        var tokennames = new Dictionary<string, int>
-        {
-            { "token", 10 },
-            { "apikey", 10 },
-            { "fmetoken", 10 },
-            { "email", 5 },
-            { "relatienummer", 3},
-            { "telefoon", 3 },
-            {"naam", 3},
-            {"clientid",3}
-        };
-        foreach (var tokenName in tokennames)
-        {
-            var path = JsonPath.Parse($"$..{tokenName.Key}");
-            var results = path.Evaluate(jsonNode);
-            var nodes = results.Matches;
-            nodes.ForEach(n =>
-            {
-                var value = n.Value.ToString();
-                newJson = newJson.Replace(value, value.ToStripForLogging(tokenName.Value));
-            });
-        }
-        return newJson;
+        var dataRemover = new SensitiveDataRemover(contentString);
+        return dataRemover.Remove();
     }
     public static string Minifiy(this string json)
     {

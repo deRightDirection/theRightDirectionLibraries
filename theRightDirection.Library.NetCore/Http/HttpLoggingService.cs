@@ -9,33 +9,38 @@ using System.Threading.Tasks;
 
 namespace theRightDirection.Http;
 
-public class HttpLoggingService(HttpMessageHandler innerHandler = null)
-    : DelegatingHandler(innerHandler ?? new HttpClientHandler())
+public class HttpLoggingService(HttpMessageHandler innerHandler = null) : DelegatingHandler(innerHandler ?? new HttpClientHandler())
 {
     private readonly bool _showMinimalPostInformation = true;
 
-    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-        CancellationToken cancellationToken)
+    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         var req = request;
         var id = Guid.NewGuid().ToString();
-        var query = StripPathAndQuery(req.RequestUri.PathAndQuery);
-        Log.Logger.Http(id, "request")
-            .Debug($"{req.Method} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host} {query}");
+        var query = StripPathAndQuery(req.RequestUri?.PathAndQuery);
+        Log.Logger.Http(id, "request").Debug($"{req.Method} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host} {query}");
 
         foreach (var header in req.Headers)
+        {
             Log.Logger.Http(id, "request").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
+        }
 
         if (req.Content != null)
         {
             foreach (var header in req.Content.Headers)
+            {
                 Log.Logger.Http(id, "request").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
+            }
 
-            if (req.Content is StringContent || IsTextBasedContentType(req.Headers) ||
-                IsTextBasedContentType(req.Content.Headers))
+            if (req.Content is StringContent || IsTextBasedContentType(req.Headers) || IsTextBasedContentType(req.Content.Headers))
             {
                 var result = await req.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                Log.Logger.Http(id, "request").Debug($"{result}");
+                if (result.HasText())
+                {
+                    result = result.RemoveSensitiveData();
+                    result = result.Minifiy();
+                    Log.Logger.Http(id, "request").Debug($"{result}");
+                }
             }
         }
 
@@ -44,11 +49,11 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
         var resp = response;
         if (!_showMinimalPostInformation)
         {
-            Log.Logger.Http(id, "response")
-                .Debug($"{req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
-
+            Log.Logger.Http(id, "response").Debug($"{req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
             foreach (var header in resp.Headers)
+            {
                 Log.Logger.Http(id, "response").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
+            }
         }
 
         if (resp.Content != null)
@@ -56,19 +61,22 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
             if (!_showMinimalPostInformation)
             {
                 foreach (var header in resp.Content.Headers)
+                {
                     Log.Logger.Http(id, "response").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
+                }
             }
 
-            if (resp.Content is StringContent || this.IsTextBasedContentType(resp.Headers) ||
-                IsTextBasedContentType(resp.Content.Headers))
+            if (resp.Content is StringContent || this.IsTextBasedContentType(resp.Headers) || IsTextBasedContentType(resp.Content.Headers))
             {
                 var result = await resp.Content.ReadAsStringAsync(cancellationToken);
-                result = result.RemoveSensitiveData();
-                result = result.Minifiy();
-                Log.Logger.Http(id, "response").Debug(result);
+                if (result.HasText())
+                {
+                    result = result.RemoveSensitiveData();
+                    result = result.Minifiy();
+                    Log.Logger.Http(id, "response").Debug(result);
+                }
             }
         }
-
         var end = DateTime.Now;
         Log.Logger.Http(id, "response").Debug($"Duration: {end - start}");
         return response;
@@ -81,7 +89,9 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
     {
         IEnumerable<string> values;
         if (!headers.TryGetValues("Content-Type", out values))
+        {
             return false;
+        }
         var header = string.Join(" ", values).ToLowerInvariant();
         return types.Any(t => header.Contains(t));
     }
@@ -92,7 +102,7 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null)
     private string StripPathAndQuery(string pathAndQuery, int numberToStrip = 3)
 #endif
     {
-        if (pathAndQuery.HasNoText())
+        if (pathAndQuery == null || pathAndQuery.HasNoText())
         {
             return string.Empty;
         }
