@@ -9,6 +9,10 @@ namespace theRightDirection;
 /// </summary>
 public static partial class Extensions
 {
+    public static bool IsBetween(this DateTime dt, DateTime start, DateTime end)
+    {
+        return dt >= start && dt <= end;
+    }
     /// <summary>
     /// Gets the <see cref="DateTime"/> value representing the start day of the week of the
     /// specified <see cref="DateTime"/>.
