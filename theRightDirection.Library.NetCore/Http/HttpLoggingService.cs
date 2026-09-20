@@ -9,29 +9,53 @@ using System.Threading.Tasks;
 
 namespace theRightDirection.Http;
 
-public class HttpLoggingService(HttpMessageHandler innerHandler = null) : DelegatingHandler(innerHandler ?? new HttpClientHandler())
+public class HttpLoggingService(HttpMessageHandler innerHandler = null, IEnumerable<string> listOfEndpointsToSkip = null, bool logSkippedEndpoints = false) : DelegatingHandler(innerHandler ?? new HttpClientHandler())
 {
-    private readonly bool _showMinimalPostInformation = true;
-
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         var req = request;
         var id = Guid.NewGuid().ToString();
         var query = StripPathAndQuery(req.RequestUri?.PathAndQuery);
+        if (listOfEndpointsToSkip != null)
+        {
+            if (listOfEndpointsToSkip.Contains(query.ToLowerInvariant()))
+            {
+                if (logSkippedEndpoints)
+                {
+                    Log.Logger.Http(id, "skipped").Debug($"query: {query}");
+                }
+                return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            }
+        }
+
         Log.Logger.Http(id, "request").Debug($"{req.Method} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host} {query}");
 
-        foreach (var header in req.Headers)
+        var headers = new List<string>();
+        req.Headers.ForEach(h =>
         {
-            Log.Logger.Http(id, "request").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
+            headers.Add($"{h.Key}: {string.Join(", ", h.Value)}");
+        });
+        if (req.Content == null)
+        {
+            var logmessage = string.Join(" | ", headers).Trim();
+            if (logmessage.HasText())
+            {
+                Log.Logger.Http(id, "request").Debug(logmessage);
+            }
         }
 
         if (req.Content != null)
         {
-            foreach (var header in req.Content.Headers)
+            headers.Clear();
+            req.Content.Headers.ForEach(h =>
             {
-                Log.Logger.Http(id, "request").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
+                headers.Add($"{h.Key}: {string.Join(", ", h.Value)}");
+            });
+            var logmessage = string.Join(" | ", headers).Trim();
+            if (logmessage.HasText())
+            {
+                Log.Logger.Http(id, "request").Debug(logmessage);
             }
-
             if (req.Content is StringContent || IsTextBasedContentType(req.Headers) || IsTextBasedContentType(req.Content.Headers))
             {
                 var result = await req.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
@@ -47,26 +71,10 @@ public class HttpLoggingService(HttpMessageHandler innerHandler = null) : Delega
         var start = DateTime.Now;
         var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
         var resp = response;
-        if (!_showMinimalPostInformation)
-        {
-            Log.Logger.Http(id, "response").Debug($"{req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
-            foreach (var header in resp.Headers)
-            {
-                Log.Logger.Http(id, "response").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
-            }
-        }
 
         if (resp.Content != null)
         {
-            if (!_showMinimalPostInformation)
-            {
-                foreach (var header in resp.Content.Headers)
-                {
-                    Log.Logger.Http(id, "response").Debug($"{header.Key}: {string.Join(", ", header.Value)}");
-                }
-            }
-
-            if (resp.Content is StringContent || this.IsTextBasedContentType(resp.Headers) || IsTextBasedContentType(resp.Content.Headers))
+            if (resp.Content is StringContent || IsTextBasedContentType(resp.Headers) || IsTextBasedContentType(resp.Content.Headers))
             {
                 var result = await resp.Content.ReadAsStringAsync(cancellationToken);
                 if (result.HasText())

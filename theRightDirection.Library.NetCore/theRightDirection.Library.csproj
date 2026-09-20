@@ -16,6 +16,7 @@
 	<RepositoryUrl>https://www.therightdirection.nl</RepositoryUrl>
 	<DebugType>none</DebugType>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -52,7 +53,7 @@
 	  <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
 	  <PackageReference Include="JsonPath.Net" Version="3.0.2" />
 	<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-	<PackageReference Include="Refit" Version="10.2.0" />
+	<PackageReference Include="Refit" Version="15.2.0" />
 	<PackageReference Include="Serilog" Version="4.4.0" />
   </ItemGroup>
 

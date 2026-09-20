@@ -31,6 +31,9 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="theRightDirection.Library" Version="10.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\theRightDirection.Library.NetCore\theRightDirection.Library.csproj" />
   </ItemGroup>
 </Project>

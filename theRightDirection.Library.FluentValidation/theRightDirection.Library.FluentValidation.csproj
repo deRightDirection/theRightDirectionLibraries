@@ -11,6 +11,7 @@
 	  <AssemblyVersion>10.0.0.0</AssemblyVersion>
 	  <FileVersion>10.0.0.0</FileVersion>
 	  <Version>10.0.0.0</Version>
+	  <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<OutputPath>C:\GitHub\SharedLibraries\</OutputPath>

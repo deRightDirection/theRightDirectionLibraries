@@ -16,6 +16,7 @@
 	  <Copyright>the Right Direction BV</Copyright>
 	  <PackageProjectUrl>https://www.therightdirection.nl</PackageProjectUrl>
 	  <PackageIcon>tRD-icon-v-400.jpg</PackageIcon>
+	  <Configurations>Debug;Release</Configurations>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<OutputPath>C:\GitHub\SharedLibraries\</OutputPath>
@@ -33,8 +34,8 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />
 		<PackageReference Include="Meziantou.Framework.Win32.CredentialManager" Version="3.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.11" />
 	</ItemGroup>
 </Project>

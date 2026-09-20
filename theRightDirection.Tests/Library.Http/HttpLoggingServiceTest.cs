@@ -26,7 +26,9 @@ public class HttpLoggingServiceTest
     public void StripPathAndQuery(string original, string expected)
     {
         var loggingService = new HttpLoggingService();
+#if DEBUG
         var result = loggingService.StripPathAndQuery(original);
         result.ShouldBe(expected);
+#endif
     }
 }

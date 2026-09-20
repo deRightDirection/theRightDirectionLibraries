@@ -16,7 +16,8 @@
 	  <Company>the Right Direction BV</Company>
 	  <RepositoryUrl>https://www.therightdirection.nl</RepositoryUrl>
 	  <DebugType>none</DebugType>
-	  <AllowUnsafeBlocks>false</AllowUnsafeBlocks>  
+	  <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	  <Configurations>Debug;Release</Configurations>  
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -36,9 +37,9 @@
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="MaxMind.Db" Version="5.1.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.11" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.10" />
-		<PackageReference Include="Refit" Version="10.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.12" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.11" />
+		<PackageReference Include="Refit" Version="15.2.0" />
 		<PackageReference Include="Serilog" Version="4.4.0" />
 	</ItemGroup>
 	<ItemGroup>
